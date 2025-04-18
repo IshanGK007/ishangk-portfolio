@@ -1,7 +1,10 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { Github, Linkedin, Mail, Phone, Code, Database, Brain } from "lucide-react";
-import { Card } from "@/components/ui/card";
+import { Github, Linkedin, Mail, Phone } from "lucide-react";
+import ExperienceSection from "@/components/ExperienceSection";
+import CVDownload from "@/components/CVDownload";
+import DreamCompany from "@/components/DreamCompany";
+import Achievements from "@/components/Achievements";
 import "../styles/custom.css";
 
 const Index = () => {
@@ -48,7 +51,7 @@ const Index = () => {
               </motion.span>
             </div>
             <div className="hidden md:flex items-center space-x-8">
-              {["home", "about", "experience", "projects", "skills", "contact"].map((section) => (
+              {["home", "about", "experience", "projects", "skills", "achievements", "dream-company", "cv", "contact"].map((section) => (
                 <button
                   key={section}
                   onClick={() => smoothScroll(section)}
@@ -154,6 +157,9 @@ const Index = () => {
         </div>
       </section>
 
+      {/* Experience Section */}
+      <ExperienceSection />
+
       {/* Projects Section with enhanced visuals */}
       <section id="projects" className="py-20 bg-slate-50 px-4">
         <div className="max-w-7xl mx-auto">
@@ -252,6 +258,15 @@ const Index = () => {
           </div>
         </div>
       </section>
+
+      {/* Achievements Section */}
+      <Achievements />
+
+      {/* Dream Company Section */}
+      <DreamCompany />
+
+      {/* CV Download Section */}
+      <CVDownload />
 
       {/* Contact Section with enhanced design */}
       <section id="contact" className="py-20 bg-slate-50 px-4">
