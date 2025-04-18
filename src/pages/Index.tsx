@@ -76,7 +76,7 @@ const Index = () => {
               </span>
             </motion.div>
             <div className="hidden md:flex items-center space-x-8">
-              {["home", "about", "experience", "projects", "skills", "achievements", "dream-company", "cv", "contact"].map((section) => (
+              {["home", "about", "education","experience", "projects", "skills", "achievements", "dream-company","business-cases", "cv", "contact"].map((section) => (
                 <motion.button
                   key={section}
                   whileHover={{ scale: 1.05 }}
@@ -153,7 +153,91 @@ const Index = () => {
         </div>
       </section>
 
-      <section id="about" className="py-20 bg-white px-4">
+      <section id="about" className="py-20 bg-gray-50 text-gray-900 px-6">
+        <div className="max-w-7xl mx-auto">
+          <motion.h2 
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            className="text-5xl font-bold text-center mb-12"
+          >
+            About Me
+          </motion.h2>
+
+          <div className="flex flex-col-reverse md:flex-row justify-between items-center">
+            {/* Left Section - Text Block */}
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ delay: 0.3 }}
+              className="w-full md:w-1/2 text-center md:text-left"
+            >
+              <p className="text-2xl mb-6">
+                Hey, I’m <span className="font-bold text-blue-600">Ishan Kulkarni</span>, a passionate software engineer
+                who loves to work at the intersection of technology and creativity. Currently pursuing a B.Tech in Computer
+                Science & Engineering, I’m deeply interested in <strong>Machine Learning, AI, and Web Development</strong>.
+              </p>
+
+              <p className="text-2xl mb-6">
+                My journey began with problem-solving, and today I’m excited to dive into complex challenges with innovative solutions.
+                Whether it's coding a website or designing machine learning models, I’m always eager to explore new ideas and learn.
+              </p>
+
+              <div className="flex flex-wrap justify-center md:justify-start gap-6 text-lg">
+                <div className="flex items-center space-x-2 bg-blue-50 hover:bg-blue-200 transition duration-300 ease-in-out p-4 rounded-xl">
+                  <i className="fas fa-laptop-code text-blue-600 text-3xl"></i>
+                  <span className="font-semibold">Web Development</span>
+                </div>
+                <div className="flex items-center space-x-2 bg-blue-50 hover:bg-blue-200 transition duration-300 ease-in-out p-4 rounded-xl">
+                  <i className="fas fa-robot text-blue-600 text-3xl"></i>
+                  <span className="font-semibold">Machine Learning</span>
+                </div>
+                <div className="flex items-center space-x-2 bg-blue-50 hover:bg-blue-200 transition duration-300 ease-in-out p-4 rounded-xl">
+                  <i className="fas fa-database text-blue-600 text-3xl"></i>
+                  <span className="font-semibold">Data Science</span>
+                </div>
+              </div>
+            </motion.div>
+
+            {/* Right Section - Profile Image */}
+            <motion.div
+              initial={{ opacity: 0, x: 20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ delay: 0.3 }}
+              className="w-full md:w-1/3 mb-8 md:mb-0"
+            >
+              <img 
+                src="Ishan_image.png" 
+                alt="Ishan Kulkarni" 
+                className="w-full h-full object-cover rounded-lg shadow-lg"
+              />
+            </motion.div>
+          </div>
+
+          {/* Additional Info Section */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ delay: 0.5 }}
+            className="mt-12 text-center"
+          >
+            <p className="text-xl mb-4">
+              When I'm not coding, I’m diving into new books, attending tech events, and collaborating with other
+              passionate individuals in the tech community. I believe in continuous learning and strive to contribute to
+              open-source projects and creative endeavors.
+            </p>
+
+            <p className="text-xl">
+              Let’s connect! Feel free to reach out if you want to collaborate or just chat about technology.
+            </p>
+          </motion.div>
+        </div>
+      </section>
+
+
+
+
+      <section id="education" className="py-20 bg-white px-4">
         <div className="max-w-7xl mx-auto">
           <motion.h2 
             initial={{ opacity: 0 }}
@@ -436,7 +520,7 @@ const Index = () => {
                   label: "Phone"
                 },
                 {
-                  href: "https://linkedin.com",
+                  href: "https://www.linkedin.com/in/ishan-kulkarni-42361832a",
                   icon: Linkedin,
                   text: "LinkedIn Profile",
                   label: "LinkedIn"
