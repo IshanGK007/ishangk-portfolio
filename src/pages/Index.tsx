@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Github, Linkedin, Mail, Phone } from "lucide-react";
@@ -8,6 +7,9 @@ import DreamCompany from "@/components/DreamCompany";
 import Achievements from "@/components/Achievements";
 import { Card } from "@/components/ui/card";
 import "../styles/custom.css";
+import { Code } from 'lucide-react';
+import { Database } from 'lucide-react';
+import { Brain } from 'lucide-react';
 
 const Index = () => {
   const [activeSection, setActiveSection] = useState("home");
@@ -372,4 +374,3 @@ const Index = () => {
 };
 
 export default Index;
-
