@@ -361,55 +361,105 @@ const Index = () => {
         </div>
       </section>
 
-      <section id="skills" className="py-20 bg-white px-4">
+      
+
+      <section id="skills" className="py-16 bg-white px-4">
         <div className="max-w-7xl mx-auto">
           <motion.h2 
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
-            className="text-3xl font-bold text-center gradient-text mb-12"
+            className="text-3xl font-bold text-center gradient-text mb-10"
           >
             Technical Skills
           </motion.h2>
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6">
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {[
-              { name: 'C', icon: Code },
-              { name: 'C++', icon: Code },
-              { name: 'Python', icon: Code },
-              { name: 'JavaScript', icon: FileCode },
-              { name: 'HTML', icon: Layout },
-              { name: 'CSS', icon: Palette },
-              { name: 'React.js', icon: RefreshCcw },
-              { name: 'Tailwind CSS', icon: PenTool },
-              { name: 'Node.js', icon: Server },
-              { name: 'Express.js', icon: Server },
-              { name: 'MongoDB', icon: Database },
-              { name: 'PyTorch', icon: Brain },
-              { name: 'Scikit-learn', icon: Brain },
-              { name: 'OpenCV', icon: Eye },
-              { name: 'YOLO', icon: Box },
-              { name: 'NumPy', icon: Brain },
-              { name: 'Pandas', icon: LineChart },
-              { name: 'Seaborn', icon: LineChart },
-              { name: 'Git', icon: GitBranchIcon },
-              { name: 'GitHub', icon: GithubIcon },
-              { name: 'Postman', icon: Globe }
-            ].map((skill, index) => (
+              {
+                category: 'Programming Languages',
+                skills: [
+                  { name: 'C', icon: Code },
+                  { name: 'C++', icon: Code },
+                  { name: 'Python', icon: Code },
+                  { name: 'JavaScript', icon: FileCode },
+                ]
+              },
+              {
+                category: 'Frontend',
+                skills: [
+                  { name: 'HTML', icon: Layout },
+                  { name: 'CSS', icon: Palette },
+                  { name: 'React.js', icon: RefreshCcw },
+                  { name: 'Tailwind CSS', icon: PenTool },
+                ]
+              },
+              {
+                category: 'Backend',
+                skills: [
+                  { name: 'Node.js', icon: Server },
+                  { name: 'Express.js', icon: Server },
+                  { name: 'MongoDB', icon: Database },
+                ]
+              },
+              {
+                category: 'Libraries & Frameworks',
+                skills: [
+                  { name: 'NumPy', icon: Brain },
+                  { name: 'Pandas', icon: LineChart },
+                  { name: 'Seaborn', icon: LineChart },
+                  { name: 'Scikit-learn', icon: Brain },
+                  { name: 'PyTorch', icon: Brain },
+                ]
+              },
+              {
+                category: 'Computer Vision',
+                skills: [
+                  { name: 'OpenCV', icon: Eye },
+                  { name: 'YOLO', icon: Box },
+                ]
+              },
+              {
+                category: 'Tools',
+                skills: [
+                  { name: 'Git', icon: GitBranchIcon },
+                  { name: 'GitHub', icon: GithubIcon },
+                  { name: 'Postman', icon: Globe },
+                ]
+              }
+            ].map((group, i) => (
               <motion.div
-                key={index}
-                initial={{ opacity: 0, scale: 0.9 }}
-                whileInView={{ opacity: 1, scale: 1 }}
+                key={i}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: index * 0.05 }}
-                className="bg-white rounded-lg p-6 text-center card-hover border border-slate-200 flex flex-col items-center gap-3"
+                className="bg-white border border-slate-200 rounded-xl p-4"
               >
-                <skill.icon className="w-8 h-8 text-indigo-600" />
-                <span className="text-slate-700 font-medium text-sm">{skill.name}</span>
+                <h3 className="text-lg font-semibold mb-4 text-center text-slate-800">
+                  {group.category}
+                </h3>
+                <div className="grid grid-cols-2 gap-3">
+                  {group.skills.map((skill, index) => (
+                    <motion.div
+                      key={index}
+                      initial={{ opacity: 0, scale: 0.95 }}
+                      whileInView={{ opacity: 1, scale: 1 }}
+                      viewport={{ once: true }}
+                      transition={{ delay: index * 0.04 }}
+                      className="bg-white rounded-lg p-2 text-center card-hover border border-slate-100 flex flex-col items-center gap-2"
+                    >
+                      <skill.icon className="w-6 h-6 text-indigo-600" />
+                      <span className="text-slate-700 font-medium text-xs text-center">{skill.name}</span>
+                    </motion.div>
+                  ))}
+                </div>
               </motion.div>
             ))}
           </div>
         </div>
       </section>
+
+
 
       <Achievements />
 
