@@ -128,8 +128,8 @@ const Index = () => {
               className="flex justify-center space-x-6"
             >
               {[
-                { icon: Linkedin, href: "https://linkedin.com", label: "LinkedIn" },
-                { icon: Github, href: "https://github.com", label: "GitHub" },
+                { icon: Linkedin, href: "https://www.linkedin.com/in/ishan-kulkarni-42361832a", label: "LinkedIn" },
+                { icon: Github, href: "https://github.com/IshanGK007/", label: "GitHub" },
                 { icon: Mail, href: "mailto:ikishankulkarni16@gmail.com", label: "Email" },
                 { icon: Phone, href: "tel:+918431457815", label: "Phone" },
               ].map(({ icon: Icon, href, label }, index) => (
