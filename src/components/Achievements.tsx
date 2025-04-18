@@ -5,8 +5,8 @@ import { Card } from "./ui/card";
 
 const Achievements = () => {
   return (
-    <section id="achievements" className="py-20 bg-slate-50 px-4">
-      <div className="max-w-7xl mx-auto">
+    <section id="achievements" className="py-16 bg-slate-50 px-4">
+      <div className="max-w-4xl mx-auto">
         <motion.h2
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
@@ -15,7 +15,7 @@ const Achievements = () => {
         >
           Achievements
         </motion.h2>
-        <div className="grid gap-8 max-w-4xl mx-auto">
+        <div className="grid gap-6">
           {[
             {
               title: "Vision-Based Automated Billing Systems Using YOLO",

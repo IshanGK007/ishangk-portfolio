@@ -5,8 +5,8 @@ import { Card } from "./ui/card";
 
 const DreamCompany = () => {
   return (
-    <section id="dream-company" className="py-20 bg-white px-4">
-      <div className="max-w-7xl mx-auto">
+    <section id="dream-company" className="py-16 bg-white px-4">
+      <div className="max-w-4xl mx-auto">
         <motion.h2
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
@@ -21,7 +21,7 @@ const DreamCompany = () => {
           viewport={{ once: true }}
           className="flex justify-center"
         >
-          <Card className="p-8 card-hover bg-white border border-slate-200 w-full max-w-2xl">
+          <Card className="p-8 card-hover bg-white border border-slate-200 w-full">
             <div className="flex flex-col items-center space-y-6">
               <div className="flex items-center space-x-2">
                 <BuildingIcon className="w-8 h-8 text-indigo-600" />
