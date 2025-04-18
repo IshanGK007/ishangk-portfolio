@@ -207,7 +207,7 @@ const Index = () => {
 
       <ExperienceSection />
 
-      <section id="projects" className="py-20 bg-slate-50 px-4">
+      <section id="projects" className="py-20 bg-gradient-to-b from-slate-50 to-white px-4">
         <div className="max-w-7xl mx-auto">
           <motion.h2 
             initial={{ opacity: 0 }}
@@ -220,23 +220,29 @@ const Index = () => {
           <div className="grid md:grid-cols-2 gap-8">
             {[
               {
+                title: "Text-Based 3D Object Retrieval",
+                description: "Developed a system to retrieve 3D models using natural language queries by combining PointNet, EfficientNetV2, and CLIP for multi-modal embedding. Improved retrieval accuracy on the ANIMAR dataset and optimized feature extraction.",
+                tech: ["Python", "PointNet", "EfficientNetV2", "CLIP"],
+                icon: Brain,
+              },
+              {
                 title: "Vision-Based Billing System",
-                description: "Automated product detection and billing system using advanced computer vision technology.",
-                tech: ["Python", "YOLOv11", "Computer Vision"],
+                description: "Created an automated billing solution by detecting product instances in images using YOLOv11. Automated bill generation based on object count, achieving 94.33% mAP accuracy.",
+                tech: ["Python", "YOLOv11", "Computer Vision", "Deep Learning"],
                 icon: Code,
               },
               {
                 title: "Car Rental System",
-                description: "Full-stack application with secure payment integration and real-time booking.",
-                tech: ["React", "Node.js", "MongoDB", "Express", "Razorpay"],
+                description: "Built a full-stack platform for car rentals with Razorpay integration, JWT authentication, and RESTful APIs. Enhanced UX with OTP recovery and feedback system.",
+                tech: ["React.js", "Node.js", "MongoDB", "Razorpay"],
                 icon: Database,
               },
               {
-                title: "EDA on Thyroid Disease Dataset",
-                description: "Advanced data analysis project with machine learning applications.",
-                tech: ["Python", "Pandas", "Data Analysis", "ML"],
+                title: "Thyroid Disease Analysis",
+                description: "Conducted EDA on thyroid datasets using Python and visualization libraries. Applied SMOTE for balancing and Gradient Boosting, achieving 96.37% accuracy.",
+                tech: ["Python", "Pandas", "SMOTE", "Gradient Boosting"],
                 icon: Brain,
-              },
+              }
             ].map((project, index) => (
               <motion.div
                 key={index}
