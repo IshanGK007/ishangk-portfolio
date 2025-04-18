@@ -7,9 +7,7 @@ import DreamCompany from "@/components/DreamCompany";
 import Achievements from "@/components/Achievements";
 import { Card } from "@/components/ui/card";
 import "../styles/custom.css";
-import { Code } from 'lucide-react';
-import { Database } from 'lucide-react';
-import { Brain } from 'lucide-react';
+import { Code, Database, Brain, GitBranchIcon, GithubIcon, MailIcon, Server, Layout, FileCode, Box, RefreshCcw, LineChart, PenTool, Palette, Globe, Eye } from 'lucide-react';
 
 const Index = () => {
   const [activeSection, setActiveSection] = useState("home");
@@ -289,21 +287,40 @@ const Index = () => {
           >
             Technical Skills
           </motion.h2>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6">
             {[
-              "C", "C++", "Python", "React",
-              "Machine Learning", "Data Analysis",
-              "Node.js", "MongoDB",
+              { name: 'C', icon: Code },
+              { name: 'C++', icon: Code },
+              { name: 'Python', icon: Code },
+              { name: 'JavaScript', icon: FileCode },
+              { name: 'HTML', icon: Layout },
+              { name: 'CSS', icon: Palette },
+              { name: 'React.js', icon: RefreshCcw },
+              { name: 'Tailwind CSS', icon: PenTool },
+              { name: 'Node.js', icon: Server },
+              { name: 'Express.js', icon: Server },
+              { name: 'MongoDB', icon: Database },
+              { name: 'PyTorch', icon: Brain },
+              { name: 'Scikit-learn', icon: Brain },
+              { name: 'OpenCV', icon: Eye },
+              { name: 'YOLO', icon: Box },
+              { name: 'NumPy', icon: Brain },
+              { name: 'Pandas', icon: LineChart },
+              { name: 'Seaborn', icon: LineChart },
+              { name: 'Git', icon: GitBranchIcon },
+              { name: 'GitHub', icon: GithubIcon },
+              { name: 'Postman', icon: Globe }
             ].map((skill, index) => (
               <motion.div
                 key={index}
                 initial={{ opacity: 0, scale: 0.9 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-                className="bg-white rounded-lg p-4 text-center card-hover border border-slate-200"
+                transition={{ delay: index * 0.05 }}
+                className="bg-white rounded-lg p-6 text-center card-hover border border-slate-200 flex flex-col items-center gap-3"
               >
-                <span className="text-slate-700 font-medium">{skill}</span>
+                <skill.icon className="w-8 h-8 text-indigo-600" />
+                <span className="text-slate-700 font-medium text-sm">{skill.name}</span>
               </motion.div>
             ))}
           </div>
@@ -317,7 +334,7 @@ const Index = () => {
       <CVDownload />
 
       <section id="contact" className="py-20 bg-slate-50 px-4">
-        <div className="max-w-7xl mx-auto">
+        <div className="max-w-4xl mx-auto">
           <motion.h2 
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
@@ -330,45 +347,57 @@ const Index = () => {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="max-w-md mx-auto bg-white shadow-lg rounded-xl p-8 border border-slate-200"
+            className="bg-white shadow-lg rounded-xl p-8 border border-slate-200"
           >
             <p className="text-lg text-slate-600 mb-8 text-center">
               Ready to collaborate on innovative projects? Let's connect!
             </p>
-            <div className="space-y-6">
+            <div className="grid md:grid-cols-2 gap-6">
               {[
                 {
                   href: "mailto:ikishankulkarni16@gmail.com",
-                  icon: Mail,
-                  text: "ikishankulkarni16@gmail.com"
+                  icon: MailIcon,
+                  text: "ikishankulkarni16@gmail.com",
+                  label: "Email"
                 },
                 {
                   href: "tel:+918431457815",
                   icon: Phone,
-                  text: "+91-8431457815"
+                  text: "+91-8431457815",
+                  label: "Phone"
                 },
                 {
                   href: "https://linkedin.com",
                   icon: Linkedin,
-                  text: "LinkedIn Profile"
+                  text: "LinkedIn Profile",
+                  label: "LinkedIn"
+                },
+                {
+                  href: "https://github.com",
+                  icon: GithubIcon,
+                  text: "GitHub Profile",
+                  label: "GitHub"
                 }
-              ].map(({ href, icon: Icon, text }, index) => (
+              ].map(({ href, icon: Icon, text, label }, index) => (
                 <motion.a
                   key={text}
                   href={href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: index * 0.2 }}
-                  className="flex items-center space-x-4 text-slate-700 hover:text-indigo-600 transition-all group"
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: index * 0.1 }}
+                  className="flex items-center p-4 space-x-4 rounded-lg hover:bg-slate-50 transition-all group"
                 >
                   <div className="p-3 bg-indigo-50 rounded-full group-hover:bg-indigo-100 transition-colors">
                     <Icon className="w-6 h-6 text-indigo-600" />
                   </div>
-                  <span className="text-sm font-medium">{text}</span>
+                  <div className="flex flex-col">
+                    <span className="text-sm font-semibold text-indigo-600">{label}</span>
+                    <span className="text-sm text-slate-600">{text}</span>
+                  </div>
                 </motion.a>
               ))}
             </div>

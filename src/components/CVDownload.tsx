@@ -21,14 +21,15 @@ const CVDownload = () => {
           viewport={{ once: true }}
           className="flex justify-center"
         >
-          <Card className="p-8 card-hover bg-white border border-slate-200 w-full">
+          <Card className="p-8 card-hover bg-white border border-slate-200 w-full max-w-2xl">
             <div className="flex flex-col items-center space-y-6">
               <FileTextIcon className="w-12 h-12 text-indigo-600" />
               <h3 className="text-xl font-semibold text-slate-800">Download My CV</h3>
-              <p className="text-slate-600 text-center">Get a detailed overview of my skills and experiences</p>
+              <p className="text-slate-600 text-center max-w-md">Get a detailed overview of my skills, experiences, and achievements</p>
               <a
-                href="/path-to-your-cv.pdf"
-                download
+                href="https://drive.google.com/file/d/1B4MzvL05j_jzOVHYfZs8I_gRqqbNoPyZ/view?usp=sharing"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="flex items-center space-x-2 bg-indigo-600 text-white px-6 py-3 rounded-lg hover:bg-indigo-700 transition-colors"
               >
                 <DownloadIcon className="w-5 h-5" />

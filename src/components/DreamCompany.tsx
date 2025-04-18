@@ -1,4 +1,3 @@
-
 import { motion } from "framer-motion";
 import { BuildingIcon, StarIcon, BrainIcon, GitBranchIcon, CodeIcon, DatabaseIcon } from "lucide-react";
 import { Card } from "./ui/card";
@@ -22,14 +21,14 @@ const DreamCompany = () => {
           className="space-y-6"
         >
           <Card className="p-8 card-hover bg-white border border-slate-200 w-full">
-            <div className="flex flex-col items-center space-y-6">
-              <div className="flex items-center space-x-3">
-                <BuildingIcon className="w-10 h-10 text-indigo-600" />
-                <StarIcon className="w-8 h-8 text-yellow-500" />
+            <div className="flex flex-col items-center space-y-8">
+              <div className="flex items-center space-x-4">
+                <BuildingIcon className="w-12 h-12 text-indigo-600" />
+                <StarIcon className="w-10 h-10 text-yellow-500" />
               </div>
               <h3 className="text-3xl font-bold text-slate-800">Adobe Inc.</h3>
-              <p className="text-slate-600 text-center max-w-2xl">
-                Global leader in digital media and marketing solutions, empowering creators and enterprises through tools like Photoshop, Illustrator, Acrobat, and Adobe Experience Cloud.
+              <p className="text-slate-600 text-center max-w-2xl leading-relaxed">
+                Global leader in digital media and marketing solutions, empowering creators and enterprises through tools like Photoshop, Illustrator, Acrobat, and Adobe Experience Cloud. Headquartered in San Jose, it serves 85% of Fortune 100 companies.
               </p>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 w-full max-w-2xl">
                 <Card className="p-4 bg-indigo-50">
@@ -57,10 +56,10 @@ const DreamCompany = () => {
                   </div>
                 </Card>
               </div>
-              <div className="mt-6 text-slate-600 text-center max-w-2xl">
-                <h4 className="font-semibold text-indigo-700 mb-2">Why Adobe?</h4>
-                <p>
-                  My work on AI-based billing using YOLO, full-stack platforms with secure UX, and multi-modal 3D retrieval aligns with Adobe's focus on intelligent media, seamless experiences, and AI-driven content innovation.
+              <div className="mt-8 text-slate-600 text-center max-w-2xl">
+                <h4 className="font-semibold text-indigo-700 mb-4">Why Adobe?</h4>
+                <p className="leading-relaxed">
+                  My work on AI-based billing using YOLO, full-stack platforms with secure UX, and multi-modal 3D retrieval aligns with Adobe's focus on intelligent media, seamless experiences, and AI-driven content innovation. I'm excited to contribute to and grow within such a dynamic environment.
                 </p>
               </div>
             </div>
