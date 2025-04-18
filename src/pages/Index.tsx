@@ -344,22 +344,22 @@ const Index = () => {
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {[ 
               {
-                title: "AI-Driven 3D Model Search Engine",
-                description: "Develop a search engine for 3D models that allows users to search and retrieve 3D assets using natural language descriptions. By combining advanced deep learning models such as PointNet and CLIP, the system can convert textual input into a multi-modal embedding to search through a database of 3D models. This approach can be especially useful for gaming, VR, and AR applications where users need fast and accurate 3D object retrieval.",
-                tech: ["PointNet", "CLIP", "AI", "Deep Learning", "3D Models"],
-                icon: Code,
+                title: "AI-Driven Creative Assistance",
+                description: "Adobe can integrate AI into creative tools like Photoshop and Premiere Pro, offering features like auto-color correction, object recognition, and smart crop tools to help users enhance projects faster, driving productivity and creativity.",
+                tech: ["AI", "Photoshop", "Premiere Pro", "Machine Learning"],
+                icon: "Code",
               },
               {
-                title: "Automated Inventory Management with Visual Detection",
-                description: "Implement an AI-powered inventory management system that automatically tracks stock levels in warehouses or retail environments by recognizing product instances using deep learning models like YOLOv11. This solution would analyze images from surveillance cameras or store scanners to update inventory counts, generating bills or invoices directly from detected objects, ensuring real-time stock management and reducing human error.",
-                tech: ["YOLOv11", "AI", "Deep Learning", "Inventory Management"],
-                icon: Database,
+                title: "Cloud-Based Digital Asset Management (DAM)",
+                description: "Adobe Experience Manager enables businesses to store and manage digital assets in the cloud, providing seamless collaboration and automated metadata tagging to streamline asset management across teams globally.",
+                tech: ["Cloud", "DAM", "AEM", "Automation"],
+                icon: "Database",
               },
               {
-                title: "AI-Enhanced Health Diagnosis and Prediction Platform",
-                description: "Create a health diagnostics platform that uses machine learning algorithms to predict and analyze medical conditions like thyroid disease. By processing patient data, including lab results, symptoms, and demographics, the platform could offer predictive insights and personalized health recommendations. Integration with real-time data from wearable devices could further enhance diagnosis accuracy, making the platform a valuable tool for both doctors and patients.",
-                tech: ["Machine Learning", "Health Prediction", "AI", "Wearables", "Medical Diagnostics"],
-                icon: Brain,
+                title: "E-Commerce Personalization and Marketing",
+                description: "Adobe's AI-driven tools like Adobe Target and Adobe Sensei help e-commerce businesses personalize their storefronts and marketing campaigns, improving conversion rates and customer satisfaction with dynamic, tailored content.",
+                tech: ["E-Commerce", "AI", "Adobe Target", "Personalization"],
+                icon: "ShoppingCart",
               }
             ].map((businessCase, index) => (
               <motion.div
@@ -373,7 +373,8 @@ const Index = () => {
                 <Card className="p-6 h-full card-hover bg-white border border-slate-200">
                   <div className="flex items-start space-x-4">
                     <div className="p-3 bg-indigo-100 rounded-lg">
-                      <businessCase.icon className="w-6 h-6 text-indigo-600" />
+                      {/* Render the icon */}
+                      <i className={`w-6 h-6 text-indigo-600 ${businessCase.icon}`}></i>
                     </div>
                     <div>
                       <h3 className="text-xl font-semibold text-slate-800 mb-3">{businessCase.title}</h3>
@@ -396,6 +397,7 @@ const Index = () => {
           </div>
         </div>
       </section>
+
 
 
       <CVDownload />
