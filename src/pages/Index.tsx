@@ -373,7 +373,7 @@ const Index = () => {
                   label: "LinkedIn"
                 },
                 {
-                  href: "https://github.com",
+                  href: "https://github.com/IshanGK007",
                   icon: GithubIcon,
                   text: "GitHub Profile",
                   label: "GitHub"
