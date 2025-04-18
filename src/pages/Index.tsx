@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Github, Linkedin, Mail, Phone, Code, Database, Brain } from "lucide-react";
@@ -36,9 +35,29 @@ const Index = () => {
     element?.scrollIntoView({ behavior: "smooth" });
   };
 
+  const messages = ["Welcome to my portfolio", "I'm Ishan Kulkarni"];
+  const [messageIndex, setMessageIndex] = useState(0);
+  const [charIndex, setCharIndex] = useState(0);
+  const [text, setText] = useState("");
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      if (charIndex < messages[messageIndex].length) {
+        setText((prev) => prev + messages[messageIndex][charIndex]);
+        setCharIndex((prev) => prev + 1);
+      } else {
+        setTimeout(() => {
+          setMessageIndex((prevIndex) => (prevIndex + 1) % messages.length);
+          setCharIndex(0);
+          setText("");
+        }, 1000);
+      }
+    }, 100);
+    return () => clearInterval(interval);
+  }, [charIndex, messageIndex, messages]);
+
   return (
     <div className="min-h-screen bg-gradient-to-b from-slate-50 to-white">
-      {/* Navigation */}
       <nav className="fixed top-0 left-0 right-0 bg-white/80 backdrop-blur-md z-50 border-b border-slate-200 shadow-sm">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between h-16">
@@ -71,7 +90,6 @@ const Index = () => {
         </div>
       </nav>
 
-      {/* Hero Section */}
       <section id="home" className="pt-32 pb-20 px-4 hero-gradient">
         <div className="max-w-7xl mx-auto">
           <motion.div
@@ -80,35 +98,54 @@ const Index = () => {
             transition={{ duration: 0.8 }}
             className="text-center"
           >
-            <h1 className="text-6xl font-bold mb-6 gradient-text">
-              Ishan Girish Kulkarni
-            </h1>
-            <p className="text-xl text-slate-600 mb-8 max-w-2xl mx-auto">
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+              className="text-4xl md:text-6xl font-bold mb-6"
+            >
+              <span className="gradient-text typing-cursor">{text}</span>
+            </motion.div>
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.4 }}
+              className="text-xl text-slate-600 mb-8 max-w-2xl mx-auto"
+            >
               "Stay Hungry, Stay Foolish" - Aspiring Software Engineer
-            </p>
-            <div className="flex justify-center space-x-6">
-              <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" 
-                className="text-slate-600 hover:text-indigo-500 transition-colors p-2 rounded-full hover:bg-slate-100">
-                <Linkedin size={24} />
-              </a>
-              <a href="https://github.com" target="_blank" rel="noopener noreferrer" 
-                className="text-slate-600 hover:text-indigo-500 transition-colors p-2 rounded-full hover:bg-slate-100">
-                <Github size={24} />
-              </a>
-              <a href="mailto:ikishankulkarni16@gmail.com" 
-                className="text-slate-600 hover:text-indigo-500 transition-colors p-2 rounded-full hover:bg-slate-100">
-                <Mail size={24} />
-              </a>
-              <a href="tel:+918431457815" 
-                className="text-slate-600 hover:text-indigo-500 transition-colors p-2 rounded-full hover:bg-slate-100">
-                <Phone size={24} />
-              </a>
-            </div>
+            </motion.p>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.6 }}
+              className="flex justify-center space-x-6"
+            >
+              {[
+                { icon: Linkedin, href: "https://linkedin.com", label: "LinkedIn" },
+                { icon: Github, href: "https://github.com", label: "GitHub" },
+                { icon: Mail, href: "mailto:ikishankulkarni16@gmail.com", label: "Email" },
+                { icon: Phone, href: "tel:+918431457815", label: "Phone" },
+              ].map(({ icon: Icon, href, label }, index) => (
+                <motion.a
+                  key={label}
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="text-slate-600 hover:text-indigo-500 transition-colors p-2 rounded-full hover:bg-slate-100"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.3, delay: 0.8 + index * 0.1 }}
+                >
+                  <Icon size={24} />
+                </motion.a>
+              ))}
+            </motion.div>
           </motion.div>
         </div>
       </section>
 
-      {/* Education Section */}
       <section id="about" className="py-20 bg-white px-4">
         <div className="max-w-7xl mx-auto">
           <motion.h2 
@@ -159,10 +196,8 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Experience Section */}
       <ExperienceSection />
 
-      {/* Projects Section with enhanced visuals */}
       <section id="projects" className="py-20 bg-slate-50 px-4">
         <div className="max-w-7xl mx-auto">
           <motion.h2 
@@ -229,7 +264,6 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Skills Section with improved visualization */}
       <section id="skills" className="py-20 bg-white px-4">
         <div className="max-w-7xl mx-auto">
           <motion.h2 
@@ -261,16 +295,12 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Achievements Section */}
       <Achievements />
 
-      {/* Dream Company Section */}
       <DreamCompany />
 
-      {/* CV Download Section */}
       <CVDownload />
 
-      {/* Contact Section with enhanced design */}
       <section id="contact" className="py-20 bg-slate-50 px-4">
         <div className="max-w-7xl mx-auto">
           <motion.h2 
