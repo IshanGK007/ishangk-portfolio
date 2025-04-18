@@ -331,6 +331,73 @@ const Index = () => {
 
       <DreamCompany />
 
+      <section id="business-cases" className="py-20 bg-gradient-to-b from-slate-50 to-white px-4">
+        <div className="max-w-7xl mx-auto">
+          <motion.h2 
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            className="text-3xl font-bold text-center gradient-text mb-12"
+          >
+            Business Cases
+          </motion.h2>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {[ 
+              {
+                title: "AI-Driven 3D Model Search Engine",
+                description: "Develop a search engine for 3D models that allows users to search and retrieve 3D assets using natural language descriptions. By combining advanced deep learning models such as PointNet and CLIP, the system can convert textual input into a multi-modal embedding to search through a database of 3D models. This approach can be especially useful for gaming, VR, and AR applications where users need fast and accurate 3D object retrieval.",
+                tech: ["PointNet", "CLIP", "AI", "Deep Learning", "3D Models"],
+                icon: Code,
+              },
+              {
+                title: "Automated Inventory Management with Visual Detection",
+                description: "Implement an AI-powered inventory management system that automatically tracks stock levels in warehouses or retail environments by recognizing product instances using deep learning models like YOLOv11. This solution would analyze images from surveillance cameras or store scanners to update inventory counts, generating bills or invoices directly from detected objects, ensuring real-time stock management and reducing human error.",
+                tech: ["YOLOv11", "AI", "Deep Learning", "Inventory Management"],
+                icon: Database,
+              },
+              {
+                title: "AI-Enhanced Health Diagnosis and Prediction Platform",
+                description: "Create a health diagnostics platform that uses machine learning algorithms to predict and analyze medical conditions like thyroid disease. By processing patient data, including lab results, symptoms, and demographics, the platform could offer predictive insights and personalized health recommendations. Integration with real-time data from wearable devices could further enhance diagnosis accuracy, making the platform a valuable tool for both doctors and patients.",
+                tech: ["Machine Learning", "Health Prediction", "AI", "Wearables", "Medical Diagnostics"],
+                icon: Brain,
+              }
+            ].map((businessCase, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.2 }}
+                className="col-span-1"
+              >
+                <Card className="p-6 h-full card-hover bg-white border border-slate-200">
+                  <div className="flex items-start space-x-4">
+                    <div className="p-3 bg-indigo-100 rounded-lg">
+                      <businessCase.icon className="w-6 h-6 text-indigo-600" />
+                    </div>
+                    <div>
+                      <h3 className="text-xl font-semibold text-slate-800 mb-3">{businessCase.title}</h3>
+                      <p className="text-slate-600 mb-4">{businessCase.description}</p>
+                      <div className="flex flex-wrap gap-2">
+                        {businessCase.tech.map((tech, techIndex) => (
+                          <span
+                            key={techIndex}
+                            className="px-3 py-1 bg-indigo-50 text-indigo-600 rounded-full text-sm font-medium"
+                          >
+                            {tech}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                </Card>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+
       <CVDownload />
 
       <section id="contact" className="py-20 bg-slate-50 px-4">
