@@ -1,6 +1,7 @@
+
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { Github, Linkedin, Mail, Phone, Code, Database, Brain } from "lucide-react";
+import { Github, Linkedin, Mail, Phone } from "lucide-react";
 import ExperienceSection from "@/components/ExperienceSection";
 import CVDownload from "@/components/CVDownload";
 import DreamCompany from "@/components/DreamCompany";
@@ -60,30 +61,36 @@ const Index = () => {
     <div className="min-h-screen bg-gradient-to-b from-slate-50 to-white">
       <nav className="fixed top-0 left-0 right-0 bg-white/80 backdrop-blur-md z-50 border-b border-slate-200 shadow-sm">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between h-16">
-            <div className="flex items-center">
-              <motion.span 
-                className="text-xl font-semibold gradient-text"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ duration: 0.5 }}
-              >
+          <div className="flex justify-between h-16 items-center">
+            <motion.div 
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.5 }}
+              className="flex items-center space-x-4"
+            >
+              <div className="w-12 h-12 bg-indigo-600 text-white rounded-full flex items-center justify-center font-bold text-2xl shadow-md">
+                IK
+              </div>
+              <span className="text-xl font-semibold gradient-text">
                 Ishan Kulkarni
-              </motion.span>
-            </div>
+              </span>
+            </motion.div>
             <div className="hidden md:flex items-center space-x-8">
               {["home", "about", "experience", "projects", "skills", "achievements", "dream-company", "cv", "contact"].map((section) => (
-                <button
+                <motion.button
                   key={section}
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
                   onClick={() => smoothScroll(section)}
                   className={`${
                     activeSection === section
                       ? "text-indigo-600 font-medium"
                       : "text-slate-600 hover:text-indigo-500"
-                  } capitalize transition-colors duration-200`}
+                  } capitalize transition-colors duration-200 relative group`}
                 >
                   {section}
-                </button>
+                  <span className="absolute bottom-[-4px] left-0 w-0 h-0.5 bg-indigo-600 transition-all duration-300 group-hover:w-full"></span>
+                </motion.button>
               ))}
             </div>
           </div>
@@ -315,41 +322,47 @@ const Index = () => {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-center"
+            className="max-w-md mx-auto bg-white shadow-lg rounded-xl p-8 border border-slate-200"
           >
-            <p className="text-lg text-slate-600 mb-8">
+            <p className="text-lg text-slate-600 mb-8 text-center">
               Ready to collaborate on innovative projects? Let's connect!
             </p>
-            <div className="flex flex-col items-center space-y-6">
-              <a
-                href="mailto:ikishankulkarni16@gmail.com"
-                className="flex items-center space-x-3 text-slate-700 hover:text-indigo-600 transition-colors group"
-              >
-                <div className="p-3 bg-white rounded-full shadow-sm group-hover:bg-indigo-50 transition-colors">
-                  <Mail size={20} />
-                </div>
-                <span>ikishankulkarni16@gmail.com</span>
-              </a>
-              <a
-                href="tel:+918431457815"
-                className="flex items-center space-x-3 text-slate-700 hover:text-indigo-600 transition-colors group"
-              >
-                <div className="p-3 bg-white rounded-full shadow-sm group-hover:bg-indigo-50 transition-colors">
-                  <Phone size={20} />
-                </div>
-                <span>+91-8431457815</span>
-              </a>
-              <a
-                href="https://linkedin.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center space-x-3 text-slate-700 hover:text-indigo-600 transition-colors group"
-              >
-                <div className="p-3 bg-white rounded-full shadow-sm group-hover:bg-indigo-50 transition-colors">
-                  <Linkedin size={20} />
-                </div>
-                <span>LinkedIn Profile</span>
-              </a>
+            <div className="space-y-6">
+              {[
+                {
+                  href: "mailto:ikishankulkarni16@gmail.com",
+                  icon: Mail,
+                  text: "ikishankulkarni16@gmail.com"
+                },
+                {
+                  href: "tel:+918431457815",
+                  icon: Phone,
+                  text: "+91-8431457815"
+                },
+                {
+                  href: "https://linkedin.com",
+                  icon: Linkedin,
+                  text: "LinkedIn Profile"
+                }
+              ].map(({ href, icon: Icon, text }, index) => (
+                <motion.a
+                  key={text}
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: index * 0.2 }}
+                  className="flex items-center space-x-4 text-slate-700 hover:text-indigo-600 transition-all group"
+                >
+                  <div className="p-3 bg-indigo-50 rounded-full group-hover:bg-indigo-100 transition-colors">
+                    <Icon className="w-6 h-6 text-indigo-600" />
+                  </div>
+                  <span className="text-sm font-medium">{text}</span>
+                </motion.a>
+              ))}
             </div>
           </motion.div>
         </div>
@@ -359,3 +372,4 @@ const Index = () => {
 };
 
 export default Index;
+
