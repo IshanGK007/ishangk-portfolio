@@ -11,6 +11,8 @@ import { Code, Database, Brain, GitBranchIcon, GithubIcon, MailIcon, Server, Lay
 
 const Index = () => {
   const [activeSection, setActiveSection] = useState("home");
+  const [expandedCardId, setExpandedCardId] = useState<number | null>(null);
+  const [expandedBusinessCaseId, setExpandedBusinessCaseId] = useState<number | null>(null);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -57,6 +59,57 @@ const Index = () => {
     return () => clearInterval(interval);
   }, [charIndex, messageIndex, messages]);
 
+  const businessCases = [
+    {
+      id: 1,
+      title: "Supply Chain Optimization with Machine Learning",
+      description: "Discover how advanced machine learning techniques can revolutionize supply chain management, leading to significant cost reductions and improved efficiency.",
+      tech: ["Machine Learning", "Supply Chain", "Optimization", "Predictive Analytics"],
+      fullDescription: "Discover how advanced machine learning techniques can revolutionize supply chain management, leading to significant cost reductions and improved efficiency. By leveraging predictive analytics and reinforcement learning, businesses can move beyond static models to achieve dynamic, data-driven optimization across planning, inventory, and logistics. This leads to reduced operational costs, improved efficiency, and enhanced resilience against disruptions.",
+      properTopicName: "Optimizing Supply Chain Logistics using Predictive Modeling and Reinforcement Learning",
+      intro: "Traditional supply chain planning often relies on historical data and static models, leading to inefficiencies, increased costs, and vulnerability to disruptions. Implementing machine learning can introduce dynamic, data-driven decision-making.",
+      currentAlgorithm: "Many businesses utilize Linear Programming or basic statistical forecasting models for demand prediction and route optimization. These methods struggle with high dimensionality, non-linear relationships, and real-time data variations.",
+      enhancements: [
+        { name: "Predictive Demand Forecasting", details: "Utilizing time series forecasting models (e.g., ARIMA, Prophet, or deep learning models like LSTMs) to predict demand with higher accuracy, accounting for seasonality, promotions, and external factors." },
+        { name: "Dynamic Route Optimization", details: "Implementing Reinforcement Learning agents to learn optimal delivery routes in real-time, considering traffic conditions, delivery windows, and vehicle capacity, leading to reduced fuel costs and faster delivery times." },
+        { name: "Inventory Optimization", details: "Employing Machine Learning models to predict optimal inventory levels at various nodes in the supply chain, minimizing holding costs and preventing stockouts based on predicted demand and lead times." }
+      ],
+      postEnhancement: [
+        "Reduced operational costs (transportation, warehousing, inventory holding).",
+        "Improved on-time delivery rates and customer satisfaction.",
+        "Increased resilience to disruptions through better visibility and predictive capabilities.",
+        "More efficient resource allocation and reduced waste."
+      ],
+      positiveImpacts: [
+        "Significant cost savings.",
+        "Enhanced supply chain agility.",
+        "Improved customer loyalty."
+      ],
+      tradeoffs: [
+        "Initial investment in technology and expertise.",
+        "Data quality and integration challenges.",
+        "Model maintenance and monitoring overhead."
+      ],
+      complexity: "Complexity varies depending on the specific models used. Time series models (e.g., LSTMs) can have high training complexity (O(n*t)), but inference is typically faster. Reinforcement Learning training can be computationally intensive (O(iterations * state_space)), but deployment for real-time route adjustments can be efficient. Inventory optimization models' complexity depends on the model and data volume. Space complexity generally relates to storing model parameters and data."
+    },
+    // Add other business cases here following the same structure
+    {
+      id: 2,
+      title: "Dynamic Multiplayer Matchmaking Optimization",
+      description: "Online platforms match players based on variables like latency, relative skill level, team composition, and wait time to optimize fairness and retention.",
+      tech: ["Machine Learning", "Optimization", "Gaming", "Algorithm Design"],
+      fullDescription: "Online platforms (e.g., PSN's Destiny 2, Helldivers 2) match players based on variables like latency, relative skill level, team composition, and wait time to optimize fairness and retention (Google Patents, Google Patents).",
+      properTopicName: "Dynamic Multiplayer Matchmaking Optimization",
+      intro: "Online platforms (e.g., PSN's Destiny 2, Helldivers 2) match players based on variables like latency, relative skill level, team composition, and wait time to optimize fairness and retention (Google Patents, Google Patents).",
+      currentAlgorithm: "Current approaches include Clustering (k-means, hierarchical), Greedy Matching, and Machine Learning Models (Neural networks or reinforcement-learning agents).",
+      enhancements: [{ name: "KD-Tree Nearest-Neighbor Search", details: 'Organizes each player\'s (skill, latency) point in a k-d tree to answer "who lies closest in this space" in logarithmic time (Wikipedia). Problem Solving: Organizes each player\'s (skill, latency) point in a k-d tree to answer "who lies closest in this space" in logarithmic time (Wikipedia). Advantages & Impact: Build: O(N log n) for n players (Wikipedia). Point/Disk/K-Query (avg.): O(log n) each, reducing per query cost from O(n) - O(log n). Outcome: Faster queue processing, and reduced wait times. Complexity Type: Space Complexity: O(n log n). Time Complexity: O(log n) (avg.). Trade-Off: Performance degrades when dimensionality (number of match criteria) grows high (curse of dimensionality) (Wikipedia).' }, { name: "Persistent Segment Tree for Historical Analytics", details: "Keeps every version of match quality metrics (e.g., wait times, churn-rate) in a versioned segment tree to support instant queries and rollbacks (GeeksforGeeks). Problem Solving: Keeps every version of match quality metrics (e.g., wait times, churn-rate) in a versioned segment tree to support instant queries and rollbacks (GeeksforGeeks). Advantages & Impact: Point Update / Range Query: O(log n) per operation (GeeksforGeeks). Outcome: Stable log n total across all updates, enabling trend analysis without rebuilding (USACO Guide). Complexity Type: Space Complexity: O(n log n). Time Complexity: O(log n). Trade-Off: Memory overhead grows as O(n log n) to preserve history." }],
+      postEnhancement: [], // Add relevant post-enhancement points if available
+      positiveImpacts: [], // Add relevant positive impacts if available
+      tradeoffs: [], // Add relevant tradeoffs if available
+      complexity: "", // Add overall complexity if available
+    }
+  ];
+
   return (
     <div className="min-h-screen bg-gradient-to-b from-slate-50 to-white">
       <nav className="fixed top-0 left-0 right-0 bg-white/80 backdrop-blur-md z-50 border-b border-slate-200 shadow-sm">
@@ -97,7 +150,7 @@ const Index = () => {
         </div>
       </nav>
 
-      <section id="home" className="pt-32 pb-20 px-4 hero-gradient">
+      <section id="home" className="pt-20 pb-20 px-4 hero-gradient">
         <div className="max-w-7xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -361,11 +414,9 @@ const Index = () => {
         </div>
       </section>
 
-      
-
-      <section id="skills" className="py-16 bg-white px-4">
+ <section id="skills" className="py-16 bg-white px-4">
         <div className="max-w-7xl mx-auto">
-          <motion.h2 
+          <motion.h2
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
@@ -459,86 +510,218 @@ const Index = () => {
         </div>
       </section>
 
-
-
-      <Achievements />
+ <Achievements />
 
       <DreamCompany />
 
       <section id="business-cases" className="py-20 bg-gradient-to-b from-slate-50 to-white px-4">
-        <div className="max-w-7xl mx-auto">
-          <motion.h2 
+ <div className="max-w-7xl mx-auto">
+          <motion.h2
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
+ viewport={{ once: true }}
             className="text-3xl font-bold text-center gradient-text mb-12"
           >
             Business Cases
           </motion.h2>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {[ 
-              {
-                title: "AI-Driven Creative Assistance",
-                description: "Adobe can integrate AI into creative tools like Photoshop and Premiere Pro, offering features like auto-color correction, object recognition, and smart crop tools to help users enhance projects faster, driving productivity and creativity.",
-                tech: ["AI", "Photoshop", "Premiere Pro", "Machine Learning"],
-                icon: "Code",
-              },
-              {
-                title: "Cloud-Based Digital Asset Management (DAM)",
-                description: "Adobe Experience Manager enables businesses to store and manage digital assets in the cloud, providing seamless collaboration and automated metadata tagging to streamline asset management across teams globally.",
-                tech: ["Cloud", "DAM", "AEM", "Automation"],
-                icon: "Database",
-              },
-              {
-                title: "E-Commerce Personalization and Marketing",
-                description: "Adobe's AI-driven tools like Adobe Target and Adobe Sensei help e-commerce businesses personalize their storefronts and marketing campaigns, improving conversion rates and customer satisfaction with dynamic, tailored content.",
-                tech: ["E-Commerce", "AI", "Adobe Target", "Personalization"],
-                icon: "ShoppingCart",
-              }
-            ].map((businessCase, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.2 }}
-                className="col-span-1"
-              >
-                <Card className="p-6 h-full card-hover bg-white border border-slate-200">
-                  <div className="flex items-start space-x-4">
-                    <div className="p-3 bg-indigo-100 rounded-lg">
-                      {/* Render the icon */}
-                      <i className={`w-6 h-6 text-indigo-600 ${businessCase.icon}`}></i>
+
+          {/* Render expanded view if a business case is expanded */}
+ {expandedBusinessCaseId !== null ? ( // If a card is expanded, render the expanded view
+            businessCases.find(bc => bc.id === expandedBusinessCaseId) ? ( // Find the expanded business case
+              <div key={expandedBusinessCaseId} className="expanded-business-case-view fixed top-0 left-0 w-full h-full bg-white z-50 overflow-y-auto p-6 md:p-12">
+                {/* Show Less Button - Top */}
+                <button
+                  className="show-less-button text-indigo-600 font-semibold mb-6 flex items-center hover:underline"
+                  onClick={() => setExpandedBusinessCaseId(null)}
+                >
+                  &larr; Back to Cases
+                </button>
+
+                {/* Expanded Content */}
+                <div className="max-w-4xl mx-auto">
+                  <h1 className="text-4xl font-bold text-slate-800 mb-6">{businessCases.find(bc => bc.id === expandedBusinessCaseId)?.title}</h1>
+
+                  {/* Context & Motivation */}
+                  <section className="mb-8">
+                    <h2 className="text-2xl font-semibold text-slate-700 mb-4">Context & Motivation</h2>
+                    <p className="text-slate-600 leading-relaxed">{businessCases.find(bc => bc.id === expandedBusinessCaseId)?.intro}</p>
+                  </section>
+
+                  {/* Current Approaches */}
+                  <section className="mb-8">
+                    <h2 className="text-2xl font-semibold text-slate-700 mb-4">Current Approaches</h2>
+                    <p className="text-slate-600 leading-relaxed">{businessCases.find(bc => bc.id === expandedBusinessCaseId)?.currentAlgorithm}</p>
+                  </section>
+
+                  {/* Enhancements */}
+                  {businessCases.find(bc => bc.id === expandedBusinessCaseId)?.enhancements && businessCases.find(bc => bc.id === expandedBusinessCaseId)?.enhancements.length > 0 && (
+                    <section className="mb-8">
+                      <h2 className="text-2xl font-semibold text-slate-700 mb-4">Enhancements</h2>
+                      {businessCases.find(bc => bc.id === expandedBusinessCaseId)?.enhancements.map((enhancement, enhIndex) => (
+                        <div key={enhIndex} className="enhancement-sub-card bg-gray-100 rounded-lg p-6 mb-6 flex flex-col md:flex-row items-start md:items-center gap-6 shadow-sm">
+                          {/* Image Placeholder */}
+                          <div className="w-full md:w-40 h-32 bg-gray-300 rounded-md flex items-center justify-center text-gray-600 text-sm font-medium flex-shrink-0">
+                            Image Placeholder<br/>150 x 100
+                          </div>
+                          {/* Enhancement Content */}
+                          <div className="flex-grow">
+                            <h3 className="text-xl font-bold text-slate-800 mb-3">{enhancement.name}</h3>
+                            <p className="text-slate-700 leading-relaxed text-sm">{enhancement.details}</p>
+                            {/* You would add tables, lists, etc. here based on the details string or separate properties */}
+                            {/* Example of adding a table if details was parsed or structured differently */}
+                            {/*
+                            {enhancement.complexityTable && (
+                              <table className="complexity-table w-full mt-4 border-collapse">
+                                <thead>
+                                  <tr><th className="border border-slate-300 px-4 py-2 text-left text-sm font-semibold">COMPLEXITY TYPE</th><th className="border border-slate-300 px-4 py-2 text-left text-sm font-semibold">COMPLEXITY</th></tr>
+                                </thead>
+                                <tbody>
+                                  <tr><td className="border border-slate-300 px-4 py-2 text-sm">Space Complexity</td><td className="border border-slate-300 px-4 py-2 text-sm">{enhancement.complexityTable['Space Complexity']}</td></tr>
+                                  <tr><td className="border border-slate-300 px-4 py-2 text-sm">Time Complexity</td><td className="border border-slate-300 px-4 py-2 text-sm">{enhancement.complexityTable['Time Complexity']}</td></tr>
+                                </tbody>
+                              </table>
+                            )}
+                            {enhancement.tradeoff && (
+                              <p className="text-slate-700 leading-relaxed text-sm mt-4"><strong>Trade-Off:</strong> {enhancement.tradeoff}</p>
+                            )}
+                            */}
+                            <button className="view-code-btn mt-4 bg-green-600 text-white px-4 py-2 rounded-md text-sm font-semibold hover:bg-green-700 transition-colors">View Code</button>
+                          </div>
+                        </div>
+                      ))}
+                    </section>
+                  )}
+
+                  {/* Post-Enhancement Improvements */}
+                  {businessCases.find(bc => bc.id === expandedBusinessCaseId)?.postEnhancement && businessCases.find(bc => bc.id === expandedBusinessCaseId)?.postEnhancement.length > 0 && (
+                    <section className="mb-8">
+                      <h2 className="text-2xl font-semibold text-slate-700 mb-4">Post-Enhancement Improvements</h2>
+                      <ul className="list-disc list-inside text-slate-600 leading-relaxed ml-4">
+                        {businessCases.find(bc => bc.id === expandedBusinessCaseId)?.postEnhancement.map((item, itemIndex) => (
+                          <li key={itemIndex}>{item}</li>
+                        ))}
+                      </ul>
+                    </section>
+                  )}
+
+                  {/* Impact & Trade-Offs */}
+                  {(businessCases.find(bc => bc.id === expandedBusinessCaseId)?.positiveImpacts?.length > 0 || businessCases.find(bc => bc.id === expandedBusinessCaseId)?.tradeoffs?.length > 0) && (
+                    <section className="mb-8">
+                      <h2 className="text-2xl font-semibold text-slate-700 mb-4">Impact & Trade-Offs</h2>
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-slate-600 leading-relaxed">
+                        {businessCases.find(bc => bc.id === expandedBusinessCaseId)?.positiveImpacts?.length > 0 && (
+                          <div>
+                            <h3 className="font-semibold text-green-700 mb-2">Positive Impacts:</h3>
+                            <ul className="list-disc list-inside ml-4">
+                              {businessCases.find(bc => bc.id === expandedBusinessCaseId)?.positiveImpacts.map((impact, impactIndex) => (
+                                <li key={impactIndex}>{impact}</li>
+                              ))}
+                            </ul>
+                          </div>
+                        )}
+                        {businessCases.find(bc => bc.id === expandedBusinessCaseId)?.tradeoffs?.length > 0 && (
+                          <div>
+                            <h3 className="font-semibold text-red-700 mb-2">Trade-Offs:</h3>
+                            <ul className="list-disc list-inside ml-4">
+                              {businessCases.find(bc => bc.id === expandedBusinessCaseId)?.tradeoffs.map((tradeoff, tradeoffIndex) => (
+                                <li key={tradeoffIndex}>{tradeoff}</li>
+                              ))}
+                            </ul>
+                          </div>
+                        )}
+                      </div>
+                    </section>
+                  )}
+
+                  {/* Complexity */}
+                  {businessCases.find(bc => bc.id === expandedBusinessCaseId)?.complexity && (
+                    <section className="mb-8">
+                      <h2 className="text-2xl font-semibold text-slate-700 mb-4">Space & Time Complexity</h2>
+                      <p className="text-slate-600 leading-relaxed">{businessCases.find(bc => bc.id === expandedBusinessCaseId)?.complexity}</p>
+                    </section>
+                  )}
+
+                  {/* Citations - Placeholder */}
+                  <section className="mb-8">
+                      <h2 className="text-2xl font-semibold text-slate-700 mb-4">Citations</h2>
+                      <ul className="list-disc list-inside text-slate-600 leading-relaxed ml-4">
+                          {/* Add actual citations if available in data */}
+                          <li><a href="#" className="text-blue-600 hover:underline">Google Patents</a></li>
+                          <li><a href="#" className="text-blue-600 hover:underline">Benes/McAleer</a></li>
+                          <li><a href="#" className="text-blue-600 hover:underline">Wikipedia</a></li>
+                          <li><a href="#" className="text-blue-600 hover:underline">Medium</a></li>
+                          <li><a href="#" className="text-blue-600 hover:underline">USACO Guide</a></li>
+                          <li><a href="#" className="text-blue-600 hover:underline">GeeksforGeeks</a></li>
+                      </ul>
+                  </section>
+
+                  {/* Show Less Button - Bottom */}
+                  <button
+                    className="show-less-button mt-8 bg-indigo-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-indigo-700 transition-colors block mx-auto"
+                    onClick={() => setExpandedBusinessCaseId(null)}
+                  >
+                    Show Less
+                  </button>
+                </div>
+              </div>
+            ) : null // Render nothing if expandedBusinessCaseId doesn't match any business case
+ ) : ( // If no card is expanded, render the grid of collapsed cards
+            <div className="grid md:grid-cols-2 gap-8">
+              {businessCases.map((businessCase, index) => (
+                /* The Collapsed Business Cases card */
+                <motion.div
+                  key={businessCase.id} // Use businessCase.id for key
+                  className="col-span-1"
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.2 }}
+                >
+                  <Card className="p-6 h-full card-hover bg-white border border-slate-200">
+                    {/* Image Placeholder */}
+                    <div className="w-full h-48 bg-gray-200 rounded-md mb-4 flex items-center justify-center text-gray-500 text-2xl font-bold">
+                      {/* You can replace this with an actual image if available in your data */}
+                      {businessCase.title} Image
                     </div>
-                    <div>
-                      <h3 className="text-xl font-semibold text-slate-800 mb-3">{businessCase.title}</h3>
-                      <p className="text-slate-600 mb-4">{businessCase.description}</p>
-                      <div className="flex flex-wrap gap-2">
+                    {/* Card Content */}
+                    <div className="w-full">
+                      {/* Summary View */}
+                      <h3 className="text-2xl font-bold text-slate-800 mb-4">{businessCase.title}</h3>
+                      <p className="text-slate-700 mb-6 text-lg line-clamp-3">
+                        {businessCase.description}
+                      </p>
+                      {/* Tech Tags */}
+                      <div className="flex flex-wrap gap-2 mb-4">
                         {businessCase.tech.map((tech, techIndex) => (
-                          <span
-                            key={techIndex}
-                            className="px-3 py-1 bg-indigo-50 text-indigo-600 rounded-full text-sm font-medium"
-                          >
+                          <span key={techIndex} className="px-3 py-1 bg-indigo-50 text-indigo-600 rounded-full text-sm font-medium">
                             {tech}
                           </span>
                         ))}
                       </div>
+                      {/* Show More Button */}
+                      <button
+                        className="show-more-button mt-auto text-center text-indigo-600 font-semibold cursor-pointer hover:underline"
+                        onClick={() => setExpandedBusinessCaseId(businessCase.id)}
+                      >
+                        Show More
+                      </button>
                     </div>
-                  </div>
-                </Card>
-              </motion.div>
-            ))}
-          </div>
+                  </Card>
+                </motion.div>
+              ))}
+            </div>
+ )}
+
         </div>
       </section>
 
 
-
+      {/* CV Download Section */}
       <CVDownload />
 
       <section id="contact" className="py-20 bg-slate-50 px-4">
         <div className="max-w-4xl mx-auto">
-          <motion.h2 
+          <motion.h2
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
@@ -610,5 +793,4 @@ const Index = () => {
     </div>
   );
 };
-
 export default Index;
