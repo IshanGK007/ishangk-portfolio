@@ -15,11 +15,18 @@
   background-clip: text;
 }
 
-.hero-gradient {
+.dark .gradient-text {
+  background: linear-gradient(90deg, #818CF8 0%, #A78BFA 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.dark .hero-gradient {
   background: radial-gradient(
     circle at 50% 50%,
-    rgba(79, 70, 229, 0.1) 0%,
-    rgba(124, 58, 237, 0.05) 50%,
+    rgba(79, 70, 229, 0.2) 0%,
+    rgba(124, 58, 237, 0.1) 50%,
     transparent 100%
   );
 }
