@@ -536,7 +536,7 @@ const Index = () => {
               <div key={expandedBusinessCaseId} className="expanded-business-case-view fixed top-0 left-0 w-full h-full bg-white dark:bg-slate-900 z-50 overflow-y-auto p-6 md:p-12">
                 {/* Show Less Button - Top */}
                 <button
-                  className="show-less-button text-indigo-600 font-semibold mb-6 flex items-center hover:underline"
+                  className="show-less-button text-indigo-600 font-semibold mb-8 flex items-center hover:underline"
                   onClick={() => {
                     setExpandedBusinessCaseId(null);
                     setTimeout(() => {
@@ -547,26 +547,43 @@ const Index = () => {
                     }, 100);
                   }}
                 >
-                  &larr; Back to Cases
+                  <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+                  </svg>
+                  Back to Cases
                 </button>
 
                 {/* Expanded Content */}
-                <div className="max-w-4xl mx-auto">
+                <div className="max-w-5xl mx-auto">
                   {/* Find the actual business case object to work with */}
                   {businessCases.find(bc => bc.id === expandedBusinessCaseId) && (
                     <>
-                      <h1 className="text-4xl font-bold text-slate-800 dark:text-white mb-6">
-                        {businessCases.find(bc => bc.id === expandedBusinessCaseId)?.title}
-                      </h1>
+                      <div className="bg-gradient-to-r from-indigo-500 to-purple-600 rounded-xl p-8 mb-8 shadow-lg">
+                        <h1 className="text-4xl font-bold text-white mb-4">
+                          {businessCases.find(bc => bc.id === expandedBusinessCaseId)?.title}
+                        </h1>
+                        <div className="flex flex-wrap gap-2">
+                          {businessCases.find(bc => bc.id === expandedBusinessCaseId)?.concepts.map((concept, index) => (
+                            <span
+                              key={index}
+                              className="px-4 py-1 rounded-full text-sm font-semibold bg-white/20 text-white backdrop-blur-sm"
+                            >
+                              {concept}
+                            </span>
+                          ))}
+                        </div>
+                      </div>
 
                       {/* Iterate through sections to render content */}
                       {businessCases.find(bc => bc.id === expandedBusinessCaseId)?.sections.map((section, sectionIndex) => (
-                        <section key={sectionIndex} className="mb-8">
-                          <h2 className="text-2xl font-semibold text-slate-700 dark:text-white mb-4">{section.heading}</h2>
+                        <section key={sectionIndex} className="mb-12 bg-white dark:bg-slate-800 rounded-xl p-8 shadow-md border border-slate-200 dark:border-slate-700">
+                          <h2 className="text-2xl font-semibold text-slate-800 dark:text-white mb-6 pb-2 border-b border-slate-200 dark:border-slate-700">
+                            {section.heading}
+                          </h2>
 
                           {/* Render workflow image if available - moved before content */}
                           {section.heading === "Integrated Workflow" && section.image && (
-                            <div className="mb-6">
+                            <div className="mb-8 bg-slate-50 dark:bg-slate-900 p-4 rounded-lg">
                               <img 
                                 src={section.image} 
                                 alt={`${businessCases.find(bc => bc.id === expandedBusinessCaseId)?.title} Workflow`}
@@ -578,11 +595,11 @@ const Index = () => {
 
                           {/* Render content array if available */}
                           {section.content && section.content.length > 0 && (
-                            <div className="space-y-4">
+                            <div className="space-y-4 text-slate-600 dark:text-slate-300">
                               {section.content.map((item: string | { text: string; link: string }, itemIndex) => {
                                 if (typeof item === 'string') {
                                   return (
-                                    <p key={itemIndex} className="text-slate-600 dark:text-slate-300 leading-relaxed">{item}</p>
+                                    <p key={itemIndex} className="leading-relaxed">{item}</p>
                                   );
                                 } else if ('text' in item && 'link' in item) {
                                   return (
@@ -604,45 +621,46 @@ const Index = () => {
 
                           {/* Render sub_sections if available */}
                           {section.sub_sections && section.sub_sections.length > 0 && (
-                            <div className="space-y-6 mt-6">
+                            <div className="space-y-12">
                               {section.sub_sections.map((enhancement, enhIndex) => (
-                                <div key={enhIndex} className="enhancement-sub-card bg-gray-100 dark:bg-gray-800 rounded-lg p-6 flex flex-col md:flex-row items-start md:items-center gap-6 shadow-sm">
-                                  {/* Image */}
+                                <div key={enhIndex} className="enhancement-card bg-slate-50 dark:bg-slate-900 rounded-xl overflow-hidden shadow-lg border border-slate-200 dark:border-slate-700">
+                                  {/* Image Section */}
                                   {enhancement.image && (
-                                    <div className="mb-4 flex justify-center">
+                                    <div className="w-full bg-white dark:bg-slate-800 p-6 flex justify-center">
                                       <img 
                                         src={enhancement.image} 
                                         alt={enhancement.name}
-                                        className="max-w-full h-auto rounded-lg shadow-md"
-                                        style={{ maxHeight: '400px' }}
+                                        className="w-full h-auto rounded-lg shadow-md"
+                                        style={{ maxHeight: '500px', objectFit: 'contain' }}
                                       />
                                     </div>
                                   )}
-                                  {/* Enhancement Content */}
-                                  <div className="flex-grow">
-                                    <h3 className="text-xl font-bold text-slate-800 dark:text-white mb-3">{enhancement.name}</h3>
+
+                                  {/* Content Section */}
+                                  <div className="p-8">
+                                    <h3 className="text-2xl font-bold text-slate-800 dark:text-white mb-6">{enhancement.name}</h3>
 
                                     {/* Core Idea */}
                                     {enhancement.details.definition_core_idea && (
-                                      <div className="mb-3">
-                                        <h6 className="font-medium text-indigo-600 dark:text-indigo-300 mb-1">Core Idea:</h6>
-                                        <p className="text-slate-700 dark:text-slate-300 leading-relaxed text-sm">{enhancement.details.definition_core_idea}</p>
+                                      <div className="mb-6">
+                                        <h6 className="text-lg font-semibold text-indigo-600 dark:text-indigo-300 mb-2">Core Idea:</h6>
+                                        <p className="text-slate-700 dark:text-slate-300 leading-relaxed">{enhancement.details.definition_core_idea}</p>
                                       </div>
                                     )}
 
                                     {/* How It Helps */}
                                     {enhancement.details.how_it_helps && (
-                                      <div className="mb-3">
-                                        <h6 className="font-medium text-indigo-600 dark:text-indigo-300 mb-1">How It Helps:</h6>
-                                        <p className="text-slate-700 dark:text-slate-300 leading-relaxed text-sm">{enhancement.details.how_it_helps}</p>
+                                      <div className="mb-6">
+                                        <h6 className="text-lg font-semibold text-indigo-600 dark:text-indigo-300 mb-2">How It Helps:</h6>
+                                        <p className="text-slate-700 dark:text-slate-300 leading-relaxed">{enhancement.details.how_it_helps}</p>
                                       </div>
                                     )}
 
                                     {/* Advantages & Impact */}
                                     {enhancement.details.advantages_impact && enhancement.details.advantages_impact.length > 0 && (
-                                      <div className="mb-3">
-                                        <h6 className="font-medium text-indigo-600 dark:text-indigo-300 mb-1">Advantages & Impact:</h6>
-                                        <ul className="list-disc list-inside text-slate-700 dark:text-slate-300 leading-relaxed text-sm ml-4">
+                                      <div className="mb-6">
+                                        <h6 className="text-lg font-semibold text-indigo-600 dark:text-indigo-300 mb-2">Advantages & Impact:</h6>
+                                        <ul className="list-disc list-inside text-slate-700 dark:text-slate-300 leading-relaxed ml-4 space-y-2">
                                           {enhancement.details.advantages_impact.map((advantage, advIndex) => (
                                             <li key={advIndex}>{advantage}</li>
                                           ))}
@@ -652,26 +670,26 @@ const Index = () => {
 
                                     {/* Outcome */}
                                     {enhancement.details.outcome && (
-                                      <div className="mb-3">
-                                        <h6 className="font-medium text-indigo-600 dark:text-indigo-300 mb-1">Outcome:</h6>
-                                        <p className="text-slate-700 dark:text-slate-300 leading-relaxed text-sm">{enhancement.details.outcome}</p>
+                                      <div className="mb-6">
+                                        <h6 className="text-lg font-semibold text-indigo-600 dark:text-indigo-300 mb-2">Outcome:</h6>
+                                        <p className="text-slate-700 dark:text-slate-300 leading-relaxed">{enhancement.details.outcome}</p>
                                       </div>
                                     )}
 
                                     {/* Complexity Information */}
                                     {enhancement.details.complexity && (
-                                      <div className="bg-white dark:bg-slate-800 rounded-md p-3 mt-3 border border-slate-200 dark:border-slate-700">
-                                        <h6 className="font-medium text-indigo-600 dark:text-indigo-300 mb-2">Complexity Analysis:</h6>
-                                        <div className="grid grid-cols-2 gap-2 text-sm">
+                                      <div className="bg-white dark:bg-slate-800 rounded-lg p-6 mt-6 border border-slate-200 dark:border-slate-700">
+                                        <h6 className="text-lg font-semibold text-indigo-600 dark:text-indigo-300 mb-4">Complexity Analysis:</h6>
+                                        <div className="grid grid-cols-2 gap-4">
                                           {enhancement.details.complexity.time_complexity && (
-                                            <div>
-                                              <span className="font-medium">Time:</span>
+                                            <div className="bg-slate-50 dark:bg-slate-900 p-4 rounded-lg">
+                                              <span className="font-medium text-slate-800 dark:text-white">Time:</span>
                                               <span className="text-slate-600 dark:text-slate-300 ml-2">{enhancement.details.complexity.time_complexity}</span>
                                             </div>
                                           )}
                                           {enhancement.details.complexity.space_complexity && (
-                                            <div>
-                                              <span className="font-medium">Space:</span>
+                                            <div className="bg-slate-50 dark:bg-slate-900 p-4 rounded-lg">
+                                              <span className="font-medium text-slate-800 dark:text-white">Space:</span>
                                               <span className="text-slate-600 dark:text-slate-300 ml-2">{enhancement.details.complexity.space_complexity}</span>
                                             </div>
                                           )}
@@ -679,21 +697,19 @@ const Index = () => {
                                       </div>
                                     )}
 
-                                    {/* Description */}
-                                    {enhancement.details.definition_core_idea && (
-                                      <p className="text-gray-600 dark:text-gray-300 mt-2">
-                                        {enhancement.details.definition_core_idea}
-                                      </p>
-                                    )}
-
-                                    {/* Code */}
+                                    {/* Code Button */}
                                     {enhancement.code && (
-                                      <button
-                                        onClick={() => handleViewCode(enhancement.code!, enhancement.name)}
-                                        className="mt-2 inline-flex items-center px-3 py-1.5 text-sm font-medium text-white bg-blue-600 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
-                                      >
-                                        View Code
-                                      </button>
+                                      <div className="mt-8 flex justify-center">
+                                        <button
+                                          onClick={() => handleViewCode(enhancement.code!, enhancement.name)}
+                                          className="inline-flex items-center px-6 py-3 text-base font-medium text-white bg-indigo-600 rounded-lg hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition-colors"
+                                        >
+                                          <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+                                          </svg>
+                                          View Code
+                                        </button>
+                                      </div>
                                     )}
                                   </div>
                                 </div>
@@ -705,21 +721,37 @@ const Index = () => {
                           {section.details && (section.details.impact || section.details.trade_offs) && (
                             <div className="mt-8 grid grid-cols-1 md:grid-cols-2 gap-6">
                               {section.details.impact && section.details.impact.length > 0 && (
-                                <div className="bg-green-50 dark:bg-green-900 rounded-lg p-4">
-                                  <h3 className="font-semibold text-green-700 dark:text-green-300 mb-2">Positive Impacts:</h3>
-                                  <ul className="list-disc list-inside ml-4 text-slate-600 dark:text-slate-300">
+                                <div className="bg-green-50 dark:bg-green-900/30 rounded-xl p-6 border border-green-200 dark:border-green-800">
+                                  <h3 className="font-semibold text-green-700 dark:text-green-300 mb-4 flex items-center">
+                                    <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                                    </svg>
+                                    Positive Impacts
+                                  </h3>
+                                  <ul className="space-y-2">
                                     {section.details.impact.map((impact, impactIndex) => (
-                                      <li key={impactIndex}>{impact}</li>
+                                      <li key={impactIndex} className="text-green-700 dark:text-green-300 flex items-start">
+                                        <span className="mr-2">•</span>
+                                        {impact}
+                                      </li>
                                     ))}
                                   </ul>
                                 </div>
                               )}
                               {section.details.trade_offs && section.details.trade_offs.length > 0 && (
-                                <div className="bg-red-50 dark:bg-red-900 rounded-lg p-4">
-                                  <h3 className="font-semibold text-red-700 dark:text-red-300 mb-2">Trade-Offs:</h3>
-                                  <ul className="list-disc list-inside ml-4 text-slate-600 dark:text-slate-300">
+                                <div className="bg-red-50 dark:bg-red-900/30 rounded-xl p-6 border border-red-200 dark:border-red-800">
+                                  <h3 className="font-semibold text-red-700 dark:text-red-300 mb-4 flex items-center">
+                                    <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+                                    </svg>
+                                    Trade-Offs
+                                  </h3>
+                                  <ul className="space-y-2">
                                     {section.details.trade_offs.map((tradeoff, tradeoffIndex) => (
-                                      <li key={tradeoffIndex}>{tradeoff}</li>
+                                      <li key={tradeoffIndex} className="text-red-700 dark:text-red-300 flex items-start">
+                                        <span className="mr-2">•</span>
+                                        {tradeoff}
+                                      </li>
                                     ))}
                                   </ul>
                                 </div>
@@ -731,7 +763,7 @@ const Index = () => {
 
                       {/* Show Less Button - Bottom */}
                       <button
-                        className="show-less-button mt-8 bg-indigo-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-indigo-700 transition-colors block mx-auto"
+                        className="show-less-button mt-8 bg-indigo-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-indigo-700 transition-colors block mx-auto flex items-center"
                         onClick={() => {
                           setExpandedBusinessCaseId(null);
                           setTimeout(() => {
@@ -742,6 +774,9 @@ const Index = () => {
                           }, 100);
                         }}
                       >
+                        <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+                        </svg>
                         Show Less
                       </button>
                     </>

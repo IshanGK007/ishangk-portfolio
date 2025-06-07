@@ -28,7 +28,7 @@ export interface SectionDetails {
 }
 
 export interface Section {
-  heading: string; // Example: "3. Enhancements & Their Role in the Pipeline"
+  heading: string; // Example: "3. Algorithmic Applications & System Alignment"
   content?: (string | Reference)[]; // Paragraphs and inline citations
   sub_sections?: Enhancement[]; // Nested enhancements (algorithms, structures, etc.)
   details?: SectionDetails; // Optional summary of pros/cons
@@ -55,13 +55,13 @@ export const businessCases: BusinessCase[] = [
       ]
     },
     {
-      "heading": "Scenario",
+      "heading": "Applied Context",
       "content": [
         "A leading travel company uses AEP to power AI agents for managing bookings, suggesting flights, hotels, car rentals, and handling urgent requests like flight changes, all tailored to customer preferences. The orchestrator must coordinate interdependent tasks, prioritize effectively, and access data swiftly to ensure a seamless customer experience."
       ]
     },
     {
-      "heading": "Challenges",
+      "heading": "System Gaps & Limitations",
       "content": [
         "The travel company faces:",
         "• Interdependent Tasks: Ensuring logical task sequencing (e.g., flights before hotels).",
@@ -71,7 +71,7 @@ export const businessCases: BusinessCase[] = [
       ]
     },
     {
-      "heading": "Enhancements & Their Role in the Pipeline",
+      "heading": "Algorithmic Applications & System Alignment",
       "sub_sections": [
         {
           "name": "Directed Acyclic Graphs",
@@ -197,7 +197,7 @@ export const businessCases: BusinessCase[] = [
       ]
     },
     {
-      "heading": "Business Use Case Summary",
+      "heading": "Impact Overview",
       "content": [
         "Before: Uncoordinated tasks, delayed responses, and slow data access disrupted customer experiences.",
         "After: Enhanced AEP Agent Orchestrator delivers:",
@@ -223,7 +223,7 @@ export const businessCases: BusinessCase[] = [
       ]
     },
     {
-      "heading": "Scenario",
+      "heading": "Applied Context",
       "content": [
         "Imagine a bustling e-commerce platform during a flash sale, handling a high volume of customer actions (clicks, views, transactions). In this intense environment, AEP must efficiently:",
         "• Detect product interest bursts in real-time.",
@@ -233,7 +233,7 @@ export const businessCases: BusinessCase[] = [
       ]
     },
     {
-      "heading": "Challenges",
+      "heading": "System Gaps & Limitations",
       "content": [
         "The e-commerce platform faces:",
         "• Streaming Volume: High event volumes can overwhelm traditional systems, causing delays.",
@@ -242,7 +242,7 @@ export const businessCases: BusinessCase[] = [
       ]
     },
     {
-      "heading": "Enhancements & Their Role in the Pipeline",
+      "heading": "Algorithmic Applications & System Alignment",
       "sub_sections": [
         {
           "name": "Sliding Window",
@@ -326,7 +326,7 @@ export const businessCases: BusinessCase[] = [
       ]
     },
     {
-      "heading": "Business Use Case Summary",
+      "heading": "Impact Overview",
       "content": [
         "Before: Delayed reactions to customer behavior led to missed opportunities and cart abandonments.",
         "After: Enhanced AEP delivers:",
@@ -350,13 +350,13 @@ export const businessCases: BusinessCase[] = [
       ]
     },
     {
-      "heading": "Scenario",
+      "heading": "Applied Context",
       "content": [
         "A fashion retailer uses AEP to manage a multi-agent workflow during a busy shopping season, with agents handling inventory checks, price suggestions, email delivery, and chatbot responses. These tasks must respect dependencies, prioritize urgent actions, access customer data instantly, and adapt to user behavior under tight time constraints."
       ]
     },
     {
-      "heading": "Challenges",
+      "heading": "System Gaps & Limitations",
       "content": [
         "The retailer faces:",
         "• Inefficient Resource Utilization: Suboptimal allocation of computational resources.",
@@ -365,7 +365,7 @@ export const businessCases: BusinessCase[] = [
       ]
     },
     {
-      "heading": "Enhancements & Their Role in the Pipeline",
+      "heading": "Algorithmic Applications & System Alignment",
       "sub_sections": [
         {
           "name": "Min-Cut Max-Flow",
@@ -470,7 +470,7 @@ export const businessCases: BusinessCase[] = [
       ]
     },
     {
-      "heading": "Business Use Case Summary",
+      "heading": "Impact Overview",
       "content": [
         "Before: Inefficient resource use, unprioritized actions, and suboptimal interaction sequences reduced conversions.",
         "After: Enhanced AEP Agent Orchestrator delivers:",
@@ -495,7 +495,7 @@ export const businessCases: BusinessCase[] = [
       ]
     },
     {
-      "heading": "Scenario",
+      "heading": "Applied Context",
       "content": [
         "A top-tier design agency must create a compelling moodboard for a client pitch under a tight deadline, requiring:",
         "• Identification of key visual zones in reference images.",
@@ -505,7 +505,7 @@ export const businessCases: BusinessCase[] = [
       ]
     },
     {
-      "heading": "Challenges",
+      "heading": "System Gaps & Limitations",
       "content": [
         "The agency faces:",
         "• Manual Region Identification: Time-consuming selection of visual areas.",
@@ -516,7 +516,7 @@ export const businessCases: BusinessCase[] = [
       ]
     },
     {
-      "heading": "Enhancements & Their Role in the Pipeline",
+      "heading": "Algorithmic Applications & System Alignment",
       "sub_sections": [
         {
           "name": "2D Kadane's Algorithm",
@@ -621,7 +621,7 @@ export const businessCases: BusinessCase[] = [
       ]
     },
     {
-      "heading": "Business Use Case Summary",
+      "heading": "Impact Overview",
       "content": [
         "Before: Manual region selection, inconsistent blending, and slow processing delayed moodboard creation.",
         "After: Enhanced Firefly delivers:",
@@ -646,7 +646,7 @@ export const businessCases: BusinessCase[] = [
       ]
     },
     {
-      "heading": "Scenario",
+      "heading": "Applied Context",
       "content": [
         "A multinational corporation launches a global marketing campaign, producing localized videos, images, and social media posts. The creative studio coordinates numerous content creators under tight deadlines, facing:",
         "• Task Congestion: Delays in critical steps like legal reviews stall workflows.",
@@ -656,7 +656,7 @@ export const businessCases: BusinessCase[] = [
       ]
     },
     {
-      "heading": "Challenges",
+      "heading": "System Gaps & Limitations",
       "content": [
         "The content team encounters:",
         "• Task Congestion: Bottlenecks in critical tasks slow down workflows.",
@@ -665,7 +665,7 @@ export const businessCases: BusinessCase[] = [
       ]
     },
     {
-      "heading": "Enhancements & Their Role in the Pipeline",
+      "heading": "Algorithmic Applications & System Alignment",
       "sub_sections": [
         {
           "name": "Dijkstra's Algorithm",
@@ -770,7 +770,7 @@ export const businessCases: BusinessCase[] = [
       ]
     },
     {
-      "heading": "Business Use Case Summary",
+      "heading": "Impact Overview",
       "content": [
         "Before: Static scheduling caused delays, uneven workloads, and inflexibility, leading to missed deadlines and suboptimal content delivery.",
         "After: The enhanced GenStudio delivers:",
@@ -795,7 +795,7 @@ export const businessCases: BusinessCase[] = [
       ]
     },
     {
-      "heading": "Scenario",
+      "heading": "Applied Context",
       "content": [
         "A media company publishing high volumes of articles aims to maximize reader engagement by:",
         "• Rapidly identifying high-performing headlines or images.",
@@ -805,7 +805,7 @@ export const businessCases: BusinessCase[] = [
       ]
     },
     {
-      "heading": "Challenges",
+      "heading": "System Gaps & Limitations",
       "content": [
         "The media company faces:",
         "• Slow A/B Testing: Time-consuming traditional methods require large user pools, delaying experimentation.",
@@ -815,7 +815,7 @@ export const businessCases: BusinessCase[] = [
       ]
     },
     {
-      "heading": "Enhancements & Their Role in the Pipeline",
+      "heading": "Algorithmic Applications & System Alignment",
       "sub_sections": [
         {
           "name": "Statistical Sampling",
@@ -921,7 +921,7 @@ export const businessCases: BusinessCase[] = [
       ]
     },
     {
-      "heading": "Business Use Case Summary",
+      "heading": "Impact Overview",
       "content": [
         "Before: Slow A/B testing, delayed metrics, and manual pattern analysis led to missed engagement opportunities.",
         "After: The enhanced Adobe Content Analytics delivers:",
@@ -946,7 +946,7 @@ export const businessCases: BusinessCase[] = [
       ]
     },
     {
-      "heading": "Scenario",
+      "heading": "Applied Context",
       "content": [
         "A media conglomerate localizes numerous videos weekly across multiple regions, requiring:",
         "• Rapid adaptation of video ads with dynamic prioritization for urgent tasks.",
@@ -956,7 +956,7 @@ export const businessCases: BusinessCase[] = [
       ]
     },
     {
-      "heading": "Challenges",
+      "heading": "System Gaps & Limitations",
       "content": [
         "The media conglomerate faces:",
         "• Dynamic Prioritization: Inability to prioritize urgent tasks in real-time.",
@@ -966,7 +966,7 @@ export const businessCases: BusinessCase[] = [
       ]
     },
     {
-      "heading": "Enhancements & Their Role in the Pipeline",
+      "heading": "Algorithmic Applications & System Alignment",
       "sub_sections": [
         {
           "name": "Balanced BST (AVL Tree)",
@@ -1072,7 +1072,7 @@ export const businessCases: BusinessCase[] = [
       ]
     },
     {
-      "heading": "Business Use Case Summary",
+      "heading": "Impact Overview",
       "content": [
         "Before: Heuristic-based automation and batch processing led to delays, inconsistent subtitles, and inefficient metadata searches.",
         "After: Enhanced Firefly Services deliver:",
@@ -1097,13 +1097,13 @@ export const businessCases: BusinessCase[] = [
       ]
     },
     {
-      "heading": "Scenario",
+      "heading": "Applied Context",
       "content": [
         "An automotive brand offers a web-based configurator for real-time car customization, allowing users to select paint colors, textures, alloys, and accessories with no delays or design conflicts. The core challenge is generating and managing thousands of 3D product variants in real-time while maintaining visual quality and performance for complex models and user interactions."
       ]
     },
     {
-      "heading": "Challenges",
+      "heading": "System Gaps & Limitations",
       "content": [
         "The automotive brand faces:",
         "• Real-Time Performance: Rendering complex 3D models without delays during user interactions.",
@@ -1112,7 +1112,7 @@ export const businessCases: BusinessCase[] = [
       ]
     },
     {
-      "heading": "Enhancements & Their Role in the Pipeline",
+      "heading": "Algorithmic Applications & System Alignment",
       "sub_sections": [
         {
           "name": "Octree",
@@ -1197,7 +1197,7 @@ export const businessCases: BusinessCase[] = [
       ]
     },
     {
-      "heading": "Business Use Case Summary",
+      "heading": "Impact Overview",
       "content": [
         "Before: Manual modeling and basic automation led to slow variant generation, redundant designs, and delayed UI responses.",
         "After: Enhanced Substance 3D delivers:",
@@ -1221,13 +1221,13 @@ export const businessCases: BusinessCase[] = [
       ]
     },
     {
-      "heading": "Scenario",
+      "heading": "Applied Context",
       "content": [
         "A high-traffic online news portal experiences fluctuating traffic and requires consistent fast page loads, dynamic engagement monitoring, and seamless content delivery to ensure optimal UX. The core challenge is efficiently detecting, analyzing, and responding to performance bottlenecks and engagement spikes in real-time and retrospectively."
       ]
     },
     {
-      "heading": "Challenges",
+      "heading": "System Gaps & Limitations",
       "content": [
         "The news portal faces:",
         "• Real-Time Engagement Tracking: Slow updates to user interaction metrics hinder dynamic content adjustments.",
@@ -1237,7 +1237,7 @@ export const businessCases: BusinessCase[] = [
       ]
     },
     {
-      "heading": "Enhancements & Their Role in the Pipeline",
+      "heading": "Algorithmic Applications & System Alignment",
       "sub_sections": [
         {
           "name": "Fenwick Tree",
@@ -1343,7 +1343,7 @@ export const businessCases: BusinessCase[] = [
       ]
     },
     {
-      "heading": "Business Use Case Summary",
+      "heading": "Impact Overview",
       "content": [
         "Before: Slow engagement tracking, scattered bottleneck debugging, and delayed anomaly detection hindered performance and UX.",
         "After: Enhanced AEM Sites Optimizer delivers:",
@@ -1368,7 +1368,7 @@ export const businessCases: BusinessCase[] = [
       ]
     },
     {
-      "heading": "Scenario",
+      "heading": "Applied Context",
       "content": [
         "An online fashion retailer deploys a virtual shopping assistant to:",
         "• Recall past interactions for personalized service.",
@@ -1378,7 +1378,7 @@ export const businessCases: BusinessCase[] = [
       ]
     },
     {
-      "heading": "Challenges",
+      "heading": "System Gaps & Limitations",
       "content": [
         "The retailer faces:",
         "• Historical Interaction Management: Efficiently accessing rich customer interaction histories.",
@@ -1387,7 +1387,7 @@ export const businessCases: BusinessCase[] = [
       ]
     },
     {
-      "heading": "Enhancements & Their Role in the Pipeline",
+      "heading": "Algorithmic Applications & System Alignment",
       "sub_sections": [
         {
           "name": "Persistent Segment Trees",
@@ -1472,7 +1472,7 @@ export const businessCases: BusinessCase[] = [
       ]
     },
     {
-      "heading": "Business Use Case Summary",
+      "heading": "Impact Overview",
       "content": [
         "Before: Limited historical recall, inaccurate intent recognition, and suboptimal recommendations hindered engagement.",
         "After: Enhanced Brand Concierge delivers:",
@@ -1496,13 +1496,13 @@ export const businessCases: BusinessCase[] = [
       ]
     },
     {
-      "heading": "Scenario",
+      "heading": "Applied Context",
       "content": [
         "A marketing agency manages thousands of creative assets across Adobe clouds for multiple client campaigns, requiring robust version control, real-time usage analytics, and fast bulk metadata queries to streamline workflows. The core challenge is efficiently managing and querying large volumes of asset metadata and metrics for real-time and historical analysis to support dynamic campaigns."
       ]
     },
     {
-      "heading": "Challenges",
+      "heading": "System Gaps & Limitations",
       "content": [
         "The agency faces:",
         "• Bulk Metadata Queries: Slow processing of large-scale metadata filters for campaign analytics.",
@@ -1511,7 +1511,7 @@ export const businessCases: BusinessCase[] = [
       ]
     },
     {
-      "heading": "Enhancements & Their Role in the Pipeline",
+      "heading": "Algorithmic Applications & System Alignment",
       "sub_sections": [
         {
           "name": "Square-Root Decomposition",
@@ -1596,7 +1596,7 @@ export const businessCases: BusinessCase[] = [
       ]
     },
     {
-      "heading": "Business Use Case Summary",
+      "heading": "Impact Overview",
       "content": [
         "Before: Slow metadata queries, inefficient historical analysis, and limited real-time metric updates hindered campaign workflows.",
         "After: Enhanced AEM delivers:",

@@ -11,6 +11,7 @@ export interface Complexity {
 export interface Enhancement {
   name: string; // Name of the enhancement, e.g., "Directed Acyclic Graphs (DAGs) for Task Coordination"
   image?: string; // Optional visual aid (e.g., diagram URL)
+  code?: string; // Optional code file path
   details: {
     definition_core_idea: string; // Short explanation of what the enhancement is
     how_it_helps: string; // Describes how it solves a specific challenge in context
@@ -31,6 +32,7 @@ export interface Section {
   content?: (string | Reference)[]; // Paragraphs and inline citations
   sub_sections?: Enhancement[]; // Nested enhancements (algorithms, structures, etc.)
   details?: SectionDetails; // Optional summary of pros/cons
+  image?: string; // Optional image path for sections like Integrated Workflow
 }
 
 export interface BusinessCase {
@@ -42,805 +44,1568 @@ export interface BusinessCase {
 
 export const businessCases: BusinessCase[] = [
   {
-    id: 1,
-    title: "AEP Agent Orchestrator: Smarter Decisions with Data Structures",
-    concepts: [
-      "Directed Acyclic Graph",
-      "Priority Queue",
-      "Hash Table",
-      "Dynamic Programming",
-      "Johnson-Trotter Algorithm"
-    ],
-    sections: [
-      {
-        heading: "Overview",
-        content: [
-          "In today's fast-moving digital landscape, delivering hyper-personalized customer experiences requires more than just automation—it demands intelligent coordination. The Adobe Experience Platform (AEP) Agent Orchestrator serves as a central reasoning engine, empowering businesses to deploy AI agents for diverse tasks like content delivery and inventory forecasting. As customer journeys grow increasingly complex, traditional systems often struggle to keep pace. To address this, we've significantly enhanced the orchestrator with data-structure-driven solutions that streamline agent collaboration and decision-making."
-        ]
-      },
-      {
-        heading: "Scenario",
-        content: [
-          "Imagine a leading travel company that relies on AEP to power its AI agents. These agents are responsible for managing customer bookings—suggesting flights, recommending hotels, arranging car rentals, and even handling urgent requests like flight changes—all meticulously tailored to individual preferences.",
-          "The stakes are high: tasks must flow logically (flights before hotels), urgent needs must jump the queue, and personalized offers must arrive promptly. This scenario critically tests the orchestrator's ability to coordinate interdependent tasks, prioritize effectively, and access data swiftly, all while ensuring the customer experience remains seamless."
-        ]
-      },
-      {
-        heading: "Challenges",
-        content: [
-          "The travel company faces several critical challenges:",
-          "• Complex task dependencies requiring logical sequencing",
-          "• Urgent requests needing immediate attention",
-          "• Real-time data access for personalization",
-          "• Efficient resource utilization across multiple agents",
-          "• Maintaining system responsiveness under high load"
-        ]
-      },
-      {
-        heading: "Enhancements & Their Role in the Pipeline",
-        sub_sections: [
-          {
-            name: "Directed Acyclic Graphs (DAGs) for Task Coordination",
-            image: "dag_img.png",
-            details: {
-              definition_core_idea: "DAGs organize the relationships between agents, ensuring tasks like flight, hotel, and car rental suggestions happen in the right, logical order.",
-              how_it_helps: "Ensures structured and sequential coordination of interdependent tasks like flight before hotel bookings.",
-              advantages_impact: [
-                "Logical task sequencing",
-                "Improved workflow efficiency",
-                "Reduced customer friction"
-              ],
-              outcome: "Streamlined task execution and a coherent customer journey.",
-              complexity: {
-                time_complexity: "O(V+E)",
-                space_complexity: "O(V+E)"
-              }
-            }
-          },
-          {
-            name: "Priority Queues for Task Prioritization",
-            image: "priority_queue.png",
-            details: {
-              definition_core_idea: "Priority queues allow dynamic scheduling of agent tasks based on urgency levels.",
-              how_it_helps: "Pushes urgent tasks (e.g., last-minute flight changes) ahead of routine ones for faster response.",
-              advantages_impact: [
-                "Faster resolution of critical requests",
-                "Responsive system behavior",
-                "Improved customer satisfaction"
-              ],
-              outcome: "Improved responsiveness to urgent requests and better customer service.",
-              complexity: {
-                time_complexity: "O(logN)",
-                space_complexity: "O(N)"
-              }
-            }
-          },
-          {
-            name: "Hash Tables for Instant Data Access",
-            image: "hash_table.png",
-            details: {
-              definition_core_idea: "Hash tables provide O(1) average time complexity for retrieving customer data such as preferences.",
-              how_it_helps: "Enables real-time personalization by retrieving past bookings or preferences instantly.",
-              advantages_impact: [
-                "Faster access to personalized data",
-                "Improved recommendation relevance",
-                "Increased conversion and upsell potential"
-              ],
-              outcome: "Enhanced personalization and faster data retrieval.",
-              complexity: {
-                time_complexity: "O(1) average, O(N) worst-case",
-                space_complexity: "O(N)"
-              }
-            }
-          },
-          {
-            name: "Dynamic Programming for Optimized Decisions",
-            image: "dp.png",
-            details: {
-              definition_core_idea: "Dynamic programming helps determine the most effective sequence of add-on offers to maximize engagement.",
-              how_it_helps: "Computes optimal multi-step decisions for things like add-on sequencing (e.g., rental cars, insurance).",
-              advantages_impact: [
-                "Maximized offer relevance",
-                "Higher customer engagement",
-                "Improved revenue from intelligent sequencing"
-              ],
-              outcome: "Optimized offer sequences and increased customer engagement.",
-              complexity: {
-                time_complexity: "O(S×D)",
-                space_complexity: "O(S)"
-              }
-            }
-          },
-          {
-            name: "Johnson-Trotter Algorithm for Exhaustive Sequence Testing",
-            image: "decision_tree.png",
-            details: {
-              definition_core_idea: "Used to test all permutations of critical actions or offers to determine the best performing order.",
-              how_it_helps: "Generates every possible sequence for rigorous offline testing of personalization or agent coordination strategies.",
-              advantages_impact: [
-                "Robustness through exhaustive testing",
-                "Discovery of edge-case optimal sequences",
-                "High assurance in offer sequencing strategies"
-              ],
-              outcome: "Systematic testing of execution flows in multi-agent orchestration.",
-              complexity: {
-                time_complexity: "O(N×N!)",
-                space_complexity: "O(N)"
-              },
-              trade_off: "High computational cost and time due to factorial growth; best used offline."
-            }
-          }
-        ],
-        details: {
-          impact: [
-            "Seamless personalization through fast data access",
-            "Responsive services under pressure via prioritization",
-            "Efficient task flow and resource usage",
-            "High engagement via optimized journeys"
-          ],
-          trade_offs: [
-            "Increased architectural and coding complexity",
-            "Debugging challenges in multi-agent systems",
-            "Potential memory overhead from optimization caches"
-          ]
-        }
-      },
-      {
-        heading: "Business Use Case Summary",
-        content: [
-          "For the travel company, these enhancements translate into a booking process that is remarkably fast, reliable, and deeply personalized. Customers enjoy smooth, highly responsive service, experiencing journeys tailored precisely to their preferences. Concurrently, the business benefits significantly from streamlined operations, increased customer engagement, and ultimately, higher conversion rates—all achieved without the chaos of uncoordinated agents. This strategic implementation ensures competitive advantage in a demanding market."
-        ]
-      }
-    ]
-  },
-  {
-    id: 2,
-    title: "AEP Real-Time CX: Data Stream Optimization with Smart Structures",
-    concepts: ["Sliding Window", "Bloom Filter", "Trie"],
-    sections: [
-      {
-        heading: "Overview",
-        content: [
-          "Adobe Experience Platform (AEP) powers real-time customer experiences by ingesting and processing massive streaming data. To achieve hyper-personalization during high-traffic events like flash sales, this data card explores three essential data structures—Sliding Window, Bloom Filters, and Trie—that significantly optimize the pipeline from data capture to dynamic cohort targeting."
-        ]
-      },
-      {
-        heading: "Scenario",
-        content: [
-          "Imagine a bustling e-commerce platform during a flash sale, handling a high volume of customer actions (clicks, views, transactions). In this intense environment, AEP must efficiently:",
-          "• Detect product interest bursts in real-time.",
-          "• Deduplicate actions across various devices to prevent skewed analytics and ensure accurate user profiles.",
-          "• Identify complex behavior sequences (e.g., \"view product page → add to cart → abandon cart\") to understand customer intent.",
-          "Delivering contextual offers promptly is absolutely critical for maximizing revenue and ensuring customer satisfaction during such peak periods."
-        ]
-      },
-      {
-        heading: "Challenges",
-        content: [
-          "The e-commerce platform faces several significant hurdles in this real-time streaming environment:",
-          "• Streaming Volume: A high volume of events can easily overwhelm traditional data processing systems, leading to delays and missed opportunities.",
-          "• Duplicate Noise: Users often interact across multiple devices, generating duplicate events that can skew analytics and create an inaccurate view of customer behavior.",
-          "• Pattern Recognition: Rapidly changing user behavior sequences require fast and accurate detection to enable timely, relevant interventions."
-        ]
-      },
-      {
-        heading: "Enhancements & Their Role in the Pipeline",
-        sub_sections: [
-          {
-            name: "Sliding Window",
-            image: "sliding_wnd.png",
-            details: {
-              definition_core_idea: "Summarizes recent events for real-time analytics by focusing on the most current data.",
-              how_it_helps: "Continuously tracks a specific time frame of events (e.g., recent product views), enabling immediate detection of product interest bursts.",
-              advantages_impact: [
-                "Captures real-time activity spikes.",
-                "Enables rapid response to emerging trends.",
-                "Efficient memory use by discarding old data."
-              ],
-              outcome: "Detects product interest surges for timely interventions.",
-              complexity: {
-                time_complexity: "O(N)",
-                space_complexity: "O(W)"
-              }
-            }
-          },
-          {
-            name: "Bloom Filter",
-            image: "bloom_filter.png",
-            details: {
-              definition_core_idea: "A probabilistic data structure that efficiently tests whether an element is in a set.",
-              how_it_helps: "Quickly determines if an event (e.g., click) has already occurred across sessions or devices, deduplicating user actions.",
-              advantages_impact: [
-                "Efficient deduplication across devices.",
-                "Low memory footprint.",
-                "Improves data integrity for analytics."
-              ],
-              outcome: "Removes duplicate events, ensuring clean and accurate customer data.",
-              complexity: {
-                time_complexity: "O(K)",
-                space_complexity: "O(M)"
-              }
-            }
-          },
-          {
-            name: "Trie",
-            image: "trie.png",
-            details: {
-              definition_core_idea: "Prefix tree used for storing and searching sequences like user behavior paths.",
-              how_it_helps: "Efficiently stores and detects sequences like \"search → view → add to cart → abandon,\" enabling behavior-driven interventions.",
-              advantages_impact: [
-                "Identifies high-value behavior paths.",
-                "Supports predictive personalization.",
-                "Accelerates action-trigger pipelines."
-              ],
-              outcome: "Recognizes key interaction patterns to enable next-best actions.",
-              complexity: {
-                time_complexity: "O(L)",
-                space_complexity: "O(N⋅L)"
-              },
-              trade_off: "High memory use if sequences are long or highly varied."
-            }
-          }
-        ],
-        details: {
-          impact: [
-            "Sliding Window enables detection of real-time activity surges.",
-            "Bloom Filters remove duplicates for accurate analytics.",
-            "Trie supports predictive offers via behavior path matching."
-          ],
-          trade_offs: [
-            "Increased architectural complexity due to integration of multiple data structures.",
-            "Memory requirements may grow significantly with Trie-based behavior storage.",
-            "Specialized knowledge needed for probabilistic and hierarchical structures."
-          ]
-        }
-      },
-      {
-        heading: "Business Use Case Summary",
-        content: [
-          "Before: Without these optimizations, reactions to customer behavior were delayed, leading to missed opportunities, with users frequently abandoning carts before any contextual offers could be triggered.",
-          "After: The integration of these data structures transforms the e-commerce platform's capabilities:",
-          "• Sliding windows accurately detect product interest surges.",
-          "• Bloom filters effectively eliminate duplicate events across devices, ensuring clean data.",
-          "• Tries accurately identify high-value behavior sequences, paving the way for predictive offers.",
-          "This combined approach enables rapid reaction times for delivering highly contextual offers, ensuring the platform can capitalize on every customer interaction in real-time."
-        ]
-      }
-    ]
-  },
-  {
-    id: 3,
-    title: "Enhancing the AEP Agent Orchestrator: Smarter AI Flow with Advanced Data Structures",
-    concepts: ["Min-Cut Max-Flow", "PageRank", "Catalan Numbers", "Boruvka's Algorithm"],
-    sections: [
-      {
-        heading: "Overview",
-        content: [
-          "The Adobe Experience Platform (AEP) Agent Orchestrator is a powerful tool designed to automate and personalize customer journeys by coordinating AI agents in real time. It seamlessly connects Adobe-native and third-party agents within a reasoning engine, enabling sophisticated decision-making across various customer touchpoints.",
-          "To further elevate its intelligence, scalability, and responsiveness, we enhance the orchestrator with a suite of advanced algorithmic structures and data management techniques."
-        ]
-      },
-      {
-        heading: "Scenario",
-        content: [
-          "A fashion retailer leverages AEP to manage a multi-agent workflow during a busy shopping season. AI agents coordinate tasks such as:",
-          "• Inventory checks: Verifying stock availability.",
-          "• Price suggestions: Recommending dynamic pricing.",
-          "• Email delivery: Sending personalized offers.",
-          "• Chatbot responses: Engaging customers in real time.",
-          "These tasks must respect dependencies, prioritize urgent actions, access data instantly, and adapt to changing user behavior—all under strict response deadlines."
-        ]
-      },
-      {
-        heading: "Challenges",
-        content: [
-          "The fashion retailer faces several critical challenges:",
-          "• Inefficient resource utilization during peak demand.",
-          "• Difficulty in prioritizing the most impactful actions.",
-          "• Complex modeling of customer interaction sequences.",
-          "• Latency and overhead in inter-agent coordination.",
-          "These issues disrupt customer experiences and hinder conversion potential."
-        ]
-      },
-      {
-        heading: "Enhancements & Their Role in the Pipeline",
-        sub_sections: [
-          {
-            name: "Min-Cut Max-Flow",
-            image: "min_cut_max_flow.png",
-            details: {
-              definition_core_idea: "Optimizes resource distribution across agents by modeling the orchestrator as a flow network.",
-              how_it_helps: "Allocates more compute resources to critical agents during peak load, such as inventory checks or promotions.",
-              advantages_impact: [
-                "Prevents bottlenecks and system slowdowns.",
-                "Ensures compute availability to highest priority agents.",
-                "Improves task throughput and system responsiveness."
-              ],
-              outcome: "Balanced workloads and efficient resource utilization.",
-              complexity: {
-                time_complexity: "O(VE²) or O(V²E)",
-                space_complexity: "O(V+E)"
-              }
-            }
-          },
-          {
-            name: "PageRank",
-            image: "pagerank.png",
-            details: {
-              definition_core_idea: "Ranks agent actions based on expected impact using a link-based importance metric.",
-              how_it_helps: "Prioritizes high-value agent actions like offer generation over lower-impact tasks.",
-              advantages_impact: [
-                "Aligns system decisions with business goals (e.g., conversion).",
-                "Dynamic re-prioritization of agent workflows.",
-                "Boosts personalization effectiveness."
-              ],
-              outcome: "Impactful, prioritized actions by intelligent agents.",
-              complexity: {
-                time_complexity: "O(V+E) per iteration",
-                space_complexity: "O(V+E)"
-              }
-            }
-          },
-          {
-            name: "Catalan Numbers",
-            image: "catalan_numbers.png",
-            details: {
-              definition_core_idea: "Models valid sequences of customer-agent interactions, useful for analyzing structured paths.",
-              how_it_helps: "Optimizes ordering of multi-touchpoint journeys such as \"email → click → app notification\".",
-              advantages_impact: [
-                "Improves personalization flow coherence.",
-                "Enables predictive modeling of touchpoints.",
-                "Helps analyze valid vs. invalid interaction trees."
-              ],
-              outcome: "Smarter and optimized interaction flows.",
-              complexity: {
-                time_complexity: "O(N)",
-                space_complexity: "O(1) or O(N)"
-              }
-            }
-          },
-          {
-            name: "Boruvka's Algorithm",
-            image: "boruvka.png",
-            details: {
-              definition_core_idea: "Builds a minimum-cost communication network among agents/tasks by modeling them as graph nodes.",
-              how_it_helps: "Optimizes connections between AI agents, reducing latency and infrastructure cost.",
-              advantages_impact: [
-                "Reduces operational overhead in agent coordination.",
-                "Improves communication efficiency and system stability.",
-                "Enables cost-effective orchestration of resources."
-              ],
-              outcome: "Low-latency, cost-optimized inter-agent communication.",
-              complexity: {
-                time_complexity: "O(ElogV)",
-                space_complexity: "O(V+E)"
-              }
-            }
-          }
-        ],
-        details: {
-          impact: [
-            "Min-Cut Max-Flow ensures compute resources are distributed optimally.",
-            "PageRank ranks agent actions based on effectiveness.",
-            "Catalan Numbers guide valid and high-performing interaction sequences.",
-            "Boruvka's Algorithm minimizes cost of orchestrator's communication graph."
-          ],
-          trade_offs: [
-            "Integration complexity across diverse AI agent roles.",
-            "Increased memory/compute demand for orchestration layer.",
-            "Need for expertise in flow networks, graph theory, and combinatorics."
-          ]
-        }
-      },
-      {
-        heading: "Business Use Case Summary",
-        content: [
-          "Before: The fashion retailer struggled with inefficient workflows, delayed responses, and missed engagement opportunities during high demand.",
-          "After: The orchestrator is enhanced with smart algorithms, resulting in:",
-          "• Optimized compute allocation via Min-Cut Max-Flow.",
-          "• Prioritized action flows using PageRank scoring.",
-          "• Valid interaction path modeling with Catalan Numbers.",
-          "• Efficient communication structure using Boruvka's Algorithm.",
-          "The result is a seamless, responsive AI coordination framework that maximizes conversions and elevates customer experience during peak seasons."
-        ]
-      }
-    ]
-  },
-  {
-    id: 4,
-    title: "Accelerating Visual Creativity: Adobe Firefly's Algorithmic Enhancements for Moodboarding",
-    concepts: ["2D Kadane", "Sparse Table", "A* Algorithm", "LCS"],
-    sections: [
-      {
-        heading: "Overview",
-        content: [
-          "Adobe's Firefly Generative Match technology transforms the design landscape by harnessing neural networks to extract style features—such as brush strokes, lighting, and color gradients—from reference images and apply them to target content. For designers crafting moodboards, which are collections of visual elements that convey a specific aesthetic or mood, Firefly offers a powerful tool to streamline the creative process. Traditionally, moodboarding involves manual tasks like selecting image regions, matching assets, and blending styles, often leading to delays and inefficiencies. To overcome these hurdles, Firefly integrates advanced algorithms that automate key steps, enabling designers to produce high-quality moodboards with remarkable speed and precision."
-        ]
-      },
-      {
-        heading: "Scenario",
-        content: [
-          "Imagine a top-tier design agency tasked with creating a compelling moodboard for a client pitch under a tight deadline. The designer faces a multi-faceted challenge:",
-          "• Identify Key Zones: Pinpoint visually significant areas in reference images for style extraction.",
-          "• Blend Styles Seamlessly: Combine multiple artistic styles into a cohesive composition that reflects the desired mood.",
-          "• Maintain Consistency: Ensure uniformity across various elements within the moodboard.",
-          "Without automation, these steps rely heavily on manual effort, risking errors and compromising the agency's ability to deliver a polished result under pressure. Firefly's algorithmic enhancements directly address these pain points, revolutionizing the moodboarding workflow."
-        ]
-      },
-      {
-        heading: "Challenges",
-        content: [
-          "The design agency faces several critical challenges:",
-          "• Manual Region Identification: Time-consuming manual selection of relevant visual areas in reference images.",
-          "• Inconsistent Style Blending: Difficulty in seamlessly merging multiple artistic styles into a cohesive moodboard.",
-          "• Style Application Quality: Ensuring that applied styles look optimal and natural, avoiding artifacts.",
-          "• Time Constraints: Delivering high-quality moodboards within strict deadlines.",
-          "• Computational Inefficiencies: Redundant computations and delays in processing visual transformations."
-        ]
-      },
-      {
-        heading: "Enhancements & Their Role in the Pipeline",
-        sub_sections: [
-          {
-            name: "Automatic Region Detection with 2D Kadane's Algorithm",
-            image: "kadane.png",
-            details: {
-              definition_core_idea: "2D Kadane's Algorithm locates the highest intensity subregion in a 2D array (image matrix) to identify visually rich zones.",
-              how_it_helps: "Identifies high-impact regions in reference images without manual selection, accelerating the design process.",
-              advantages_impact: [
-                "Automates tedious content selection steps.",
-                "Saves valuable design time.",
-                "Improves accuracy in visual extraction."
-              ],
-              outcome: "Rapid and accurate identification of visually significant image regions.",
-              complexity: {
-                time_complexity: "O(M×N)",
-                space_complexity: "O(N)"
-              }
-            }
-          },
-          {
-            name: "Efficient Feature Queries with Sparse Tables",
-            image: "fenwik_tree.png",
-            details: {
-              definition_core_idea: "Sparse Tables enable fast range queries over immutable arrays (e.g., for color or texture statistics).",
-              how_it_helps: "Quickly extracts dominant features like color histograms or textural patterns from image regions.",
-              advantages_impact: [
-                "Eliminates latency in feature extraction.",
-                "Enables real-time style analysis.",
-                "Supports detailed, pixel-aware querying."
-              ],
-              outcome: "Fast extraction of dominant style features (e.g., color, texture).",
-              complexity: {
-                time_complexity: "O(PlogP) preprocessing, O(1) per query",
-                space_complexity: "O(PlogP)"
-              }
-            }
-          },
-          {
-            name: "Optimized Style Application with A* Algorithm",
-            image: "decision_tree.png",
-            details: {
-              definition_core_idea: "A* searches for the optimal path of visual transformations based on a cost-function and heuristic.",
-              how_it_helps: "Efficiently applies style layers (e.g., gradients, textures) using heuristics to prioritize quality with minimal cost.",
-              advantages_impact: [
-                "Delivers high-quality results with low latency.",
-                "Minimizes computational overhead for large images.",
-                "Ensures balanced visual transformations."
-              ],
-              outcome: "Seamless and high-quality application of artistic styles.",
-              complexity: {
-                time_complexity: "Depends on heuristic; exponential in worst-case.",
-                space_complexity: "Variable (depends on open/closed lists)."
-              },
-              trade_off: "Performance is highly dependent on heuristic design."
-            }
-          },
-          {
-            name: "Consistent Style Alignment with Longest Common Subsequence (LCS)",
-            image: "dp2.png",
-            details: {
-              definition_core_idea: "LCS identifies common sequences in style patterns (e.g., gradient sequences or color bands) across moodboard assets.",
-              how_it_helps: "Ensures visual consistency by aligning shared stylistic subsequences across multiple elements.",
-              advantages_impact: [
-                "Promotes a unified mood and aesthetic.",
-                "Improves brand coherence across elements.",
-                "Eliminates jarring inconsistencies in visuals."
-              ],
-              outcome: "Unified and cohesive visual aesthetic across the moodboard.",
-              complexity: {
-                time_complexity: "O(M×N)",
-                space_complexity: "O(M×N)"
-              }
-            }
-          }
-        ],
-        details: {
-          impact: [
-            "Speed: Shrinks creation time through automation.",
-            "Precision: Minimizes errors and enhances quality.",
-            "Creativity: Designers focus on innovation, not tedium.",
-            "Client Satisfaction: Quick turnaround with professional polish."
-          ],
-          trade_offs: [
-            "Computational Costs: High-resolution images increase processing demands.",
-            "Development Overhead: Requires implementation expertise for optimization."
-          ]
-        }
-      },
-      {
-        heading: "Business Use Case Summary",
-        content: [
-          "Adobe Firefly's Generative Match technology, powered by 2D Kadane's Algorithm, Sparse Tables, A*, and LCS, redefines moodboarding for the modern designer. For the design agency racing against the clock, these enhancements mean delivering a stunning, cohesive moodboard efficiently—impressing clients and securing business success. By automating detection, accelerating feature extraction, optimizing style application, and refining style consistency, Firefly empowers creatives to turn inspiration into impact with unprecedented efficiency and artistry."
-        ]
-      }
-    ]
-  },
-  {
-    id: 5,
-    title: "Enhancing Adobe GenStudio Foundation with Algorithmic Improvements for Content Workflows",
-    concepts: [
-      "Dijkstra's Algorithm",
-      "Square-Root Decomposition",
-      "Uniform Cost Search",
-      "Greedy Algorithm for Resource Assignment"
-    ],
-    sections: [
-      {
-        heading: "Overview",
-        content: [
-          "Adobe GenStudio Foundation automates enterprise content workflows, but its existing tools fall short in high-volume, dynamic environments. This proposal introduces advanced algorithms—Dijkstra's Algorithm, Square-Root Decomposition, Uniform Cost Search, and a Greedy Algorithm for Resource Assignment—to transform GenStudio into an intelligent, real-time content orchestrator. These enhancements directly address key issues like task congestion, inefficient resource allocation, and inflexible scheduling."
-        ]
-      },
-      {
-        heading: "Scenario",
-        content: [
-          "Imagine a multinational corporation launching a global marketing campaign that requires:",
-          "• Coordinating content creation across multiple regions",
-          "• Managing legal reviews and compliance checks",
-          "• Handling urgent content updates and revisions",
-          "• Balancing workload across creative teams",
-          "The campaign must maintain quality while meeting tight deadlines and adapting to changing requirements."
-        ]
-      },
-      {
-        heading: "Challenges",
-        content: [
-          "Current content management in GenStudio faces significant hurdles, particularly in dynamic scenarios such as global marketing campaigns:",
-          "• Task Congestion: Delays in critical steps (e.g., legal reviews) can severely stall the entire workflow.",
-          "• Inefficient Resource Allocation: Static assignments often lead to imbalanced workloads, resulting in some team members being overburdened while others are underutilized.",
-          "• Inflexible Scheduling: The inability to rapidly adapt to urgent tasks or shifting priorities hinders agility and responsiveness."
-        ]
-      },
-      {
-        heading: "Enhancements & Their Role in the Pipeline",
-        sub_sections: [
-          {
-            name: "Dijkstra's Algorithm for Optimizing Task Sequencing",
-            image : "dijkstra.png",
-            details: {
-              definition_core_idea: "Finds the most efficient path through a workflow by modeling tasks as nodes and dependencies as weighted edges (reflecting time or resource costs). It identifies critical paths—sequences where delays impact the entire project—and highlights potential bottlenecks.",
-              how_it_helps: "For a global campaign, it can map tasks like 'content drafting,' 'design,' 'legal review,' and 'localization,' flagging legal reviews as a potential bottleneck. This prompts proactive allocation of additional reviewers or adjustments to the sequence, directly addressing task congestion.",
-              advantages_impact: [
-                "Enables dynamic reprioritization as task durations change.",
-                "Helps reduce wait times by optimizing task order."
-              ],
-              outcome: "Streamlined and efficient task sequencing with reduced bottlenecks.",
-              complexity: {
-                time_complexity: "O((V+E)log V), where V is number of tasks and E is number of dependencies",
-                space_complexity: "O(V), where V is number of tasks"
-              }
-            }
-          },
-          {
-            name: "Greedy Algorithm for Resource Assignment",
-            image : "greedy.png",
-            details: {
-              definition_core_idea: "Makes the locally optimal choice at each step when assigning tasks to available resources, such as assigning a new task to the least busy or most skilled team member.",
-              how_it_helps: "When a new urgent design task arrives, it assigns the task immediately to the most suitable designer without evaluating all future assignments, improving responsiveness.",
-              advantages_impact: [
-                "Fast and straightforward initial or immediate task-to-resource assignment.",
-                "Improves workload balance and responsiveness."
-              ],
-              outcome: "More responsive and often effective initial resource allocation.",
-              complexity: {
-                time_complexity: "Typically O(Nlog K) or O(N·K), depending on data structures, where N is number of tasks and K is number of resources",
-                space_complexity: "O(K) or O(V), depending on resource availability tracking"
-              }
-            }
-          },
-          {
-            name: "Square-Root Decomposition for Efficient Task Batching",
-            image : "sqrt_decompose.png",
-            details: {
-              definition_core_idea: "Groups large sets of tasks into manageable blocks for faster processing and status updates.",
-              how_it_helps: "Efficiently manages high-volume tasks (e.g., numerous social media posts) by dividing them into chunks, allowing faster queries and updates.",
-              advantages_impact: [
-                "Reduces overhead for large workflows.",
-                "Enables efficient scaling and responsiveness."
-              ],
-              outcome: "Efficient handling of large task volumes and faster status updates.",
-              complexity: {
-                time_complexity: "O(√N) for updates/queries, where N is number of tasks",
-                space_complexity: "O(N), where N is number of tasks"
-              }
-            }
-          },
-          {
-            name: "Uniform Cost Search (UCS): Cost-Optimal Task Routing",
-            image :  "ucs.png",
-            details: {
-              definition_core_idea: "Finds the lowest-cost execution path through the workflow graph accounting for dynamic and heterogeneous task costs (time, availability, complexity).",
-              how_it_helps: "Dynamically adapts to changing conditions like urgent tasks or reviewer availability, ensuring cost-optimal progression and addressing inflexible scheduling and resource allocation.",
-              advantages_impact: [
-                "Directly addresses inflexible scheduling and inefficient resource allocation.",
-                "Ensures cost-optimal task progression under varying costs."
-              ],
-              outcome: "Cost-optimal task routing with dynamic adaptation to changing conditions.",
-              complexity: {
-                time_complexity: "O(E + V log V) with priority queue and adjacency list",
-                space_complexity: "O(V), where V is number of tasks"
-              }
-            }
-          }
-        ],
-        details: {
-          impact: [
-            "Faster Turnaround: Optimized sequencing and bottleneck identification significantly reduce delays.",
-            "Adaptive Workloads: Resource allocation becomes far more flexible and responsive to real-time changes.",
-            "Enhanced Flexibility: The system's ability to recalculate and manage tasks ensures workflow agility in shifting priorities.",
-            "Improved Scalability: Large campaigns can be handled more efficiently, even under pressure, thanks to task batching and adaptive routing."
-          ],
-          trade_offs: [
-            "Computational Overhead: Dijkstra's Algorithm and UCS can require significant processing power for large, complex workflows.",
-            "Memory Usage: Square-Root Decomposition may increase memory requirements with high data volumes.",
-            "Engineering Complexity: Integration demands specialized expertise to ensure seamless and effective implementation."
-          ]
-        }
-      },
-      {
-        heading: "Business Use Case Summary",
-        content: [
-          "A multinational corporation launching a global marketing campaign can benefit greatly from these enhancements:",
-          "• Planning: Dijkstra's algorithm identifies legal reviews as critical bottlenecks, prompting resource adjustments.",
-          "• Initial Assignment: Greedy algorithm quickly assigns social media posts to available content creators based on workload and expertise.",
-          "• Execution: Square-Root Decomposition groups large volumes of tasks for efficient processing; UCS routes content through review cycles minimizing delays.",
-          "Outcome: Reliable campaign launches with tailored content delivered on time, enabling creative teams to innovate and maintain a competitive edge."
-        ]
-      }
-    ]
-  },
-  {
-  "id": 6,
-  "title": "Enhancing Adobe Content Analytics: Real-Time Insights with Advanced Algorithms",
-  "concepts": [
-    "Statistical Sampling",
-    "Look-up Tables",
-    "Heap Data Structures",
-    "Longest Common Substring (LCS)"
-  ],
+  "id": 1,
+  "title": "AEP Agent Orchestrator: Smarter Decisions with Data Structures",
+  "concepts": ["Directed Acyclic Graphs", "Priority Queues", "Hash Tables", "Dynamic Programming", "Johnson-Trotter Algorithm"],
   "sections": [
     {
-      "heading": "Overview",
+      "heading": "Introduction",
       "content": [
-        "Adobe Content Analytics currently measures content performance but can fall short in real-time optimization and rapid experimentation. This proposal introduces four advanced algorithms—Statistical Sampling, Look-up Tables, Heap Data Structures, and Longest Common Substring (LCS)—to transform Adobe Content Analytics into a real-time insight engine. These enhancements will enable faster experimentation, instant attribute analysis, and dynamic content ranking, revolutionizing content performance measurement."
+        "The Adobe Experience Platform (AEP) Agent Orchestrator is a central reasoning engine for deploying AI agents in tasks like content delivery and inventory forecasting. As customer journeys grow complex, traditional systems struggle to keep pace. This data card proposes enhancements with Directed Acyclic Graphs (DAGs), Priority Queues, Hash Tables, Dynamic Programming, and Johnson-Trotter Algorithm to streamline agent collaboration and decision-making."
+      ]
+    },
+    {
+      "heading": "Scenario",
+      "content": [
+        "A leading travel company uses AEP to power AI agents for managing bookings, suggesting flights, hotels, car rentals, and handling urgent requests like flight changes, all tailored to customer preferences. The orchestrator must coordinate interdependent tasks, prioritize effectively, and access data swiftly to ensure a seamless customer experience."
       ]
     },
     {
       "heading": "Challenges",
       "content": [
-        "A media company publishing high volumes of articles faces several critical challenges with current content analytics methods:",
-        "• Slow A/B Testing: Traditional A/B testing is time-consuming and often requires large user pools, significantly slowing down experimentation.",
-        "• Delayed Attribute Analysis: Accessing real-time performance metrics for specific content attributes is slow, hindering live decision-making and content adjustments.",
-        "• Lagging Content Ranking: Delays in updating content rankings prevent top-performing articles from surfacing to users in real time, reducing engagement.",
-        "• Manual Pattern Identification: Manually analyzing successful content attributes is slow, labor-intensive, and does not scale efficiently across a large content library."
+        "The travel company faces:",
+        "• Interdependent Tasks: Ensuring logical task sequencing (e.g., flights before hotels).",
+        "• Urgent Requests: Prioritizing time-sensitive needs like flight changes.",
+        "• Resource Limits: Managing finite compute power during peak seasons.",
+        "• Data Delays: Providing instant access to customer data for personalization."
       ]
     },
     {
       "heading": "Enhancements & Their Role in the Pipeline",
       "sub_sections": [
         {
-          "name": "Statistical Sampling for Accelerating A/B Testing",
+          "name": "Directed Acyclic Graphs",
+          "image": "dag_img.png",
+          "code": "all_codes/1/dag.cpp",
           "details": {
-            "definition_core_idea": "Uses representative user subsets to test content variations, inferring performance trends with high confidence to deliver quick and reliable insights.",
-            "how_it_helps": "Allows early termination of underperforming variants by analyzing statistically significant samples, streamlining experimentation and reducing prolonged tests.",
+            "definition_core_idea": "Organizes task dependencies to ensure logical execution order.",
+            "how_it_helps": "Ensures tasks like flight and hotel suggestions occur in the correct sequence, preventing overlap and ensuring a coherent booking flow.",
             "advantages_impact": [
-              "Speeds up experimentation cycles significantly.",
-              "Reduces data collection and processing efforts.",
-              "Enables rapid content iteration and optimization."
+              "Enables logical task sequencing.",
+              "Prevents errors in workflow.",
+              "Improves customer journey coherence."
             ],
-            "outcome": "Faster and more cost-effective A/B testing.",
+            "outcome": "Streamlined task execution and coherent customer journey.",
             "complexity": {
-              "time_complexity": "O(1) per sample selection; analysis time depends on sample size and test complexity.",
-              "space_complexity": "O(K), where K is sample size."
+              "time_complexity": "O(V+E)",
+              "space_complexity": "O(V+E)"
             }
           }
         },
         {
-          "name": "Look-up Tables for Instant Attribute Access",
+          "name": "Priority Queues",
+          "image": "priority_queue.png",
+          "code": "all_codes/1/priority_queue.cpp",
           "details": {
-            "definition_core_idea": "Stores precomputed mappings (e.g., headline_text → click_through_rate) for instant retrieval of performance data of content attributes.",
-            "how_it_helps": "Enables editors to instantly query engagement data for different content attributes during editorial meetings, allowing immediate decisions.",
+            "definition_core_idea": "Schedules tasks based on urgency using a priority-based queue.",
+            "how_it_helps": "Prioritizes critical tasks like urgent flight changes over routine tasks, ensuring timely responses.",
             "advantages_impact": [
-              "Provides low-latency access to performance metrics.",
-              "Scales efficiently for large, heterogeneous content sets.",
-              "Empowers real-time decision-making."
+              "Guarantees responsiveness to urgent needs.",
+              "Enhances operational agility.",
+              "Improves customer satisfaction."
             ],
-            "outcome": "Instant retrieval of content attribute performance metrics.",
+            "outcome": "Improved responsiveness to urgent requests.",
             "complexity": {
-              "time_complexity": "O(1) average for insertion, deletion, and lookup; worst-case O(N) due to hash collisions.",
-              "space_complexity": "O(N), where N is number of attributes."
+              "time_complexity": "O(logN)",
+              "space_complexity": "O(N)"
             }
           }
         },
         {
-          "name": "Heap Data Structures for Dynamic Content Ranking",
+          "name": "Hash Tables",
+          "image": "hash_table.png",
+          "code": "all_codes/1/hash_table.cpp",
           "details": {
-            "definition_core_idea": "Maintains a dynamic leaderboard of content based on real-time metrics (e.g., click-through rates) using max-heaps, continuously updating rankings as performance evolves.",
-            "how_it_helps": "Prioritizes content items efficiently, allowing highest-performing articles to be promoted frequently based on live engagement data.",
+            "definition_core_idea": "Provides fast key-value storage for customer data retrieval.",
+            "how_it_helps": "Enables instant access to customer preferences and history for real-time personalization.",
             "advantages_impact": [
-              "Ensures instant promotion of high-performing content.",
-              "Adapts seamlessly to performance shifts.",
-              "Maximizes visibility and user engagement."
+              "Facilitates rapid data retrieval.",
+              "Enables real-time personalization.",
+              "Increases upsell potential."
             ],
-            "outcome": "Real-time and dynamically updated content ranking.",
+            "outcome": "Enhanced personalization and faster data retrieval.",
             "complexity": {
-              "time_complexity": "O(log N) for insert, delete-max, and update operations, where N is number of content items.",
-              "space_complexity": "O(N), where N is number of content items."
+              "time_complexity": "O(1) average, O(N) worst-case",
+              "space_complexity": "O(N)"
             }
           }
         },
         {
-          "name": "Longest Common Substring (LCS) for Identifying Successful Patterns",
+          "name": "Dynamic Programming",
+          "image": "dp.png",
+          "code": "all_codes/1/dynamic_programming.cpp",
           "details": {
-            "definition_core_idea": "Identifies shared patterns (e.g., text phrases, stylistic elements) across top-performing content, revealing consistent success drivers.",
-            "how_it_helps": "Compares attribute sequences of high-ranking content to find common substrings guiding future content creation strategies.",
+            "definition_core_idea": "Optimizes multi-step decisions for offer sequencing.",
+            "how_it_helps": "Calculates the optimal order of add-on offers (e.g., car rentals, insurance) to maximize engagement.",
             "advantages_impact": [
-              "Uncovers actionable patterns for replication.",
-              "Improves content consistency and performance."
+              "Maximizes customer engagement.",
+              "Improves offer relevance.",
+              "Increases conversion rates."
             ],
-            "outcome": "Identification of high-impact content attributes and design patterns.",
+            "outcome": "Optimized offer sequences and increased engagement.",
             "complexity": {
-              "time_complexity": "O(M×N) for comparing two strings of lengths M and N.",
-              "space_complexity": "O(M×N) or O(min(M,N)) with optimization."
+              "time_complexity": "O(S×D)",
+              "space_complexity": "O(S)"
+            }
+          }
+        },
+        {
+          "name": "Johnson-Trotter Algorithm",
+          "image": "jhonson_trotter.png",
+          "code": "all_codes/1/johnson_trotter.cpp",
+          "details": {
+            "definition_core_idea": "Generates all permutations of tasks or offers for exhaustive testing.",
+            "how_it_helps": "Tests all possible sequences offline to identify optimal orderings and validate decision models.",
+            "advantages_impact": [
+              "Ensures robust decision models.",
+              "Identifies optimal sequence edge cases.",
+              "Supports comprehensive testing."
+            ],
+            "outcome": "Enhanced personalization and validated offer sequencing.",
+            "complexity": {
+              "time_complexity": "O(N×N!)",
+              "space_complexity": "O(N)"
             }
           }
         }
-      ]
+      ],
+      "details": {
+        "impact": [
+          "DAGs ensure logical task coordination.",
+          "Priority Queues enhance responsiveness to urgent tasks.",
+          "Hash Tables enable instant personalization.",
+          "Dynamic Programming optimizes offer sequences.",
+          "Johnson-Trotter Algorithm validates sequencing models."
+        ],
+        "trade_offs": [
+          "Increased complexity from sophisticated data structures.",
+          "Debugging needs for multi-agent interdependencies.",
+          "Memory demands for hash tables and optimization caches."
+        ]
+      }
     },
     {
-      "heading": "Positive Impacts",
+      "heading": "Integrated Workflow",
+      "image": "flowchart/image_1.png",
       "content": [
-        "Integration of these algorithms delivers transformative benefits:",
-        "• Faster Insights: Accelerates experimentation cycles for quicker decision-making and optimization.",
-        "• Real-Time Optimization: Dynamic content ranking ensures the most engaging content is always surfaced.",
-        "• Data-Driven Decisions: Instant access to live performance metrics enables continuous content improvement.",
-        "• Consistent Success: Automated pattern analysis helps identify and reuse high-performing attributes and designs.",
-        "For media companies, this means increased reader engagement, improved retention, and a compelling user experience."
-      ]
-    },
-    {
-      "heading": "Trade-Offs and Considerations",
-      "content": [
-        "Implementing these enhancements requires managing challenges:",
-        "• Sampling Bias: Statistical sampling demands robust design and validation to avoid skewed results.",
-        "• Resource Usage: Constant updates and lookups require scalable memory and CPU infrastructure.",
-        "• Maintenance: Real-time streaming systems need reliability, robustness, and fault tolerance.",
-        "Mitigations include advanced sampling, data structure optimization, and resilient streaming pipelines."
+        "These algorithms create a cohesive orchestration pipeline:",
+        "• Task Coordination: DAGs ensure logical task sequencing.",
+        "• Prioritization: Priority Queues handle urgent requests efficiently.",
+        "• Data Access: Hash Tables provide instant customer data retrieval.",
+        "• Decision Optimization: Dynamic Programming optimizes offer sequences.",
+        "• Sequence Testing: Johnson-Trotter Algorithm validates optimal orderings."
       ]
     },
     {
       "heading": "Business Use Case Summary",
       "content": [
-        "A media company fully adopting these enhancements benefits as follows:",
-        "• A/B Testing: Statistical Sampling enables rapid testing and deployment of click-worthy headlines.",
-        "• Attribute Access: Look-up Tables provide live engagement metrics for content elements during drafting.",
-        "• Content Ranking: Heaps continuously promote top-performing stories on homepage and notifications.",
-        "• Pattern Analysis: LCS detects headline and visual patterns that drive engagement, guiding creation.",
-        "Outcome: Higher reader engagement, faster content optimization, and a dynamic, user-centric online presence driving business growth and audience loyalty."
+        "Before: Uncoordinated tasks, delayed responses, and slow data access disrupted customer experiences.",
+        "After: Enhanced AEP Agent Orchestrator delivers:",
+        "• Seamless Coordination: DAGs ensure logical task flows.",
+        "• Responsive Service: Priority Queues prioritize urgent needs.",
+        "• Personalized Offers: Hash Tables enable instant data access.",
+        "• Optimized Engagement: Dynamic Programming enhances offer relevance.",
+        "• Robust Testing: Johnson-Trotter validates decision models.",
+        "This results in fast, personalized, and reliable booking experiences, increasing engagement and conversions."
+      ]
+    }
+  ]
+},
+{
+  "id": 2,
+  "title": "AEP Real-Time CX: Data Stream Optimization with Smart Structures",
+  "concepts": ["Sliding Window", "Bloom Filter", "Trie"],
+  "sections": [
+    {
+      "heading": "Overview",
+      "content": [
+        "Adobe Experience Platform (AEP) powers real-time customer experiences by ingesting and processing massive streaming data. To achieve hyper-personalization during high-traffic events like flash sales, this data card explores three essential data structures—Sliding Window, Bloom Filters, and Trie—that significantly optimize the pipeline from data capture to dynamic cohort targeting."
+      ]
+    },
+    {
+      "heading": "Scenario",
+      "content": [
+        "Imagine a bustling e-commerce platform during a flash sale, handling a high volume of customer actions (clicks, views, transactions). In this intense environment, AEP must efficiently:",
+        "• Detect product interest bursts in real-time.",
+        "• Deduplicate actions across various devices to prevent skewed analytics and ensure accurate user profiles.",
+        "• Identify complex behavior sequences (e.g., 'view product page → add to cart → abandon cart') to understand customer intent.",
+        "Delivering contextual offers promptly is critical for maximizing revenue and ensuring customer satisfaction during peak periods."
+      ]
+    },
+    {
+      "heading": "Challenges",
+      "content": [
+        "The e-commerce platform faces:",
+        "• Streaming Volume: High event volumes can overwhelm traditional systems, causing delays.",
+        "• Duplicate Noise: Cross-device interactions generate duplicates, skewing analytics.",
+        "• Pattern Recognition: Rapidly changing behavior sequences require fast detection for timely interventions."
+      ]
+    },
+    {
+      "heading": "Enhancements & Their Role in the Pipeline",
+      "sub_sections": [
+        {
+          "name": "Sliding Window",
+          "image": "sliding_wnd.png",
+          "code": "all_codes/2/sliding_window.cpp",
+          "details": {
+            "definition_core_idea": "Summarizes recent events for real-time analytics by focusing on the most current data.",
+            "how_it_helps": "Continuously tracks a specific time frame of events (e.g., recent product views), enabling immediate detection of product interest bursts.",
+            "advantages_impact": [
+              "Captures real-time activity spikes.",
+              "Enables rapid response to emerging trends.",
+              "Efficient memory use by discarding old data."
+            ],
+            "outcome": "Detects product interest surges for timely interventions.",
+            "complexity": {
+              "time_complexity": "O(N), amortized O(1) per event",
+              "space_complexity": "O(W)"
+            }
+          }
+        },
+        {
+          "name": "Bloom Filter",
+          "image": "bloom_filter.png",
+          "code": "all_codes/2/bloom_filter.cpp",
+          "details": {
+            "definition_core_idea": "A probabilistic data structure that efficiently tests whether an element is in a set.",
+            "how_it_helps": "Quickly determines if an event (e.g., click) has already occurred across sessions or devices, deduplicating user actions.",
+            "advantages_impact": [
+              "Efficient deduplication across devices.",
+              "Low memory footprint.",
+              "Improves data integrity for analytics."
+            ],
+            "outcome": "Removes duplicate events, ensuring clean and accurate customer data.",
+            "complexity": {
+              "time_complexity": "O(K)",
+              "space_complexity": "O(M)"
+            }
+          }
+        },
+        {
+          "name": "Trie",
+          "image": "trie.png",
+          "code": "all_codes/2/trie.cpp",
+          "details": {
+            "definition_core_idea": "A prefix tree used for storing and searching sequences like user behavior paths.",
+            "how_it_helps": "Enables fast, complex metadata queries for regional tags or content patterns, streamlining content filtering.",
+            "advantages_impact": [
+              "Accelerates metadata-based content retrieval.",
+              "Supports complex pattern matching.",
+              "Improves regional content management."
+            ],
+            "outcome": "Efficient searching and filtering of localized content.",
+            "complexity": {
+              "time_complexity": "O(L) search, O(N) or O(NlogN) preprocessing",
+              "space_complexity": "O(N) or O(N⋅Σ)"
+            }
+          }
+        }
+      ],
+      "details": {
+        "impact": [
+          "Sliding Window enables detection of real-time activity surges.",
+          "Bloom Filters remove duplicates for accurate analytics.",
+          "Trie supports predictive offers via behavior path matching."
+        ],
+        "trade_offs": [
+          "Increased architectural complexity from integrating multiple structures.",
+          "Memory requirements may grow with Trie-based sequence storage.",
+          "Specialized knowledge needed for probabilistic and hierarchical structures."
+        ]
+      }
+    },
+    {
+      "heading": "Integrated Workflow",
+      "image": "flowchart/image_2.png",
+      "content": [
+        "These data structures create an optimized real-time pipeline:",
+        "• Real-Time Analytics: Sliding Window tracks activity spikes.",
+        "• Data Integrity: Bloom Filters ensure clean, deduplicated data.",
+        "• Predictive Personalization: Trie identifies behavior patterns for targeted offers."
+      ]
+    },
+    {
+      "heading": "Business Use Case Summary",
+      "content": [
+        "Before: Delayed reactions to customer behavior led to missed opportunities and cart abandonments.",
+        "After: Enhanced AEP delivers:",
+        "• Real-Time Detection: Sliding Windows identify product interest surges.",
+        "• Accurate Data: Bloom Filters eliminate duplicate events.",
+        "• Predictive Offers: Tries enable behavior-driven interventions.",
+        "This enables rapid, contextual offer delivery, maximizing revenue and customer satisfaction."
+      ]
+    }
+  ]
+},
+{
+  "id": 3,
+  "title": "Enhancing the AEP Agent Orchestrator: Smarter AI Flow with Advanced Data Structures",
+  "concepts": ["Min-Cut Max-Flow", "PageRank", "Catalan Numbers", "Boruvka's Algorithm"],
+  "sections": [
+    {
+      "heading": "Introduction",
+      "content": [
+        "The Adobe Experience Platform (AEP) Agent Orchestrator automates and personalizes customer journeys by coordinating AI agents in real time. To enhance its intelligence, scalability, and responsiveness, this data card proposes integrating Min-Cut Max-Flow, PageRank, Catalan Numbers, and Boruvka's Algorithm to optimize resource allocation, prioritize actions, and model interaction sequences."
+      ]
+    },
+    {
+      "heading": "Scenario",
+      "content": [
+        "A fashion retailer uses AEP to manage a multi-agent workflow during a busy shopping season, with agents handling inventory checks, price suggestions, email delivery, and chatbot responses. These tasks must respect dependencies, prioritize urgent actions, access customer data instantly, and adapt to user behavior under tight time constraints."
+      ]
+    },
+    {
+      "heading": "Challenges",
+      "content": [
+        "The retailer faces:",
+        "• Inefficient Resource Utilization: Suboptimal allocation of computational resources.",
+        "• Action Prioritization: Difficulty in focusing on high-impact tasks.",
+        "• Complex Interaction Modeling: Challenges in optimizing customer-agent interaction sequences."
+      ]
+    },
+    {
+      "heading": "Enhancements & Their Role in the Pipeline",
+      "sub_sections": [
+        {
+          "name": "Min-Cut Max-Flow",
+          "image": "min_cut_max_flow.png",
+          "code": "all_codes/3/min_cut_max_flow.cpp",
+          "details": {
+            "definition_core_idea": "Optimizes resource distribution across agents by modeling them as a flow network.",
+            "how_it_helps": "Strategically allocates server resources to critical agents (e.g., inventory checks) during high demand, preventing delays.",
+            "advantages_impact": [
+              "Ensures optimal resource distribution.",
+              "Prevents bottlenecks during peak loads.",
+              "Maximizes system throughput."
+            ],
+            "outcome": "Balanced workloads and efficient resource utilization.",
+            "complexity": {
+              "time_complexity": "O(VE^2) for Edmonds-Karp, faster with Dinic's",
+              "space_complexity": "O(V+E)"
+            }
+          }
+        },
+        {
+          "name": "PageRank",
+          "image": "pagerank.png",
+          "code": "all_codes/3/pagerank.cpp",
+          "details": {
+            "definition_core_idea": "Assigns importance scores to agent actions based on their impact.",
+            "how_it_helps": "Prioritizes high-value tasks (e.g., personalized offers) over routine updates to drive engagement.",
+            "advantages_impact": [
+              "Focuses agents on impactful tasks.",
+              "Enhances personalization effectiveness.",
+              "Improves conversion rates."
+            ],
+            "outcome": "Highly impactful and effective agent actions.",
+            "complexity": {
+              "time_complexity": "O(V+E) per iteration until convergence",
+              "space_complexity": "O(V+E)"
+            }
+          }
+        },
+        {
+          "name": "Catalan Numbers",
+          "image": "catlan_number.png",
+          "code": "all_codes/3/catalan_numbers.cpp",
+          "details": {
+            "definition_core_idea": "Counts valid sequences of customer-agent interactions for modeling personalization paths.",
+            "how_it_helps": "Models and optimizes interaction sequences (e.g., email → click → notification) for effective touchpoint delivery.",
+            "advantages_impact": [
+              "Anticipates customer behavior.",
+              "Refines complex personalization paths.",
+              "Ensures optimal touchpoint sequences."
+            ],
+            "outcome": "Optimized interaction sequences and refined personalization.",
+            "complexity": {
+              "time_complexity": "O(N)",
+              "space_complexity": "O(1) or O(N)"
+            }
+          }
+        },
+        {
+          "name": "Boruvka's Algorithm",
+          "image": "boruvka.png",
+          "code": "all_codes/3/boruvka.cpp",
+          "details": {
+            "definition_core_idea": "Builds a minimum cost communication network for inter-agent connectivity.",
+            "how_it_helps": "Optimizes the communication backbone to minimize data transfer costs and latency between agents.",
+            "advantages_impact": [
+              "Reduces operational communication costs.",
+              "Improves resource utilization.",
+              "Enhances system stability."
+            ],
+            "outcome": "Cost-effective and efficient agent communication network.",
+            "complexity": {
+              "time_complexity": "O(ElogV) or O(EloglogV)",
+              "space_complexity": "O(V+E)"
+            }
+          }
+        }
+      ],
+      "details": {
+        "impact": [
+          "Min-Cut Max-Flow optimizes resource allocation.",
+          "PageRank prioritizes high-impact actions.",
+          "Catalan Numbers refine interaction sequences.",
+          "Boruvka's Algorithm ensures cost-effective communication."
+        ],
+        "trade_offs": [
+          "Increased complexity from sophisticated algorithms.",
+          "Resource overhead for memory and computation.",
+          "Requires specialized expertise for implementation."
+        ]
+      }
+    },
+    {
+      "heading": "Integrated Workflow",
+      "image": "flowchart/image_3.png",
+      "content": [
+        "These algorithms create a cohesive orchestration pipeline:",
+        "• Resource Allocation: Min-Cut Max-Flow balances computational resources.",
+        "• Action Prioritization: PageRank focuses on high-impact tasks.",
+        "• Interaction Modeling: Catalan Numbers optimize touchpoint sequences.",
+        "• Communication Optimization: Boruvka's Algorithm minimizes network costs."
+      ]
+    },
+    {
+      "heading": "Business Use Case Summary",
+      "content": [
+        "Before: Inefficient resource use, unprioritized actions, and suboptimal interaction sequences reduced conversions.",
+        "After: Enhanced AEP Agent Orchestrator delivers:",
+        "• Efficient Resources: Min-Cut Max-Flow ensures optimal allocation.",
+        "• Impactful Actions: PageRank prioritizes high-value tasks.",
+        "• Optimized Sequences: Catalan Numbers refine personalization paths.",
+        "• Cost-Effective Network: Boruvka's Algorithm minimizes communication costs.",
+        "This results in seamless workflows, higher engagement, and improved sales."
+      ]
+    }
+  ]
+},
+{
+  "id": 4,
+  "title": "Accelerating Visual Creativity: Adobe Firefly's Algorithmic Enhancements for Moodboarding",
+  "concepts": ["2D Kadane's Algorithm", "Sparse Tables", "A* Algorithm", "Longest Common Subsequence"],
+  "sections": [
+    {
+      "heading": "Introduction",
+      "content": [
+        "Adobe Firefly's Generative Match technology uses neural networks to extract and apply style features like brush strokes and color gradients, streamlining moodboard creation for designers. Traditional manual moodboarding is slow and error-prone. This data card proposes integrating 2D Kadane's Algorithm, Sparse Tables, A* Algorithm, and Longest Common Subsequence (LCS) to automate key steps, enhancing speed and precision."
+      ]
+    },
+    {
+      "heading": "Scenario",
+      "content": [
+        "A top-tier design agency must create a compelling moodboard for a client pitch under a tight deadline, requiring:",
+        "• Identification of key visual zones in reference images.",
+        "• Seamless blending of multiple artistic styles.",
+        "• Consistent aesthetic across moodboard elements.",
+        "Manual processes risk delays and errors, necessitating Firefly's algorithmic enhancements."
+      ]
+    },
+    {
+      "heading": "Challenges",
+      "content": [
+        "The agency faces:",
+        "• Manual Region Identification: Time-consuming selection of visual areas.",
+        "• Inconsistent Style Blending: Difficulty merging styles cohesively.",
+        "• Style Application Quality: Ensuring natural, artifact-free results.",
+        "• Time Constraints: Meeting tight deadlines.",
+        "• Computational Inefficiencies: Redundant processing delays."
+      ]
+    },
+    {
+      "heading": "Enhancements & Their Role in the Pipeline",
+      "sub_sections": [
+        {
+          "name": "2D Kadane's Algorithm",
+          "image": "kadane.png",
+          "code": "all_codes/4/kadane.cpp",
+          "details": {
+            "definition_core_idea": "Scans images to identify regions with maximum visual intensity.",
+            "how_it_helps": "Automatically detects high-impact areas (e.g., textured patterns) in reference images, eliminating manual selection.",
+            "advantages_impact": [
+              "Automates content identification.",
+              "Reduces manual effort.",
+              "Accelerates design process start."
+            ],
+            "outcome": "Rapid identification of visually significant image regions.",
+            "complexity": {
+              "time_complexity": "O(M×N)",
+              "space_complexity": "O(N) or O(M)"
+            }
+          }
+        },
+        {
+          "name": "Sparse Tables",
+          "image": "sparse_table.png",
+          "code": "all_codes/4/sparse_table.cpp",
+          "details": {
+            "definition_core_idea": "Precomputes answers for range queries on feature arrays for fast extraction.",
+            "how_it_helps": "Quickly identifies dominant style features (e.g., color histograms, textures) from detected regions.",
+            "advantages_impact": [
+              "Near-instant feature access.",
+              "Eliminates processing delays.",
+              "Supports rapid style analysis."
+            ],
+            "outcome": "Fast extraction of dominant style features.",
+            "complexity": {
+              "time_complexity": "O(PlogP) preprocessing, O(1) query",
+              "space_complexity": "O(PlogP)"
+            }
+          }
+        },
+        {
+          "name": "A* Algorithm",
+          "image": "a_star.png",
+          "code": "all_codes/4/a_star.cpp",
+          "details": {
+            "definition_core_idea": "Uses heuristics to find the optimal sequence of style transformations.",
+            "how_it_helps": "Efficiently applies styles (e.g., color adjustments, texture overlays) to target elements, balancing quality and cost.",
+            "advantages_impact": [
+              "Ensures high-quality style application.",
+              "Minimizes computational overhead.",
+              "Delivers optimal transformation paths."
+            ],
+            "outcome": "Seamless and high-quality style application.",
+            "complexity": {
+              "time_complexity": "Varies, potentially exponential",
+              "space_complexity": "Varies, depends on search lists"
+            }
+          }
+        },
+        {
+          "name": "Longest Common Subsequence",
+          "image": "lcs.png",
+          "code": "all_codes/4/lcs.cpp",
+          "details": {
+            "definition_core_idea": "Aligns style sequences across assets to maintain uniformity.",
+            "how_it_helps": "Ensures consistent gradients or patterns across moodboard elements for a unified aesthetic.",
+            "advantages_impact": [
+              "Guarantees visual consistency.",
+              "Enhances aesthetic quality.",
+              "Improves client satisfaction."
+            ],
+            "outcome": "Unified and cohesive visual aesthetic.",
+            "complexity": {
+              "time_complexity": "O(M×N)",
+              "space_complexity": "O(M×N) or O(min(M,N))"
+            }
+          }
+        }
+      ],
+      "details": {
+        "impact": [
+          "2D Kadane's Algorithm automates region detection.",
+          "Sparse Tables enable fast feature extraction.",
+          "A* Algorithm optimizes style application.",
+          "LCS ensures consistent style blending."
+        ],
+        "trade_offs": [
+          "High computational costs for 2D Kadane's and A* with large images.",
+          "Development effort for algorithm implementation.",
+          "Potential resource demands for complex search spaces."
+        ]
+      }
+    },
+    {
+      "heading": "Integrated Workflow",
+      "image": "flowchart/image_4.png",
+      "content": [
+        "These algorithms create a seamless moodboarding pipeline:",
+        "• Region Detection: 2D Kadane's Algorithm identifies key visual zones.",
+        "• Feature Extraction: Sparse Tables provide instant style attributes.",
+        "• Style Application: A* Algorithm ensures high-quality transformations.",
+        "• Style Alignment: LCS maintains aesthetic uniformity."
+      ]
+    },
+    {
+      "heading": "Business Use Case Summary",
+      "content": [
+        "Before: Manual region selection, inconsistent blending, and slow processing delayed moodboard creation.",
+        "After: Enhanced Firefly delivers:",
+        "• Rapid Detection: 2D Kadane's Algorithm automates region identification.",
+        "• Fast Analysis: Sparse Tables extract style features instantly.",
+        "• Quality Application: A* Algorithm applies styles efficiently.",
+        "• Cohesive Aesthetic: LCS ensures visual uniformity.",
+        "This results in faster, high-quality moodboards, meeting tight deadlines and impressing clients."
+      ]
+    }
+  ]
+},
+{
+  "id": 5,
+  "title": "Enhancing Adobe GenStudio Foundation with Algorithmic Improvements for Content Workflows",
+  "concepts": ["Dijkstra's Algorithm", "Square-Root Decomposition", "Uniform Cost Search", "Greedy Algorithm"],
+  "sections": [
+    {
+      "heading": "Introduction",
+      "content": [
+        "Adobe GenStudio Foundation automates enterprise content workflows, integrating planning, creation, approval, and performance tracking across Adobe's Creative Cloud and Experience Cloud. While static scheduling templates and heuristic-based resource planning excel in predictable scenarios, they face limitations in dynamic, high-volume environments. This data card proposes advanced algorithms—Dijkstra's Algorithm, Square-Root Decomposition, Uniform Cost Search, and a Greedy Algorithm for Resource Assignment—to transform GenStudio into an intelligent, real-time content orchestrator, addressing task congestion, inefficient resource allocation, and inflexible scheduling."
+      ]
+    },
+    {
+      "heading": "Scenario",
+      "content": [
+        "A multinational corporation launches a global marketing campaign, producing localized videos, images, and social media posts. The creative studio coordinates numerous content creators under tight deadlines, facing:",
+        "• Task Congestion: Delays in critical steps like legal reviews stall workflows.",
+        "• Inefficient Resource Allocation: Static assignments cause uneven workloads.",
+        "• Inflexible Scheduling: Static plans struggle with urgent tasks or shifting priorities.",
+        "These algorithms optimize the content pipeline for dynamic adaptability."
+      ]
+    },
+    {
+      "heading": "Challenges",
+      "content": [
+        "The content team encounters:",
+        "• Task Congestion: Bottlenecks in critical tasks slow down workflows.",
+        "• Inefficient Resource Allocation: Static assignments lead to uneven workloads and underutilization.",
+        "• Inflexible Scheduling: Static templates fail to adapt to urgent tasks or changing priorities."
+      ]
+    },
+    {
+      "heading": "Enhancements & Their Role in the Pipeline",
+      "sub_sections": [
+        {
+          "name": "Dijkstra's Algorithm",
+          "image": "dijkstra.png",
+          "code": "all_codes/5/dijkstra.cpp",
+          "details": {
+            "definition_core_idea": "Finds the most efficient path through a workflow by modeling tasks as nodes and dependencies as weighted edges (weights reflect time or resource costs).",
+            "how_it_helps": "Identifies critical paths and potential bottlenecks, such as legal reviews, allowing dynamic reprioritization to mitigate delays.",
+            "advantages_impact": [
+              "Enables dynamic task reprioritization.",
+              "Reduces wait times by optimizing task order.",
+              "Highlights bottlenecks for proactive adjustments."
+            ],
+            "outcome": "Streamlined task sequencing with reduced bottlenecks.",
+            "complexity": {
+              "time_complexity": "O((V+E)logV)",
+              "space_complexity": "O(V)"
+            }
+          }
+        },
+        {
+          "name": "Greedy Algorithm",
+          "image": "greedy.png",
+          "code": "all_codes/5/greedy.cpp",
+          "details": {
+            "definition_core_idea": "Makes locally optimal choices at each step for task-to-resource assignments.",
+            "how_it_helps": "Assigns tasks to the least busy or most skilled team member, improving responsiveness to new demands.",
+            "advantages_impact": [
+              "Fast and practical initial task assignments.",
+              "Improves workload balance.",
+              "Enhances responsiveness to urgent tasks."
+            ],
+            "outcome": "Responsive and effective initial resource allocation.",
+            "complexity": {
+              "time_complexity": "O(NlogK) or O(N⋅K)",
+              "space_complexity": "O(K) or O(V)"
+            }
+          }
+        },
+        {
+          "name": "Square-Root Decomposition",
+          "image": "sqrt_decompose.png",
+          "code": "all_codes/5/sqrt_decomposition.cpp",
+          "details": {
+            "definition_core_idea": "Groups large task sets into manageable blocks for efficient processing and updates.",
+            "how_it_helps": "Manages high-volume tasks, like social media posts, by dividing them into chunks for faster queries and updates.",
+            "advantages_impact": [
+              "Reduces overhead for large workflows.",
+              "Enables efficient scaling for high-volume campaigns.",
+              "Provides responsive task management."
+            ],
+            "outcome": "Efficient handling of large task volumes and faster status updates.",
+            "complexity": {
+              "time_complexity": "O(√N)",
+              "space_complexity": "O(N)"
+            }
+          }
+        },
+        {
+          "name": "Uniform Cost Search",
+          "image": "ucs.png",
+          "code": "all_codes/5/ucs.cpp",
+          "details": {
+            "definition_core_idea": "Finds the lowest-cost execution path through a workflow graph, accounting for dynamic task costs.",
+            "how_it_helps": "Adapts to changing conditions like urgent tasks or resource availability, ensuring cost-optimal task progression.",
+            "advantages_impact": [
+              "Adapts to dynamic task costs and constraints.",
+              "Ensures cost-efficient task routing.",
+              "Balances deadlines and effort in high-stakes campaigns."
+            ],
+            "outcome": "Cost-optimal task progression with adaptive scheduling.",
+            "complexity": {
+              "time_complexity": "O(E+VlogV)",
+              "space_complexity": "O(V)"
+            }
+          }
+        }
+      ],
+      "details": {
+        "impact": [
+          "Dijkstra's Algorithm streamlines task sequencing and reduces bottlenecks.",
+          "Greedy Algorithm improves initial resource allocation responsiveness.",
+          "Square-Root Decomposition enhances scalability for high-volume tasks.",
+          "Uniform Cost Search ensures cost-optimal task routing under dynamic conditions."
+        ],
+        "trade_offs": [
+          "Computational overhead for Dijkstra's and Uniform Cost Search in large workflows.",
+          "Increased memory needs for Square-Root Decomposition with high data volumes.",
+          "Engineering complexity requires expertise for seamless integration."
+        ]
+      }
+    },
+    {
+      "heading": "Integrated Workflow",
+      "image": "flowchart/image_5.png",
+      "content": [
+        "These algorithms create a cohesive orchestration pipeline:",
+        "• Resource Allocation: Min-Cut Max-Flow balances computational resources.",
+        "• Action Prioritization: PageRank focuses on high-impact tasks.",
+        "• Interaction Modeling: Catalan Numbers optimize touchpoint sequences.",
+        "• Communication Optimization: Boruvka's Algorithm minimizes network costs."
+      ]
+    },
+    {
+      "heading": "Business Use Case Summary",
+      "content": [
+        "Before: Static scheduling caused delays, uneven workloads, and inflexibility, leading to missed deadlines and suboptimal content delivery.",
+        "After: The enhanced GenStudio delivers:",
+        "• Faster Turnaround: Optimized sequencing reduces delays.",
+        "• Adaptive Workloads: Flexible resource allocation balances team workloads.",
+        "• Scalability: Efficient task batching handles large campaigns.",
+        "• Flexibility: Dynamic path recalculation adapts to changing priorities.",
+        "This enables reliable, high-quality content delivery for global campaigns under tight deadlines."
+      ]
+    }
+  ]
+},
+{
+  "id": 6,
+  "title": "Enhancing Adobe Content Analytics: Real-Time Insights with Advanced Algorithms",
+  "concepts": ["Statistical Sampling", "Look-up Tables", "Heap Data Structures", "Longest Common Substring"],
+  "sections": [
+    {
+      "heading": "Introduction",
+      "content": [
+        "Adobe Content Analytics, part of Adobe Experience Cloud, enables businesses to measure content performance at the attribute level, identifying elements like layout, color, or text that drive engagement. While its rule-based segmentation, offline A/B testing, and manual feature correlation provide valuable insights, they struggle with real-time optimization, dynamic ranking, and rapid experimentation. This data card proposes integrating Statistical Sampling, Look-up Tables, Heap Data Structures, and Longest Common Substring (LCS) to transform Adobe Content Analytics into a real-time insight engine."
+      ]
+    },
+    {
+      "heading": "Scenario",
+      "content": [
+        "A media company publishing high volumes of articles aims to maximize reader engagement by:",
+        "• Rapidly identifying high-performing headlines or images.",
+        "• Adjusting content placement based on real-time engagement data.",
+        "• Prioritizing top-performing articles on its homepage without delays.",
+        "Current Adobe Content Analytics struggles to meet these real-time demands. These algorithms address these bottlenecks for dynamic optimization."
+      ]
+    },
+    {
+      "heading": "Challenges",
+      "content": [
+        "The media company faces:",
+        "• Slow A/B Testing: Time-consuming traditional methods require large user pools, delaying experimentation.",
+        "• Delayed Attribute Analysis: Slow access to real-time performance metrics hinders live decision-making.",
+        "• Lagging Content Ranking: Delays in ranking prevent timely promotion of top content.",
+        "• Manual Pattern Identification: Manual analysis of successful attributes is slow and unscalable."
+      ]
+    },
+    {
+      "heading": "Enhancements & Their Role in the Pipeline",
+      "sub_sections": [
+        {
+          "name": "Statistical Sampling",
+          "image": "startified_sampling.png",
+          "code": "all_codes/6/statistical_sampling.cpp",
+          "details": {
+            "definition_core_idea": "Uses representative user subsets to test content variations, enabling quick and reliable insights.",
+            "how_it_helps": "Accelerates A/B testing by analyzing statistically significant samples, allowing early termination of underperforming variants.",
+            "advantages_impact": [
+              "Speeds up experimentation cycles.",
+              "Reduces data collection and processing efforts.",
+              "Enables rapid iteration and content optimization."
+            ],
+            "outcome": "Faster and cost-effective A/B testing.",
+            "complexity": {
+              "time_complexity": "O(1) per sample selection",
+              "space_complexity": "O(K)"
+            }
+          }
+        },
+        {
+          "name": "Look-up Tables",
+          "image": "lookup.png",
+          "code": "all_codes/6/lookup_table.cpp",
+          "details": {
+            "definition_core_idea": "Stores precomputed mappings (e.g., headline text to click-through rate) for instant performance data retrieval.",
+            "how_it_helps": "Indexes content attributes and metrics for immediate access, enabling real-time decisions on elements like image styles.",
+            "advantages_impact": [
+              "Low-latency access to performance metrics.",
+              "Scales efficiently for large content sets.",
+              "Empowers real-time decision-making."
+            ],
+            "outcome": "Instant retrieval of content attribute performance metrics.",
+            "complexity": {
+              "time_complexity": "O(1) average, O(N) worst-case",
+              "space_complexity": "O(N)"
+            }
+          }
+        },
+        {
+          "name": "Heap Data Structures",
+          "image": "heap.png",
+          "code": "all_codes/6/heap.cpp",
+          "details": {
+            "definition_core_idea": "Maintains a dynamic leaderboard of content based on real-time metrics like click-through rates using max-heaps.",
+            "how_it_helps": "Prioritizes and updates high-performing content for immediate promotion on platforms like homepages.",
+            "advantages_impact": [
+              "Ensures instant promotion of top content.",
+              "Adapts seamlessly to performance shifts.",
+              "Maximizes visibility and engagement."
+            ],
+            "outcome": "Real-time and dynamically updated content ranking.",
+            "complexity": {
+              "time_complexity": "O(logN)",
+              "space_complexity": "O(N)"
+            }
+          }
+        },
+        {
+          "name": "Longest Common Substring",
+          "image": "LCString.png",
+          "code": "all_codes/6/lcstring.cpp",
+          "details": {
+            "definition_core_idea": "Identifies shared patterns (e.g., text phrases, stylistic elements) across top-performing content.",
+            "how_it_helps": "Compares attribute sequences to find common elements, like headline styles, guiding content creation.",
+            "advantages_impact": [
+              "Uncovers actionable patterns for replication.",
+              "Guides future content strategies.",
+              "Improves content consistency and performance."
+            ],
+            "outcome": "Identification of high-impact content attributes and design patterns.",
+            "complexity": {
+              "time_complexity": "O(M×N)",
+              "space_complexity": "O(M×N) or O(min(M,N)) with optimization"
+            }
+          }
+        }
+      ],
+      "details": {
+        "impact": [
+          "Statistical Sampling accelerates A/B testing for rapid insights.",
+          "Look-up Tables enable instant attribute performance access.",
+          "Heap Data Structures ensure dynamic content ranking.",
+          "LCS identifies high-impact patterns for content optimization."
+        ],
+        "trade_offs": [
+          "Sampling bias risks require robust sample design.",
+          "Resource usage for heaps and hash maps demands scalable infrastructure.",
+          "Real-time systems need reliable streaming pipelines to avoid data lag."
+        ]
+      }
+    },
+    {
+      "heading": "Integrated Workflow",
+      "image": "flowchart/image_6.png",
+      "content": [
+        "These algorithms create a seamless optimization pipeline:",
+        "• Experimentation: Statistical Sampling delivers rapid A/B test insights.",
+        "• Attribute Analysis: Look-up Tables provide instant metric access.",
+        "• Content Ranking: Heaps dynamically prioritize top content.",
+        "• Pattern Recognition: LCS guides future content with high-impact patterns.",
+        "This forms a continuous feedback loop for experimentation, ranking, and optimization."
+      ]
+    },
+    {
+      "heading": "Business Use Case Summary",
+      "content": [
+        "Before: Slow A/B testing, delayed metrics, and manual pattern analysis led to missed engagement opportunities.",
+        "After: The enhanced Adobe Content Analytics delivers:",
+        "• Faster Insights: Rapid experimentation cycles.",
+        "• Real-Time Optimization: Dynamic ranking maximizes engagement.",
+        "• Data-Driven Decisions: Live metrics improve content quality.",
+        "• Consistent Success: Pattern analysis ensures reusable high-performing attributes.",
+        "This results in increased reader engagement and retention for the media company."
+      ]
+    }
+  ]
+},
+{
+  "id": 7,
+  "title": "Adobe Firefly Services: High-Volume Video Manipulation for Global Content Localization",
+  "concepts": ["Balanced BST (AVL Tree)", "Union-Find", "Suffix Tree", "Ford-Fulkerson Algorithm"],
+  "sections": [
+    {
+      "heading": "Overview",
+      "content": [
+        "Adobe Firefly Services offers APIs for automated, high-scale video editing, including lip-sync automation, multilingual subtitle alignment, and video format adaptation. Designed for global content localization, it minimizes manual intervention while preserving creative and cultural integrity. Current heuristic-based automation, batch processing, and basic caching face challenges in real-time adaptability and dynamic prioritization. This data card proposes integrating Balanced BST, Union-Find, Suffix Tree, and Ford-Fulkerson Algorithm to enhance scalability and precision."
+      ]
+    },
+    {
+      "heading": "Scenario",
+      "content": [
+        "A media conglomerate localizes numerous videos weekly across multiple regions, requiring:",
+        "• Rapid adaptation of video ads with dynamic prioritization for urgent tasks.",
+        "• Frame-accurate lip-sync for dubbed content to ensure natural viewing experiences.",
+        "• Precise subtitle alignment across translations and timestamps for consistency.",
+        "The core challenge is achieving real-time, scalable, and precise localization workflows for high-volume videos and languages, especially under urgent demands."
+      ]
+    },
+    {
+      "heading": "Challenges",
+      "content": [
+        "The media conglomerate faces:",
+        "• Dynamic Prioritization: Inability to prioritize urgent tasks in real-time.",
+        "• Subtitle Consistency: Maintaining temporal and logical alignment across translations.",
+        "• Metadata Search: Slow querying of complex video metadata for regional filtering.",
+        "• Pipeline Scalability: Bottlenecks in processing high volumes of videos concurrently."
+      ]
+    },
+    {
+      "heading": "Enhancements & Their Role in the Pipeline",
+      "sub_sections": [
+        {
+          "name": "Balanced BST (AVL Tree)",
+          "image": "avl.png",
+          "code": "all_codes/7/avl_tree.cpp",
+          "details": {
+            "definition_core_idea": "A self-balancing binary search tree that maintains a sorted list of tasks based on priority.",
+            "how_it_helps": "Dynamically prioritizes and schedules video localization tasks, allowing urgent tasks to be inserted and processed efficiently.",
+            "advantages_impact": [
+              "Ensures timely execution of high-priority tasks.",
+              "Balances load across localization workflows.",
+              "Supports rapid reprioritization for urgent content."
+            ],
+            "outcome": "Prioritized and timely processing of critical localizations.",
+            "complexity": {
+              "time_complexity": "O(logN)",
+              "space_complexity": "O(N)"
+            }
+          }
+        },
+        {
+          "name": "Disjoint-Set",
+          "image": "disjoint_set.png",
+          "code": "all_codes/7/disjoint_set.cpp",
+          "details": {
+            "definition_core_idea": "A data structure that groups subtitle segments with shared timing or logical constraints.",
+            "how_it_helps": "Ensures temporal and logical consistency by grouping related subtitle segments across translations.",
+            "advantages_impact": [
+              "Maintains consistent subtitle sequencing.",
+              "Simplifies management of related segments.",
+              "Ensures narrative flow across languages."
+            ],
+            "outcome": "Consistent and precise subtitle alignment.",
+            "complexity": {
+              "time_complexity": "O(α(N)) amortized",
+              "space_complexity": "O(N)"
+            }
+          }
+        },
+        {
+          "name": "Suffix Tree",
+          "image": "trie.png",
+          "code": "all_codes/7/suffix_tree.cpp",
+          "details": {
+            "definition_core_idea": "A tree-based structure for efficient pattern searching in large strings or metadata.",
+            "how_it_helps": "Enables fast, complex metadata queries for regional tags or content patterns, streamlining content filtering.",
+            "advantages_impact": [
+              "Accelerates metadata-based content retrieval.",
+              "Supports complex pattern matching.",
+              "Improves regional content management."
+            ],
+            "outcome": "Efficient searching and filtering of localized content.",
+            "complexity": {
+              "time_complexity": "O(L) search, O(N) or O(NlogN) preprocessing",
+              "space_complexity": "O(N) or O(N⋅Σ)"
+            }
+          }
+        },
+        {
+          "name": "Ford-Fulkerson Algorithm",
+          "image": "FordFulkerson.png",
+          "code": "all_codes/7/ford_fulkerson.cpp",
+          "details": {
+            "definition_core_idea": "Maximizes flow through a network modeling the video localization pipeline.",
+            "how_it_helps": "Optimizes task routing to processing engines, maximizing throughput and identifying bottlenecks.",
+            "advantages_impact": [
+              "Maximizes parallel execution of localization tasks.",
+              "Identifies and mitigates pipeline bottlenecks.",
+              "Enhances scalability for high-volume workflows."
+            ],
+            "outcome": "Maximized throughput for scalable localization.",
+            "complexity": {
+              "time_complexity": "O(E×max_flow)",
+              "space_complexity": "O(V+E)"
+            }
+          }
+        }
+      ],
+      "details": {
+        "impact": [
+          "Balanced BST ensures timely processing of urgent tasks.",
+          "Union-Find maintains consistent subtitle alignment.",
+          "Suffix Tree streamlines metadata filtering.",
+          "Ford-Fulkerson maximizes pipeline throughput."
+        ],
+        "trade_offs": [
+          "High resource costs for Suffix Trees and Ford-Fulkerson in large datasets.",
+          "Increased system complexity from integrating multiple algorithms.",
+          "Maintenance challenges with advanced data structures and caching."
+        ]
+      }
+    },
+    {
+      "heading": "Integrated Workflow",
+      "image": "flowchart/image_7.png",
+      "content": [
+        "These algorithms create a cohesive localization pipeline:",
+        "• Task Scheduling: Balanced BST prioritizes urgent tasks dynamically.",
+        "• Subtitle Management: Union-Find ensures consistent segment grouping.",
+        "• Metadata Search: Suffix Tree enables fast content filtering.",
+        "• Pipeline Optimization: Ford-Fulkerson maximizes parallel task execution.",
+        "This ensures real-time adaptability, precision, and scalability."
+      ]
+    },
+    {
+      "heading": "Business Use Case Summary",
+      "content": [
+        "Before: Heuristic-based automation and batch processing led to delays, inconsistent subtitles, and inefficient metadata searches.",
+        "After: Enhanced Firefly Services deliver:",
+        "• Dynamic Prioritization: Balanced BST prioritizes urgent tasks for timely processing.",
+        "• Consistent Subtitles: Union-Find ensures precise alignment across translations.",
+        "• Efficient Search: Suffix Tree streamlines metadata filtering for regional content.",
+        "• Scalable Throughput: Ford-Fulkerson optimizes task routing for high-volume processing.",
+        "This enables the studio to meet tight global release schedules with precision and adaptability."
+      ]
+    }
+  ]
+},
+{
+  "id": 9,
+  "title": "Automated 3D Asset Variation Generation with Adobe Substance 3D",
+  "concepts": ["Octree", "KD-Tree", "Segment Tree"],
+  "sections": [
+    {
+      "heading": "Overview",
+      "content": [
+        "Adobe Substance 3D Automation Toolkit enables procedural generation of diverse 3D asset variations, such as colors, textures, and shapes, from a single model. It streamlines e-commerce and product design by reducing manual modeling, ensuring consistency, and scaling visualization. However, traditional manual modeling and basic automation struggle with real-time scalability for large-scale, dynamic applications. This data card proposes integrating Octree, KD-Tree, and Segment Tree to enhance performance and quality."
+      ]
+    },
+    {
+      "heading": "Scenario",
+      "content": [
+        "An automotive brand offers a web-based configurator for real-time car customization, allowing users to select paint colors, textures, alloys, and accessories with no delays or design conflicts. The core challenge is generating and managing thousands of 3D product variants in real-time while maintaining visual quality and performance for complex models and user interactions."
+      ]
+    },
+    {
+      "heading": "Challenges",
+      "content": [
+        "The automotive brand faces:",
+        "• Real-Time Performance: Rendering complex 3D models without delays during user interactions.",
+        "• Variant Management: Preventing redundant variants and ensuring efficient generation.",
+        "• Dynamic Queries: Providing instant feedback for user-driven filters and configuration options."
+      ]
+    },
+    {
+      "heading": "Enhancements & Their Role in the Pipeline",
+      "sub_sections": [
+        {
+          "name": "Octree",
+          "image": "octree.png",
+          "code": "all_codes/9/octree.cpp",
+          "details": {
+            "definition_core_idea": "A spatial data structure that recursively divides 3D space into octants for efficient mesh and voxel management.",
+            "how_it_helps": "Determines visible model parts and their level of detail during user interactions like zooming or rotating, optimizing ray-tracing and LOD management.",
+            "advantages_impact": [
+              "Accelerates rendering for real-time previews.",
+              "Optimizes Level of Detail for smooth performance.",
+              "Ensures high visual quality during interactions."
+            ],
+            "outcome": "Smooth zoom and camera transitions during customization.",
+            "complexity": {
+              "time_complexity": "O(logN)",
+              "space_complexity": "O(N)"
+            }
+          }
+        },
+        {
+          "name": "KD-Tree",
+          "image": "kd_tree.png",
+          "code": "all_codes/9/kd_tree.cpp",
+          "details": {
+            "definition_core_idea": "A data structure for efficient nearest-neighbor searches in multi-dimensional space, such as color or geometry attributes.",
+            "how_it_helps": "Identifies similar asset variants to prevent redundant generation and suggest relevant customization options.",
+            "advantages_impact": [
+              "Reduces duplicate variant generation.",
+              "Accelerates creation of novel designs.",
+              "Provides smart, relevant suggestions."
+            ],
+            "outcome": "Smart suggestions and reduced duplicate variants.",
+            "complexity": {
+              "time_complexity": "O(logN) average, O(N) worst-case",
+              "space_complexity": "O(N⋅D)"
+            }
+          }
+        },
+        {
+          "name": "Segment Tree",
+          "image": "segment_tree.png",
+          "code": "all_codes/9/segment_tree.cpp",
+          "details": {
+            "definition_core_idea": "A tree structure for efficient range queries and updates over asset properties.",
+            "how_it_helps": "Enables real-time filtering and aggregation of asset properties, such as counting cars with specific finishes, for dynamic UI feedback.",
+            "advantages_impact": [
+              "Supports instant UI filter updates.",
+              "Enables dynamic property queries.",
+              "Improves responsiveness for user interactions."
+            ],
+            "outcome": "Dynamic inventory statistics for real-time UI filters.",
+            "complexity": {
+              "time_complexity": "O(logN)",
+              "space_complexity": "O(N)"
+            }
+          }
+        }
+      ],
+      "details": {
+        "impact": [
+          "Octrees ensure smooth rendering and high visual quality.",
+          "KD-Trees reduce redundancy and enhance variant suggestions.",
+          "Segment Trees enable real-time property queries for dynamic UI."
+        ],
+        "trade_offs": [
+          "Memory-intensive for detailed models and complex property sets.",
+          "Implementation complexity for building and maintaining data structures.",
+          "Requires careful optimization to handle large-scale operations."
+        ]
+      }
+    },
+    {
+      "heading": "Integrated Workflow",
+      "image": "flowchart/image_9.png",
+      "content": [
+        "These algorithms create an efficient 3D asset generation pipeline:",
+        "• Rendering: Octrees optimize mesh and LOD management for smooth previews.",
+        "• Variant Management: KD-Trees ensure efficient, non-redundant variant generation.",
+        "• User Interaction: Segment Trees provide instant property queries for dynamic filters.",
+        "This ensures real-time scalability, consistency, and responsiveness."
+      ]
+    },
+    {
+      "heading": "Business Use Case Summary",
+      "content": [
+        "Before: Manual modeling and basic automation led to slow variant generation, redundant designs, and delayed UI responses.",
+        "After: Enhanced Substance 3D delivers:",
+        "• Faster Rendering: Octrees enable smooth, high-quality previews.",
+        "• Efficient Variants: KD-Trees prevent redundancy and suggest relevant options.",
+        "• Dynamic Filters: Segment Trees support instant UI feedback for user queries.",
+        "This results in faster variant generation, increased configuration options, reduced latency, and enhanced customer satisfaction."
+      ]
+    }
+  ]
+},
+{
+  "id": 8,
+  "title": "AEM Sites Optimizer: Algorithmic Enhancements for Performance Optimization",
+  "concepts": ["Fenwick Tree", "Disjoint Set Union", "Deque-Based Sliding Window", "XOR Anomaly Detection"],
+  "sections": [
+    {
+      "heading": "Overview",
+      "content": [
+        "Adobe Experience Manager (AEM) Sites Optimizer enhances website performance through AI-driven telemetry, dynamic CDN caching, and UX quantification via engagement metrics like clicks and dwell times. Designed for global-scale websites, it analyzes time-series data and user interactions in real-time. However, current methods lack adaptability for high-traffic scenarios. This data card proposes integrating Fenwick Tree, Disjoint Set Union, Deque-Based Sliding Window, and XOR-based anomaly detection to ensure real-time performance and engagement optimization."
+      ]
+    },
+    {
+      "heading": "Scenario",
+      "content": [
+        "A high-traffic online news portal experiences fluctuating traffic and requires consistent fast page loads, dynamic engagement monitoring, and seamless content delivery to ensure optimal UX. The core challenge is efficiently detecting, analyzing, and responding to performance bottlenecks and engagement spikes in real-time and retrospectively."
+      ]
+    },
+    {
+      "heading": "Challenges",
+      "content": [
+        "The news portal faces:",
+        "• Real-Time Engagement Tracking: Slow updates to user interaction metrics hinder dynamic content adjustments.",
+        "• Bottleneck Identification: Difficulty in grouping related performance issues for efficient debugging.",
+        "• UX Spike Detection: Inability to quickly detect and respond to traffic surges or performance drops.",
+        "• Anomaly Detection: Slow identification of subtle issues in high-volume telemetry logs."
+      ]
+    },
+    {
+      "heading": "Enhancements & Their Role in the Pipeline",
+      "sub_sections": [
+        {
+          "name": "Fenwick Tree",
+          "image": "fenwik_tree.png",
+          "code": "all_codes/8/fenwick_tree.cpp",
+          "details": {
+            "definition_core_idea": "A binary indexed tree that efficiently computes prefix sums for cumulative user interactions.",
+            "how_it_helps": "Tracks real-time engagement trends (e.g., clicks, scrolls) with low-latency updates, enabling dynamic content adjustments.",
+            "advantages_impact": [
+              "Provides fast, lightweight trend analysis.",
+              "Supports real-time engagement monitoring.",
+              "Enables dynamic UX optimization."
+            ],
+            "outcome": "Instant detection of engagement trends and cumulative data.",
+            "complexity": {
+              "time_complexity": "O(logN)",
+              "space_complexity": "O(N)"
+            }
+          }
+        },
+        {
+          "name": "Disjoint Set Union",
+          "image": "disjoint_set.png",
+          "code": "all_codes/8/disjoint_set_union.cpp",
+          "details": {
+            "definition_core_idea": "Groups related performance bottlenecks for modular debugging.",
+            "how_it_helps": "Clusters slow-loading components or site parts, simplifying debugging by focusing on logical groups.",
+            "advantages_impact": [
+              "Streamlines bottleneck identification.",
+              "Enables targeted, modular fixes.",
+              "Accelerates issue resolution."
+            ],
+            "outcome": "Simplified debugging through clustered performance hotspots.",
+            "complexity": {
+              "time_complexity": "O(α(N)) amortized",
+              "space_complexity": "O(N)"
+            }
+          }
+        },
+        {
+          "name": "Deque-Based Sliding Window",
+          "image": "sliding_wnd.png",
+          "code": "all_codes/8/sliding_window.cpp",
+          "details": {
+            "definition_core_idea": "Processes streaming data to detect short-term fluctuations in engagement or performance.",
+            "how_it_helps": "Identifies traffic surges or performance drops within a defined time frame, enabling prompt mitigation.",
+            "advantages_impact": [
+              "Rapid detection of UX and performance anomalies.",
+              "Minimal computational overhead.",
+              "Supports immediate responsiveness."
+            ],
+            "outcome": "Real-time detection and reaction to traffic or performance spikes.",
+            "complexity": {
+              "time_complexity": "O(N), amortized O(1) per element",
+              "space_complexity": "O(K)"
+            }
+          }
+        },
+        {
+          "name": "XOR Anomaly Detection",
+          "image": "xor.png",
+          "code": "all_codes/8/xor_anomaly.cpp",
+          "details": {
+            "definition_core_idea": "Uses XOR as a lightweight fingerprinting mechanism to detect anomalies in log data.",
+            "how_it_helps": "Quickly identifies deviations in performance logs, pinpointing misbehaving components for retrospective analysis.",
+            "advantages_impact": [
+              "Lightweight anomaly detection.",
+              "Speeds up performance forensics.",
+              "Reduces debugging overhead."
+            ],
+            "outcome": "Efficient localization of errors in high-volume telemetry.",
+            "complexity": {
+              "time_complexity": "O(N)",
+              "space_complexity": "O(1) or O(N)"
+            }
+          }
+        }
+      ],
+      "details": {
+        "impact": [
+          "Fenwick Trees enable instant engagement trend detection.",
+          "Disjoint Set Union streamlines bottleneck debugging.",
+          "Deque-Based Sliding Window ensures rapid spike detection.",
+          "XOR enhances anomaly detection in performance logs."
+        ],
+        "trade_offs": [
+          "Increased complexity from integrating specialized data structures.",
+          "Resource usage for Fenwick Trees and streaming data processing.",
+          "XOR's limited applicability to specific anomaly patterns."
+        ]
+      }
+    },
+    {
+      "heading": "Integrated Workflow",
+      "image": "flowchart/image_8.png",
+      "content": [
+        "These algorithms create a cohesive optimization pipeline:",
+        "• Real-Time Monitoring: Fenwick Trees track live engagement metrics.",
+        "• Bottleneck Identification: Disjoint Set Union clusters related issues.",
+        "• UX Spike Detection: Deque-Based Sliding Window detects traffic surges.",
+        "• Anomaly Detection: XOR pinpoints deviations in performance logs.",
+        "This ensures real-time adaptability and retrospective analysis."
+      ]
+    },
+    {
+      "heading": "Business Use Case Summary",
+      "content": [
+        "Before: Slow engagement tracking, scattered bottleneck debugging, and delayed anomaly detection hindered performance and UX.",
+        "After: Enhanced AEM Sites Optimizer delivers:",
+        "• Real-Time Monitoring: Fenwick Trees enable fast engagement updates.",
+        "• Efficient Debugging: Disjoint Set Union clusters issues for quick fixes.",
+        "• Rapid Response: Deque-Based Sliding Window detects and mitigates spikes.",
+        "• Anomaly Detection: XOR speeds up log forensics.",
+        "This ensures consistent high-performance content delivery, improved UX, and proactive bottleneck resolution."
+      ]
+    }
+  ]
+},
+{
+  "id": 10,
+  "title": "Adobe Brand Concierge: Revolutionizing Conversational Commerce with Agentic AI",
+  "concepts": ["Persistent Segment Trees", "Decision Trees", "Stable Marriage Problem Algorithm"],
+  "sections": [
+    {
+      "heading": "Overview",
+      "content": [
+        "Launched at Adobe Summit 2025, Adobe Brand Concierge leverages agentic and generative AI via the Adobe Experience Platform Agent Orchestrator to deliver immersive, brand-aligned conversational commerce. It manages conversation flows, interprets customer intents, and provides personalized product recommendations. This data card proposes integrating Persistent Segment Trees, Decision Trees, and the Stable Marriage Problem Algorithm to enhance historical interaction management, intent recognition, and conflict-free recommendations."
+      ]
+    },
+    {
+      "heading": "Scenario",
+      "content": [
+        "An online fashion retailer deploys a virtual shopping assistant to:",
+        "• Recall past interactions for personalized service.",
+        "• Interpret nuanced customer intents (e.g., style preferences, order inquiries).",
+        "• Provide personalized, conflict-free product recommendations.",
+        "The assistant must handle historical data, interpret complex requests, and ensure context-aware dialogue for a superior shopping experience."
+      ]
+    },
+    {
+      "heading": "Challenges",
+      "content": [
+        "The retailer faces:",
+        "• Historical Interaction Management: Efficiently accessing rich customer interaction histories.",
+        "• Intent Recognition: Interpreting diverse and nuanced customer requests accurately.",
+        "• Conflict-Free Recommendations: Matching preferences to inventory without suboptimal pairings."
+      ]
+    },
+    {
+      "heading": "Enhancements & Their Role in the Pipeline",
+      "sub_sections": [
+        {
+          "name": "Persistent Segment Trees",
+          "image": "persistent_tree.png",
+          "code": "all_codes/10/persistent_tree.cpp",
+          "details": {
+            "definition_core_idea": "Versioned segment trees that preserve past states for efficient historical data retrieval.",
+            "how_it_helps": "Stores and accesses customer interaction histories (e.g., browse patterns, purchases) for instant personalization.",
+            "advantages_impact": [
+              "Enables deep personalization via historical data.",
+              "Supports adaptive learning from past interactions.",
+              "Avoids redundant storage for data versions."
+            ],
+            "outcome": "Instant recall of past interactions for personalized service.",
+            "complexity": {
+              "time_complexity": "O(logN)",
+              "space_complexity": "O(NlogN)"
+            }
+          }
+        },
+        {
+          "name": "Decision Trees",
+          "image": "decision_tree.png",
+          "code": "all_codes/10/decision_tree.cpp",
+          "details": {
+            "definition_core_idea": "Recursive feature splits to classify customer intents and guide conversation flows.",
+            "how_it_helps": "Analyzes keywords and context to accurately identify intents (e.g., size queries, style preferences), directing relevant dialogue paths.",
+            "advantages_impact": [
+              "Ensures accurate intent recognition.",
+              "Fosters natural, context-aware conversations.",
+              "Provides transparent decision-making."
+            ],
+            "outcome": "Context-aware, natural dialogue through accurate intent classification.",
+            "complexity": {
+              "time_complexity": "O(NlogN) training, O(logN) prediction",
+              "space_complexity": "O(N)"
+            }
+          }
+        },
+        {
+          "name": "Stable Marriage Problem Algorithm",
+          "image": "stable_marraige.png",
+          "code": "all_codes/10/stable_marriage.cpp",
+          "details": {
+            "definition_core_idea": "Matches customer preferences to inventory for optimal, conflict-free recommendations.",
+            "how_it_helps": "Pairs preferences (e.g., color, style) with products, ensuring no better mutual match is missed.",
+            "advantages_impact": [
+              "Delivers personalized recommendations.",
+              "Avoids suboptimal product-customer pairings.",
+              "Maximizes recommendation relevance."
+            ],
+            "outcome": "Personalized, conflict-free product recommendations.",
+            "complexity": {
+              "time_complexity": "O(N^2) or O(N⋅M)",
+              "space_complexity": "O(N)"
+            }
+          }
+        }
+      ],
+      "details": {
+        "impact": [
+          "Persistent Segment Trees enable instant historical data recall.",
+          "Decision Trees ensure natural, accurate intent-driven dialogue.",
+          "Stable Marriage Algorithm delivers optimal, conflict-free recommendations."
+        ],
+        "trade_offs": [
+          "High memory usage for Persistent Segment Trees with large datasets.",
+          "Maintenance complexity for tuning Decision Trees and Stable Marriage Algorithm.",
+          "Computational cost for Stable Marriage with large, dynamic catalogs."
+        ]
+      }
+    },
+    {
+      "heading": "Integrated Workflow",
+      "image": "flowchart/image_10.png",
+      "content": [
+        "These algorithms create a seamless conversational commerce pipeline:",
+        "• Historical Management: Persistent Segment Trees recall past interactions for personalization.",
+        "• Intent Recognition: Decision Trees guide natural, context-aware dialogue.",
+        "• Recommendations: Stable Marriage Algorithm ensures optimal product matches.",
+        "This delivers a cohesive, personalized shopping experience."
+      ]
+    },
+    {
+      "heading": "Business Use Case Summary",
+      "content": [
+        "Before: Limited historical recall, inaccurate intent recognition, and suboptimal recommendations hindered engagement.",
+        "After: Enhanced Brand Concierge delivers:",
+        "• Personalized Service: Persistent Segment Trees leverage interaction histories.",
+        "• Natural Dialogue: Decision Trees ensure accurate, engaging conversations.",
+        "• Optimal Recommendations: Stable Marriage Algorithm maximizes recommendation relevance.",
+        "This results in enhanced customer satisfaction, higher conversion rates, and improved engagement."
+      ]
+    }
+  ]
+},
+{
+  "id": 11,
+  "title": "Integrated Asset Management with Adobe Creative and Experience Clouds",
+  "concepts": ["Square-Root Decomposition", "Mo's Algorithm", "Segment Trees with Lazy Propagation"],
+  "sections": [
+    {
+      "heading": "Overview",
+      "content": [
+        "Adobe integrates Creative Cloud and Experience Cloud via Adobe Experience Manager (AEM) to enable seamless asset sharing, version control, and metadata handling for marketing campaigns. Current systems struggle with real-time analytics and efficient bulk query processing. This data card proposes Square-Root Decomposition, Mo's Algorithm, and Segment Trees with Lazy Propagation to optimize metadata queries, bulk processing, and dynamic metric updates."
+      ]
+    },
+    {
+      "heading": "Scenario",
+      "content": [
+        "A marketing agency manages thousands of creative assets across Adobe clouds for multiple client campaigns, requiring robust version control, real-time usage analytics, and fast bulk metadata queries to streamline workflows. The core challenge is efficiently managing and querying large volumes of asset metadata and metrics for real-time and historical analysis to support dynamic campaigns."
+      ]
+    },
+    {
+      "heading": "Challenges",
+      "content": [
+        "The agency faces:",
+        "• Bulk Metadata Queries: Slow processing of large-scale metadata filters for campaign analytics.",
+        "• Historical Analysis: Inefficient handling of extensive historical query sets for reporting.",
+        "• Real-Time Metrics: Limited ability to update and query asset performance metrics dynamically."
+      ]
+    },
+    {
+      "heading": "Enhancements & Their Role in the Pipeline",
+      "sub_sections": [
+        {
+          "name": "Square-Root Decomposition",
+          "image": "sqrt_decompose.png",
+          "code": "all_codes/11/sqrt_decomposition.cpp",
+          "details": {
+            "definition_core_idea": "Partitions metadata into blocks of size √N to optimize bulk range queries.",
+            "how_it_helps": "Accelerates batch processing of metadata filters (e.g., assets by date or campaign) by operating on pre-summarized blocks.",
+            "advantages_impact": [
+              "Speeds up large-scale metadata queries.",
+              "Improves efficiency for campaign analytics.",
+              "Reduces processing time for reporting."
+            ],
+            "outcome": "High-throughput processing for bulk metadata range queries.",
+            "complexity": {
+              "time_complexity": "O(√N) per query, O(Q√N) for Q queries",
+              "space_complexity": "O(N)"
+            }
+          }
+        },
+        {
+          "name": "Mo's Algorithm",
+          "image": "moo.png",
+          "code": "all_codes/11/mos_algorithm.cpp",
+          "details": {
+            "definition_core_idea": "Optimizes offline batch range queries by reordering them to minimize redundant computations.",
+            "how_it_helps": "Efficiently processes large historical query sets for retrospective analysis, such as monthly performance reports.",
+            "advantages_impact": [
+              "Reduces computation for overlapping query ranges.",
+              "Enables scalable historical analysis.",
+              "Supports efficient reporting and debugging."
+            ],
+            "outcome": "Efficient batch processing for historical query sets.",
+            "complexity": {
+              "time_complexity": "O((N+Q)√N)",
+              "space_complexity": "O(N)"
+            }
+          }
+        },
+        {
+          "name": "Segment Trees with Lazy Propagation",
+          "image": "segment_lazy.png",
+          "code": "all_codes/11/segment_tree_lazy.cpp",
+          "details": {
+            "definition_core_idea": "Efficiently processes bulk updates and range queries over asset metrics with lazy update propagation.",
+            "how_it_helps": "Tracks and updates real-time asset metrics (e.g., views, engagement scores) across time intervals or asset groups.",
+            "advantages_impact": [
+              "Supports dynamic, real-time metric updates.",
+              "Enables efficient range queries for performance tracking.",
+              "Scales for large datasets with minimal overhead."
+            ],
+            "outcome": "Dynamic, real-time updates and queries for asset metrics.",
+            "complexity": {
+              "time_complexity": "O(logN)",
+              "space_complexity": "O(N)"
+            }
+          }
+        }
+      ],
+      "details": {
+        "impact": [
+          "Square-Root Decomposition speeds up bulk metadata queries.",
+          "Mo's Algorithm enhances historical query processing.",
+          "Segment Trees with Lazy Propagation enable dynamic metric updates."
+        ],
+        "trade_offs": [
+          "Increased complexity from specialized data structures.",
+          "Resource usage for maintaining large Segment Trees.",
+          "Mo's Algorithm limited to offline batch processing."
+        ]
+      }
+    },
+    {
+      "heading": "Integrated Workflow",
+      "image": "flowchart/image_11.png",
+      "content": [
+        "These algorithms create a cohesive asset management pipeline:",
+        "• Metadata Queries: Square-Root Decomposition accelerates bulk filtering.",
+        "• Historical Analysis: Mo's Algorithm optimizes retrospective query processing.",
+        "• Real-Time Metrics: Segment Trees with Lazy Propagation support dynamic updates.",
+        "This ensures efficient real-time and historical asset management."
+      ]
+    },
+    {
+      "heading": "Business Use Case Summary",
+      "content": [
+        "Before: Slow metadata queries, inefficient historical analysis, and limited real-time metric updates hindered campaign workflows.",
+        "After: Enhanced AEM delivers:",
+        "• Fast Metadata Queries: Square-Root Decomposition boosts analytics efficiency.",
+        "• Scalable Historical Analysis: Mo's Algorithm streamlines report generation.",
+        "• Dynamic Metrics: Segment Trees enable real-time performance tracking.",
+        "This results in accelerated asset synchronization, efficient campaign deployment, and enhanced decision-making."
       ]
     }
   ]
 }
-
 ];
