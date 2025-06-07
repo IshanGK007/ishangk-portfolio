@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X } from 'lucide-react';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
@@ -12,6 +12,17 @@ interface CodeModalProps {
 }
 
 const CodeModal: React.FC<CodeModalProps> = ({ isOpen, onClose, code, title }) => {
+  const [copied, setCopied] = useState(false);
+
+  const handleCopy = () => {
+    navigator.clipboard.writeText(code).then(() => {
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000); // Reset after 2 seconds
+    }).catch(err => {
+      console.error('Failed to copy code: ', err);
+    });
+  };
+
   if (!isOpen) return null;
 
   return (
@@ -32,12 +43,20 @@ const CodeModal: React.FC<CodeModalProps> = ({ isOpen, onClose, code, title }) =
         >
           <div className="flex items-center justify-between p-4 border-b border-gray-700">
             <h3 className="text-lg font-semibold text-white">{title}</h3>
-            <button
-              onClick={onClose}
-              className="p-1 rounded-full hover:bg-gray-700 transition-colors"
-            >
-              <X className="w-5 h-5 text-gray-400" />
-            </button>
+            <div className="flex items-center space-x-2">
+              <button
+                onClick={handleCopy}
+                className="px-3 py-1 text-sm text-white bg-indigo-600 rounded-md hover:bg-indigo-700 transition-colors"
+              >
+                {copied ? 'Copied!' : 'Copy Code'}
+              </button>
+              <button
+                onClick={onClose}
+                className="p-1 rounded-full hover:bg-gray-700 transition-colors"
+              >
+                <X className="w-5 h-5 text-gray-400" />
+              </button>
+            </div>
           </div>
           <div className="overflow-auto max-h-[calc(90vh-4rem)]">
             <SyntaxHighlighter
