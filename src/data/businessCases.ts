@@ -241,177 +241,6 @@ export const businessCases: BusinessCase[] = [
   ]
 },
 {
-  "id": 3,
-  "title": "Enhancing the AEP Agent Orchestrator: Smarter AI Flow with Advanced Data Structures",
-  "concepts": ["Min-Cut Max-Flow", "PageRank", "Catalan Numbers", "Boruvka's Algorithm"],
-  "sections": [
-    {
-      "heading": "Introduction",
-      "content": [
-        "The Adobe Experience Platform (AEP) Agent Orchestrator automates and personalizes customer journeys by coordinating AI agents in real time. To enhance its intelligence, scalability, and responsiveness, this data card proposes integrating Min-Cut Max-Flow, PageRank, Catalan Numbers, and Boruvka's Algorithm to optimize resource allocation, prioritize actions, and model interaction sequences."
-      ]
-    },
-    {
-      "heading": "Applied Context",
-      "content": [
-        "A fashion retailer uses AEP to manage a multi-agent workflow during a busy shopping season, with agents handling inventory checks, price suggestions, email delivery, and chatbot responses. These tasks must respect dependencies, prioritize urgent actions, access customer data instantly, and adapt to user behavior under tight time constraints."
-      ]
-    },
-    {
-      "heading": "System Gaps & Limitations",
-      "content": [
-        "The retailer faces:",
-        "• Inefficient Resource Utilization: Suboptimal allocation of computational resources.",
-        "• Action Prioritization: Difficulty in focusing on high-impact tasks.",
-        "• Complex Interaction Modeling: Challenges in optimizing customer-agent interaction sequences."
-      ]
-    },
-    {
-      "heading": "Algorithmic Applications & System Alignment",
-      "sub_sections": [
-        {
-          "name": "Min-Cut Max-Flow",
-          "image": "min_cut_max_flow.png",
-          "code": "all_codes/3/min_cut_max_flow.cpp",
-          "details": {
-            "definition_core_idea": "Optimizes resource distribution across agents by modeling them as a flow network.",
-            "how_it_helps": "Strategically allocates server resources to critical agents (e.g., inventory checks) during high demand, preventing delays.",
-            "advantages_impact": [
-              "Ensures optimal resource distribution.",
-              "Prevents bottlenecks during peak loads.",
-              "Maximizes system throughput."
-            ],
-            "outcome": "Balanced workloads and efficient resource utilization.",
-            "complexity": {
-              "time_complexity": "O(VE^2) for Edmonds-Karp, faster with Dinic's",
-              "space_complexity": "O(V+E)"
-            }
-          }
-        },
-        {
-          "name": "PageRank",
-          "image": "pagerank.png",
-          "code": "all_codes/3/pagerank.cpp",
-          "details": {
-            "definition_core_idea": "Assigns importance scores to agent actions based on their impact.",
-            "how_it_helps": "Prioritizes high-value tasks (e.g., personalized offers) over routine updates to drive engagement.",
-            "advantages_impact": [
-              "Focuses agents on impactful tasks.",
-              "Enhances personalization effectiveness.",
-              "Improves conversion rates."
-            ],
-            "outcome": "Highly impactful and effective agent actions.",
-            "complexity": {
-              "time_complexity": "O(V+E) per iteration until convergence",
-              "space_complexity": "O(V+E)"
-            }
-          }
-        },
-        {
-          "name": "Catalan Numbers",
-          "image": "catlan_number.png",
-          "code": "all_codes/3/catalan_numbers.cpp",
-          "details": {
-            "definition_core_idea": "Counts valid sequences of customer-agent interactions for modeling personalization paths.",
-            "how_it_helps": "Models and optimizes interaction sequences (e.g., email → click → notification) for effective touchpoint delivery.",
-            "advantages_impact": [
-              "Anticipates customer behavior.",
-              "Refines complex personalization paths.",
-              "Ensures optimal touchpoint sequences."
-            ],
-            "outcome": "Optimized interaction sequences and refined personalization.",
-            "complexity": {
-              "time_complexity": "O(N)",
-              "space_complexity": "O(1) or O(N)"
-            }
-          }
-        },
-        {
-          "name": "Boruvka's Algorithm",
-          "image": "boruvka.png",
-          "code": "all_codes/3/boruvka.cpp",
-          "details": {
-            "definition_core_idea": "Builds a minimum cost communication network for inter-agent connectivity.",
-            "how_it_helps": "Optimizes the communication backbone to minimize data transfer costs and latency between agents.",
-            "advantages_impact": [
-              "Reduces operational communication costs.",
-              "Improves resource utilization.",
-              "Enhances system stability."
-            ],
-            "outcome": "Cost-effective and efficient agent communication network.",
-            "complexity": {
-              "time_complexity": "O(ElogV) or O(EloglogV)",
-              "space_complexity": "O(V+E)"
-            }
-          }
-        }
-      ],
-      "details": {
-        "impact": [
-          "Min-Cut Max-Flow optimizes resource allocation.",
-          "PageRank prioritizes high-impact actions.",
-          "Catalan Numbers refine interaction sequences.",
-          "Boruvka's Algorithm ensures cost-effective communication."
-        ],
-        "trade_offs": [
-          "Increased complexity from sophisticated algorithms.",
-          "Resource overhead for memory and computation.",
-          "Requires specialized expertise for implementation."
-        ]
-      }
-    },
-    {
-      "heading": "Integrated Workflow",
-      "image": "flowchart/image_3.png",
-      "content": [
-        "These algorithms create a cohesive orchestration pipeline:",
-        "• Resource Allocation: Min-Cut Max-Flow balances computational resources.",
-        "• Action Prioritization: PageRank focuses on high-impact tasks.",
-        "• Interaction Modeling: Catalan Numbers optimize touchpoint sequences.",
-        "• Communication Optimization: Boruvka's Algorithm minimizes network costs."
-      ]
-    },
-    {
-      "heading": "Impact Overview",
-      "content": [
-        "Before: Inefficient resource use, unprioritized actions, and suboptimal interaction sequences reduced conversions.",
-        "After: Enhanced AEP Agent Orchestrator delivers:",
-        "• Efficient Resources: Min-Cut Max-Flow ensures optimal allocation.",
-        "• Impactful Actions: PageRank prioritizes high-value tasks.",
-        "• Optimized Sequences: Catalan Numbers refine personalization paths.",
-        "• Cost-Effective Network: Boruvka's Algorithm minimizes communication costs.",
-        "This results in seamless workflows, higher engagement, and improved sales."
-      ]
-    },
-    {
-  "heading": "References",
-  "content": [
-    {
-      "text": "Adobe Experience Platform Agent Orchestrator enables businesses to build, manage, and orchestrate AI agents from Adobe and third-party ecosystems, enhancing decision-making and multi-agent collaboration.",
-      "link": "https://business.adobe.com/products/experience-platform/agent-orchestrator.html"
-    },
-    {
-      "text": "The Max-Flow Min-Cut Theorem is applied in resource allocation problems, such as assigning tasks to machines or allocating bandwidth in communication networks.",
-      "link": "https://www.numberanalytics.com/blog/max-flow-min-cut-theorem-ultimate-guide"
-    },
-    {
-      "text": "PageRank is an algorithm used by Google Search to rank web pages in their search engine results, measuring the importance of website pages.",
-      "link": "https://en.wikipedia.org/wiki/PageRank"
-    },
-    {
-      "text": "Catalan numbers are a sequence of natural numbers that occur in various counting problems, often involving recursively defined objects.",
-      "link": "https://en.wikipedia.org/wiki/Catalan_number"
-    },
-    {
-      "text": "Borůvka's algorithm is a greedy algorithm for finding a minimum spanning tree in a graph, or a minimum spanning forest in the case of a graph that is not connected.",
-      "link": "https://en.wikipedia.org/wiki/Bor%C5%AFvka%27s_algorithm"
-    }
-  ]
-}
-
-  ]
-},
-{
   "id": 4,
   "title": "Accelerating Visual Creativity: Adobe Firefly's Algorithmic Enhancements for Moodboarding",
   "concepts": ["2D Kadane's Algorithm", "Sparse Tables", "A* Algorithm", "Longest Common Subsequence"],
@@ -1882,6 +1711,176 @@ export const businessCases: BusinessCase[] = [
     {
       "text": "Segment Tree with Lazy Propagation – GeeksforGeeks",
       "link": "https://www.geeksforgeeks.org/lazy-propagation-in-segment-tree/"
+    }
+  ]
+},
+  ]
+},
+{
+  "id": 3,
+  "title": "Enhancing the AEP Agent Orchestrator: Smarter AI Flow with Advanced Data Structures",
+  "concepts": ["Min-Cut Max-Flow", "PageRank", "Catalan Numbers", "Boruvka's Algorithm"],
+  "sections": [
+    {
+      "heading": "Introduction",
+      "content": [
+        "The Adobe Experience Platform (AEP) Agent Orchestrator automates and personalizes customer journeys by coordinating AI agents in real time. To enhance its intelligence, scalability, and responsiveness, this data card proposes integrating Min-Cut Max-Flow, PageRank, Catalan Numbers, and Boruvka's Algorithm to optimize resource allocation, prioritize actions, and model interaction sequences."
+      ]
+    },
+    {
+      "heading": "Applied Context",
+      "content": [
+        "A fashion retailer uses AEP to manage a multi-agent workflow during a busy shopping season, with agents handling inventory checks, price suggestions, email delivery, and chatbot responses. These tasks must respect dependencies, prioritize urgent actions, access customer data instantly, and adapt to user behavior under tight time constraints."
+      ]
+    },
+    {
+      "heading": "System Gaps & Limitations",
+      "content": [
+        "The retailer faces:",
+        "• Inefficient Resource Utilization: Suboptimal allocation of computational resources.",
+        "• Action Prioritization: Difficulty in focusing on high-impact tasks.",
+        "• Complex Interaction Modeling: Challenges in optimizing customer-agent interaction sequences."
+      ]
+    },
+    {
+      "heading": "Algorithmic Applications & System Alignment",
+      "sub_sections": [
+        {
+          "name": "Min-Cut Max-Flow",
+          "image": "min_cut_max_flow.png",
+          "code": "all_codes/3/min_cut_max_flow.cpp",
+          "details": {
+            "definition_core_idea": "Optimizes resource distribution across agents by modeling them as a flow network.",
+            "how_it_helps": "Strategically allocates server resources to critical agents (e.g., inventory checks) during high demand, preventing delays.",
+            "advantages_impact": [
+              "Ensures optimal resource distribution.",
+              "Prevents bottlenecks during peak loads.",
+              "Maximizes system throughput."
+            ],
+            "outcome": "Balanced workloads and efficient resource utilization.",
+            "complexity": {
+              "time_complexity": "O(VE^2) for Edmonds-Karp, faster with Dinic's",
+              "space_complexity": "O(V+E)"
+            }
+          }
+        },
+        {
+          "name": "PageRank",
+          "image": "pagerank.png",
+          "code": "all_codes/3/pagerank.cpp",
+          "details": {
+            "definition_core_idea": "Assigns importance scores to agent actions based on their impact.",
+            "how_it_helps": "Prioritizes high-value tasks (e.g., personalized offers) over routine updates to drive engagement.",
+            "advantages_impact": [
+              "Focuses agents on impactful tasks.",
+              "Enhances personalization effectiveness.",
+              "Improves conversion rates."
+            ],
+            "outcome": "Highly impactful and effective agent actions.",
+            "complexity": {
+              "time_complexity": "O(V+E) per iteration until convergence",
+              "space_complexity": "O(V+E)"
+            }
+          }
+        },
+        {
+          "name": "Catalan Numbers",
+          "image": "catlan_number.png",
+          "code": "all_codes/3/catalan_numbers.cpp",
+          "details": {
+            "definition_core_idea": "Counts valid sequences of customer-agent interactions for modeling personalization paths.",
+            "how_it_helps": "Models and optimizes interaction sequences (e.g., email → click → notification) for effective touchpoint delivery.",
+            "advantages_impact": [
+              "Anticipates customer behavior.",
+              "Refines complex personalization paths.",
+              "Ensures optimal touchpoint sequences."
+            ],
+            "outcome": "Optimized interaction sequences and refined personalization.",
+            "complexity": {
+              "time_complexity": "O(N)",
+              "space_complexity": "O(1) or O(N)"
+            }
+          }
+        },
+        {
+          "name": "Boruvka's Algorithm",
+          "image": "boruvka.png",
+          "code": "all_codes/3/boruvka.cpp",
+          "details": {
+            "definition_core_idea": "Builds a minimum cost communication network for inter-agent connectivity.",
+            "how_it_helps": "Optimizes the communication backbone to minimize data transfer costs and latency between agents.",
+            "advantages_impact": [
+              "Reduces operational communication costs.",
+              "Improves resource utilization.",
+              "Enhances system stability."
+            ],
+            "outcome": "Cost-effective and efficient agent communication network.",
+            "complexity": {
+              "time_complexity": "O(ElogV) or O(EloglogV)",
+              "space_complexity": "O(V+E)"
+            }
+          }
+        }
+      ],
+      "details": {
+        "impact": [
+          "Min-Cut Max-Flow optimizes resource allocation.",
+          "PageRank prioritizes high-impact actions.",
+          "Catalan Numbers refine interaction sequences.",
+          "Boruvka's Algorithm ensures cost-effective communication."
+        ],
+        "trade_offs": [
+          "Increased complexity from sophisticated algorithms.",
+          "Resource overhead for memory and computation.",
+          "Requires specialized expertise for implementation."
+        ]
+      }
+    },
+    {
+      "heading": "Integrated Workflow",
+      "image": "flowchart/image_3.png",
+      "content": [
+        "These algorithms create a cohesive orchestration pipeline:",
+        "• Resource Allocation: Min-Cut Max-Flow balances computational resources.",
+        "• Action Prioritization: PageRank focuses on high-impact tasks.",
+        "• Interaction Modeling: Catalan Numbers optimize touchpoint sequences.",
+        "• Communication Optimization: Boruvka's Algorithm minimizes network costs."
+      ]
+    },
+    {
+      "heading": "Impact Overview",
+      "content": [
+        "Before: Inefficient resource use, unprioritized actions, and suboptimal interaction sequences reduced conversions.",
+        "After: Enhanced AEP Agent Orchestrator delivers:",
+        "• Efficient Resources: Min-Cut Max-Flow ensures optimal allocation.",
+        "• Impactful Actions: PageRank prioritizes high-value tasks.",
+        "• Optimized Sequences: Catalan Numbers refine personalization paths.",
+        "• Cost-Effective Network: Boruvka's Algorithm minimizes communication costs.",
+        "This results in seamless workflows, higher engagement, and improved sales."
+      ]
+    },
+    {
+  "heading": "References",
+  "content": [
+    {
+      "text": "Adobe Experience Platform Agent Orchestrator enables businesses to build, manage, and orchestrate AI agents from Adobe and third-party ecosystems, enhancing decision-making and multi-agent collaboration.",
+      "link": "https://business.adobe.com/products/experience-platform/agent-orchestrator.html"
+    },
+    {
+      "text": "The Max-Flow Min-Cut Theorem is applied in resource allocation problems, such as assigning tasks to machines or allocating bandwidth in communication networks.",
+      "link": "https://www.numberanalytics.com/blog/max-flow-min-cut-theorem-ultimate-guide"
+    },
+    {
+      "text": "PageRank is an algorithm used by Google Search to rank web pages in their search engine results, measuring the importance of website pages.",
+      "link": "https://en.wikipedia.org/wiki/PageRank"
+    },
+    {
+      "text": "Catalan numbers are a sequence of natural numbers that occur in various counting problems, often involving recursively defined objects.",
+      "link": "https://en.wikipedia.org/wiki/Catalan_number"
+    },
+    {
+      "text": "Borůvka's algorithm is a greedy algorithm for finding a minimum spanning tree in a graph, or a minimum spanning forest in the case of a graph that is not connected.",
+      "link": "https://en.wikipedia.org/wiki/Bor%C5%AFvka%27s_algorithm"
     }
   ]
 }
