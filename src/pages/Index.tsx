@@ -1,6 +1,6 @@
 import { useState, useEffect, Suspense, lazy } from "react";
 import { motion } from "framer-motion";
-import { Github, Linkedin, Mail, Phone } from "lucide-react";
+import { Github, Linkedin, Mail, Phone, FileText } from "lucide-react";
 import ExperienceSection from "@/components/ExperienceSection";
 import CVDownload from "@/components/CVDownload";
 import DreamCompany from "@/components/DreamCompany";
@@ -11,6 +11,8 @@ import { businessCases } from '@/data/businessCases';
 import { useTheme } from '@/contexts/ThemeContext';
 import { Sun, Moon } from 'lucide-react';
 import CodeModal from '../components/CodeModal';
+
+
 
 const BusinessCaseCard = lazy(() => import("@/components/BusinessCaseCard"));
 
@@ -124,7 +126,7 @@ const Index = () => {
             </motion.div>
             {/* Nav items right-aligned */}
             <div className="hidden md:flex items-center space-x-8 ml-auto">
-              {["home", "about", "education","experience", "projects", "skills", "achievements", "dream-company","business-cases", "connect-cv"].map((section) => (
+              {[ "home", "about", "education","experience", "projects", "skills", "achievements", "dream-company","business-cases"].map((section) => (
                 <motion.button
                   key={section}
                   whileHover={{ scale: 1.05 }}
@@ -192,12 +194,14 @@ const Index = () => {
                 { icon: Github, href: "https://github.com/IshanGK007/", label: "GitHub" },
                 { icon: Mail, href: "mailto:ikishankulkarni16@gmail.com", label: "Email" },
                 { icon: Phone, href: "tel:+918431457815", label: "Phone" },
-              ].map(({ icon: Icon, href, label }, index) => (
+                { icon: FileText, href: "/Ishan_Kulkarni_Resume.pdf", label: "Download CV", download: "Ishan_Kulkarni_Resume.pdf" },
+              ].map(({ icon: Icon, href, label, download }, index) => (
                 <motion.a
                   key={label}
                   href={href}
-                  target="_blank"
+                  target={download ? "_self" : "_blank"}
                   rel="noopener noreferrer"
+                  download={download}
                   whileHover={{ scale: 1.1 }}
                   whileTap={{ scale: 0.95 }}
                   className="text-slate-600 hover:text-indigo-500 transition-colors p-2 rounded-full hover:bg-slate-100 flex items-center justify-center"
@@ -293,6 +297,7 @@ const Index = () => {
           </motion.div>
         </div>
       </section>
+
 
       <section id="education" className="py-20 bg-white dark:bg-slate-900 px-4">
         <div className="max-w-7xl mx-auto">
@@ -517,6 +522,33 @@ const Index = () => {
       <Achievements />
 
       <DreamCompany />
+
+      <section id="adobe-platform" className="py-16 bg-gradient-to-b from-white to-slate-50 dark:from-slate-900 dark:to-slate-800 px-4">
+        <div className="max-w-7xl mx-auto">
+          <motion.h2
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            className="text-3xl font-bold text-center gradient-text mb-12"
+          >
+            Adobe Platform & Service Overview
+          </motion.h2>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="flex justify-center"
+          >
+            <motion.img
+              src="touched_parts.png"
+              alt="Adobe Platform & Service Overview"
+              className="w-full max-w-4xl rounded-lg shadow-lg outline-2 outline-transparent outline-offset-0 transition-all duration-300"
+              whileHover={{ scale: 1.01, boxShadow: "0px 10px 20px rgba(0,0,0,0.1)", outlineColor: "#6366F1" }}
+              transition={{ duration: 0.3 }}
+            />
+          </motion.div>
+        </div>
+      </section>
 
       <section id="business-cases" className="py-20 bg-gradient-to-b from-slate-50 to-white dark:from-slate-900 dark:to-slate-800 px-4">
         <div className="max-w-7xl mx-auto">
@@ -807,86 +839,6 @@ const Index = () => {
               </div>
             </Suspense>
           )}
-        </div>
-      </section>
-
-      {/* Combined CV Download and Contact Section */}
-      <section id="connect-cv" className="py-20 bg-slate-50 dark:bg-slate-900 px-4">
-        <div className="max-w-4xl mx-auto">
-          <motion.h2
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            className="text-3xl font-bold text-center gradient-text mb-12"
-          >
-            Connect & CV
-          </motion.h2>
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="bg-white dark:bg-slate-800 shadow-lg rounded-xl p-8 border border-slate-200 dark:border-slate-700"
-          >
-            <p className="text-lg text-slate-600 dark:text-slate-300 mb-8 text-center">
-              Ready to collaborate on innovative projects? Let's connect!
-            </p>
-            
-            {/* Contact Grid - 2x2 */}
-            <div className="grid grid-cols-2 gap-6 mb-8">
-              {[
-                {
-                  href: "mailto:ikishankulkarni16@gmail.com",
-                  icon: MailIcon,
-                  text: "ikishankulkarni16@gmail.com",
-                  label: "Email"
-                },
-                {
-                  href: "tel:+918431457815",
-                  icon: Phone,
-                  text: "+91-8431457815",
-                  label: "Phone"
-                },
-                {
-                  href: "https://www.linkedin.com/in/ishan-kulkarni-42361832a",
-                  icon: Linkedin,
-                  text: "LinkedIn Profile",
-                  label: "LinkedIn"
-                },
-                {
-                  href: "https://github.com/IshanGK007",
-                  icon: GithubIcon,
-                  text: "GitHub Profile",
-                  label: "GitHub"
-                }
-              ].map(({ href, icon: Icon, text, label }, index) => (
-                <motion.a
-                  key={text}
-                  href={href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: index * 0.1 }}
-                  className="flex items-center p-4 space-x-4 rounded-lg hover:bg-slate-50 transition-all group"
-                >
-                  <div className="p-3 bg-indigo-50 rounded-full group-hover:bg-indigo-100 transition-colors">
-                    <Icon className="w-6 h-6 text-indigo-600" />
-                  </div>
-                  <div className="flex flex-col">
-                    <span className="text-sm font-semibold text-indigo-600">{label}</span>
-                    <span className="text-sm text-slate-600">{text}</span>
-                  </div>
-                </motion.a>
-              ))}
-            </div>
-
-            {/* CV Download Button - Centered */}
-            <div className="flex justify-center">
-              <CVDownload />
-            </div>
-          </motion.div>
         </div>
       </section>
 

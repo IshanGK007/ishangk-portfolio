@@ -241,158 +241,6 @@ export const businessCases: BusinessCase[] = [
   ]
 },
 {
-  "id": 2,
-  "title": "AEP Real-Time CX: Data Stream Optimization with Smart Structures",
-  "concepts": ["Sliding Window", "Bloom Filter", "Trie"],
-  "sections": [
-    {
-      "heading": "Overview",
-      "content": [
-        "Adobe Experience Platform (AEP) powers real-time customer experiences by ingesting and processing massive streaming data. To achieve hyper-personalization during high-traffic events like flash sales, this data card explores three essential data structures—Sliding Window, Bloom Filters, and Trie—that significantly optimize the pipeline from data capture to dynamic cohort targeting."
-      ]
-    },
-    {
-      "heading": "Applied Context",
-      "content": [
-        "Imagine a bustling e-commerce platform during a flash sale, handling a high volume of customer actions (clicks, views, transactions). In this intense environment, AEP must efficiently:",
-        "• Detect product interest bursts in real-time.",
-        "• Deduplicate actions across various devices to prevent skewed analytics and ensure accurate user profiles.",
-        "• Identify complex behavior sequences (e.g., 'view product page → add to cart → abandon cart') to understand customer intent.",
-        "Delivering contextual offers promptly is critical for maximizing revenue and ensuring customer satisfaction during peak periods."
-      ]
-    },
-    {
-      "heading": "System Gaps & Limitations",
-      "content": [
-        "The e-commerce platform faces:",
-        "• Streaming Volume: High event volumes can overwhelm traditional systems, causing delays.",
-        "• Duplicate Noise: Cross-device interactions generate duplicates, skewing analytics.",
-        "• Pattern Recognition: Rapidly changing behavior sequences require fast detection for timely interventions."
-      ]
-    },
-    {
-      "heading": "Algorithmic Applications & System Alignment",
-      "sub_sections": [
-        {
-          "name": "Sliding Window",
-          "image": "sliding_wnd.png",
-          "code": "all_codes/2/sliding_window.cpp",
-          "details": {
-            "definition_core_idea": "Summarizes recent events for real-time analytics by focusing on the most current data.",
-            "how_it_helps": "Continuously tracks a specific time frame of events (e.g., recent product views), enabling immediate detection of product interest bursts.",
-            "advantages_impact": [
-              "Captures real-time activity spikes.",
-              "Enables rapid response to emerging trends.",
-              "Efficient memory use by discarding old data."
-            ],
-            "outcome": "Detects product interest surges for timely interventions.",
-            "complexity": {
-              "time_complexity": "O(N), amortized O(1) per event",
-              "space_complexity": "O(W)"
-            }
-          }
-        },
-        {
-          "name": "Bloom Filter",
-          "image": "bloom_filter.png",
-          "code": "all_codes/2/bloom_filter.cpp",
-          "details": {
-            "definition_core_idea": "A probabilistic data structure that efficiently tests whether an element is in a set.",
-            "how_it_helps": "Quickly determines if an event (e.g., click) has already occurred across sessions or devices, deduplicating user actions.",
-            "advantages_impact": [
-              "Efficient deduplication across devices.",
-              "Low memory footprint.",
-              "Improves data integrity for analytics."
-            ],
-            "outcome": "Removes duplicate events, ensuring clean and accurate customer data.",
-            "complexity": {
-              "time_complexity": "O(K)",
-              "space_complexity": "O(M)"
-            }
-          }
-        },
-        {
-          "name": "Trie",
-          "image": "trie.png",
-          "code": "all_codes/2/trie.cpp",
-          "details": {
-            "definition_core_idea": "A prefix tree used for storing and searching sequences like user behavior paths.",
-            "how_it_helps": "Enables fast, complex metadata queries for regional tags or content patterns, streamlining content filtering.",
-            "advantages_impact": [
-              "Accelerates metadata-based content retrieval.",
-              "Supports complex pattern matching.",
-              "Improves regional content management."
-            ],
-            "outcome": "Efficient searching and filtering of localized content.",
-            "complexity": {
-              "time_complexity": "O(L) search, O(N) or O(NlogN) preprocessing",
-              "space_complexity": "O(N) or O(N⋅Σ)"
-            }
-          }
-        }
-      ],
-      "details": {
-        "impact": [
-          "Sliding Window enables detection of real-time activity surges.",
-          "Bloom Filters remove duplicates for accurate analytics.",
-          "Trie supports predictive offers via behavior path matching."
-        ],
-        "trade_offs": [
-          "Increased architectural complexity from integrating multiple structures.",
-          "Memory requirements may grow with Trie-based sequence storage.",
-          "Specialized knowledge needed for probabilistic and hierarchical structures."
-        ]
-      }
-    },
-    {
-      "heading": "Integrated Workflow",
-      "image": "flowchart/image_2.png",
-      "content": [
-        "These data structures create an optimized real-time pipeline:",
-        "• Real-Time Analytics: Sliding Window tracks activity spikes.",
-        "• Data Integrity: Bloom Filters ensure clean, deduplicated data.",
-        "• Predictive Personalization: Trie identifies behavior patterns for targeted offers."
-      ]
-    },
-    {
-      "heading": "Impact Overview",
-      "content": [
-        "Before: Delayed reactions to customer behavior led to missed opportunities and cart abandonments.",
-        "After: Enhanced AEP delivers:",
-        "• Real-Time Detection: Sliding Windows identify product interest surges.",
-        "• Accurate Data: Bloom Filters eliminate duplicate events.",
-        "• Predictive Offers: Tries enable behavior-driven interventions.",
-        "This enables rapid, contextual offer delivery, maximizing revenue and customer satisfaction."
-      ]
-    },
-        { // New Reference Section
-        "heading": "References",
-        "content":[
-            {
-              "text": "Adobe Experience Platform's Real-Time Customer Data Platform (RTCDP) integrates known and unknown customer data to create trusted profiles, enabling real-time activation across digital journeys.",
-              "link": "https://business.adobe.com/products/real-time-customer-data-platform/rtcdp.html"
-            },
-            {
-              "text": "Sliding window algorithms offer a scalable and efficient approach to processing streaming data in real-time across various domains.",
-              "link": "https://medium.com/@machinelearningclub/sliding-window-algorithms-for-real-time-data-processing-2012f00d07d7"
-            },
-            {
-              "text": "A Bloom filter is a space-efficient probabilistic data structure that is used to test whether an item is a member of a set.",
-              "link": "https://systemdesign.one/bloom-filters-explained/"
-            },
-            {
-              "text": "In computer science, a trie, also known as a digital tree or prefix tree, is a specialized search tree data structure used to store and retrieve strings from a dictionary or set.",
-              "link": "https://en.wikipedia.org/wiki/Trie"
-            },
-            {
-              "text": "Adobe has unveiled new AI agents called Agent Orchestrator and Brand Concierge at its Adobe Summit conference, enhancing customer engagement and daily marketing functions via autonomous and collaborative AI agents.",
-              "link": "https://www.investors.com/news/technology/adbe-stock-adobe-launches-ai-agents-marketing/"
-            }
-          ]
-      }
-  ]
-},
-{
   "id": 3,
   "title": "Enhancing the AEP Agent Orchestrator: Smarter AI Flow with Advanced Data Structures",
   "concepts": ["Min-Cut Max-Flow", "PageRank", "Catalan Numbers", "Boruvka's Algorithm"],
@@ -913,6 +761,158 @@ export const businessCases: BusinessCase[] = [
   ]
 }
 
+  ]
+},
+{
+  "id": 2,
+  "title": "AEP Real-Time CX: Data Stream Optimization with Smart Structures",
+  "concepts": ["Sliding Window", "Bloom Filter", "Trie"],
+  "sections": [
+    {
+      "heading": "Overview",
+      "content": [
+        "Adobe Experience Platform (AEP) powers real-time customer experiences by ingesting and processing massive streaming data. To achieve hyper-personalization during high-traffic events like flash sales, this data card explores three essential data structures—Sliding Window, Bloom Filters, and Trie—that significantly optimize the pipeline from data capture to dynamic cohort targeting."
+      ]
+    },
+    {
+      "heading": "Applied Context",
+      "content": [
+        "Imagine a bustling e-commerce platform during a flash sale, handling a high volume of customer actions (clicks, views, transactions). In this intense environment, AEP must efficiently:",
+        "• Detect product interest bursts in real-time.",
+        "• Deduplicate actions across various devices to prevent skewed analytics and ensure accurate user profiles.",
+        "• Identify complex behavior sequences (e.g., 'view product page → add to cart → abandon cart') to understand customer intent.",
+        "Delivering contextual offers promptly is critical for maximizing revenue and ensuring customer satisfaction during peak periods."
+      ]
+    },
+    {
+      "heading": "System Gaps & Limitations",
+      "content": [
+        "The e-commerce platform faces:",
+        "• Streaming Volume: High event volumes can overwhelm traditional systems, causing delays.",
+        "• Duplicate Noise: Cross-device interactions generate duplicates, skewing analytics.",
+        "• Pattern Recognition: Rapidly changing behavior sequences require fast detection for timely interventions."
+      ]
+    },
+    {
+      "heading": "Algorithmic Applications & System Alignment",
+      "sub_sections": [
+        {
+          "name": "Sliding Window",
+          "image": "sliding_wnd.png",
+          "code": "all_codes/2/sliding_window.cpp",
+          "details": {
+            "definition_core_idea": "Summarizes recent events for real-time analytics by focusing on the most current data.",
+            "how_it_helps": "Continuously tracks a specific time frame of events (e.g., recent product views), enabling immediate detection of product interest bursts.",
+            "advantages_impact": [
+              "Captures real-time activity spikes.",
+              "Enables rapid response to emerging trends.",
+              "Efficient memory use by discarding old data."
+            ],
+            "outcome": "Detects product interest surges for timely interventions.",
+            "complexity": {
+              "time_complexity": "O(N), amortized O(1) per event",
+              "space_complexity": "O(W)"
+            }
+          }
+        },
+        {
+          "name": "Bloom Filter",
+          "image": "bloom_filter.png",
+          "code": "all_codes/2/bloom_filter.cpp",
+          "details": {
+            "definition_core_idea": "A probabilistic data structure that efficiently tests whether an element is in a set.",
+            "how_it_helps": "Quickly determines if an event (e.g., click) has already occurred across sessions or devices, deduplicating user actions.",
+            "advantages_impact": [
+              "Efficient deduplication across devices.",
+              "Low memory footprint.",
+              "Improves data integrity for analytics."
+            ],
+            "outcome": "Removes duplicate events, ensuring clean and accurate customer data.",
+            "complexity": {
+              "time_complexity": "O(K)",
+              "space_complexity": "O(M)"
+            }
+          }
+        },
+        {
+          "name": "Trie",
+          "image": "trie.png",
+          "code": "all_codes/2/trie.cpp",
+          "details": {
+            "definition_core_idea": "A prefix tree used for storing and searching sequences like user behavior paths.",
+            "how_it_helps": "Enables fast, complex metadata queries for regional tags or content patterns, streamlining content filtering.",
+            "advantages_impact": [
+              "Accelerates metadata-based content retrieval.",
+              "Supports complex pattern matching.",
+              "Improves regional content management."
+            ],
+            "outcome": "Efficient searching and filtering of localized content.",
+            "complexity": {
+              "time_complexity": "O(L) search, O(N) or O(NlogN) preprocessing",
+              "space_complexity": "O(N) or O(N⋅Σ)"
+            }
+          }
+        }
+      ],
+      "details": {
+        "impact": [
+          "Sliding Window enables detection of real-time activity surges.",
+          "Bloom Filters remove duplicates for accurate analytics.",
+          "Trie supports predictive offers via behavior path matching."
+        ],
+        "trade_offs": [
+          "Increased architectural complexity from integrating multiple structures.",
+          "Memory requirements may grow with Trie-based sequence storage.",
+          "Specialized knowledge needed for probabilistic and hierarchical structures."
+        ]
+      }
+    },
+    {
+      "heading": "Integrated Workflow",
+      "image": "flowchart/image_2.png",
+      "content": [
+        "These data structures create an optimized real-time pipeline:",
+        "• Real-Time Analytics: Sliding Window tracks activity spikes.",
+        "• Data Integrity: Bloom Filters ensure clean, deduplicated data.",
+        "• Predictive Personalization: Trie identifies behavior patterns for targeted offers."
+      ]
+    },
+    {
+      "heading": "Impact Overview",
+      "content": [
+        "Before: Delayed reactions to customer behavior led to missed opportunities and cart abandonments.",
+        "After: Enhanced AEP delivers:",
+        "• Real-Time Detection: Sliding Windows identify product interest surges.",
+        "• Accurate Data: Bloom Filters eliminate duplicate events.",
+        "• Predictive Offers: Tries enable behavior-driven interventions.",
+        "This enables rapid, contextual offer delivery, maximizing revenue and customer satisfaction."
+      ]
+    },
+        { // New Reference Section
+        "heading": "References",
+        "content":[
+            {
+              "text": "Adobe Experience Platform's Real-Time Customer Data Platform (RTCDP) integrates known and unknown customer data to create trusted profiles, enabling real-time activation across digital journeys.",
+              "link": "https://business.adobe.com/products/real-time-customer-data-platform/rtcdp.html"
+            },
+            {
+              "text": "Sliding window algorithms offer a scalable and efficient approach to processing streaming data in real-time across various domains.",
+              "link": "https://medium.com/@machinelearningclub/sliding-window-algorithms-for-real-time-data-processing-2012f00d07d7"
+            },
+            {
+              "text": "A Bloom filter is a space-efficient probabilistic data structure that is used to test whether an item is a member of a set.",
+              "link": "https://systemdesign.one/bloom-filters-explained/"
+            },
+            {
+              "text": "In computer science, a trie, also known as a digital tree or prefix tree, is a specialized search tree data structure used to store and retrieve strings from a dictionary or set.",
+              "link": "https://en.wikipedia.org/wiki/Trie"
+            },
+            {
+              "text": "Adobe has unveiled new AI agents called Agent Orchestrator and Brand Concierge at its Adobe Summit conference, enhancing customer engagement and daily marketing functions via autonomous and collaborative AI agents.",
+              "link": "https://www.investors.com/news/technology/adbe-stock-adobe-launches-ai-agents-marketing/"
+            }
+          ]
+      }
   ]
 },
 {
