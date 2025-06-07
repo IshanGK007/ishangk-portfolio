@@ -10,6 +10,7 @@ import { Code, Database, Brain, GitBranchIcon, GithubIcon, MailIcon, Server, Lay
 import { businessCases } from '@/data/businessCases';
 import { useTheme } from '@/contexts/ThemeContext';
 import { Sun, Moon } from 'lucide-react';
+import CodeModal from '../components/CodeModal';
 
 const BusinessCaseCard = lazy(() => import("@/components/BusinessCaseCard"));
 
@@ -33,6 +34,7 @@ const Index = () => {
   const [expandedBusinessCaseId, setExpandedBusinessCaseId] = useState<number | null>(null);
   const [clickedCardIndex, setClickedCardIndex] = useState<number | null>(null);
   const { theme, toggleTheme } = useTheme();
+  const [selectedCode, setSelectedCode] = useState<{ code: string; title: string } | null>(null);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -79,6 +81,31 @@ const Index = () => {
     return () => clearInterval(interval);
   }, [charIndex, messageIndex, messages]);
 
+  const handleViewCode = async (codePath: string, title: string) => {
+    try {
+      console.log('Loading code from:', codePath);
+      // Add a timestamp to prevent caching
+      const response = await fetch(`${codePath}?t=${Date.now()}`);
+      console.log('Response status:', response.status);
+      if (!response.ok) {
+        throw new Error(`Failed to load code file: ${response.status} ${response.statusText}`);
+      }
+      const code = await response.text();
+      console.log('Code loaded successfully, length:', code.length);
+      if (!code || code.trim().length === 0) {
+        throw new Error('Code file is empty');
+      }
+      setSelectedCode({ code, title });
+    } catch (error) {
+      console.error('Error loading code:', error);
+      // Show error in the modal
+      setSelectedCode({ 
+        code: `Error loading code: ${error instanceof Error ? error.message : 'Unknown error'}\n\nPlease check the browser console for more details.`, 
+        title 
+      });
+    }
+  };
+
   return (
     <div className="min-h-screen bg-gradient-to-b from-slate-50 to-white dark:from-slate-900 dark:to-slate-800 dark:text-white">
       <nav className="fixed top-0 left-0 right-0 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md z-50 border-b border-slate-200 dark:border-slate-700 shadow-sm">
@@ -97,7 +124,7 @@ const Index = () => {
             </motion.div>
             {/* Nav items right-aligned */}
             <div className="hidden md:flex items-center space-x-8 ml-auto">
-              {["home", "about", "education","experience", "projects", "skills", "achievements", "dream-company","business-cases", "cv", "contact"].map((section) => (
+              {["home", "about", "education","experience", "projects", "skills", "achievements", "dream-company","business-cases", "connect-cv"].map((section) => (
                 <motion.button
                   key={section}
                   whileHover={{ scale: 1.05 }}
@@ -109,7 +136,7 @@ const Index = () => {
                       : "text-slate-600 dark:text-slate-300 hover:text-indigo-500 dark:hover:text-indigo-400"
                   } capitalize transition-colors duration-200 relative group px-2`}
                 >
-                  {section}
+                  {section === "connect-cv" ? "Connect & CV" : section}
                   <span className="absolute bottom-[-4px] left-0 w-0 h-0.5 bg-indigo-600 dark:bg-indigo-400 transition-all duration-300 group-hover:w-full"></span>
                 </motion.button>
               ))}
@@ -599,7 +626,6 @@ const Index = () => {
                                       </div>
                                     )}
 
-
                                     {/* Advantages & Impact */}
                                     {enhancement.details.advantages_impact && enhancement.details.advantages_impact.length > 0 && (
                                       <div className="mb-3">
@@ -639,6 +665,23 @@ const Index = () => {
                                           )}
                                         </div>
                                       </div>
+                                    )}
+
+                                    {/* Description */}
+                                    {enhancement.details.definition_core_idea && (
+                                      <p className="text-gray-600 dark:text-gray-300 mt-2">
+                                        {enhancement.details.definition_core_idea}
+                                      </p>
+                                    )}
+
+                                    {/* Code */}
+                                    {enhancement.code && (
+                                      <button
+                                        onClick={() => handleViewCode(enhancement.code!, enhancement.name)}
+                                        className="mt-2 inline-flex items-center px-3 py-1.5 text-sm font-medium text-white bg-blue-600 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+                                      >
+                                        View Code
+                                      </button>
                                     )}
                                   </div>
                                 </div>
@@ -720,10 +763,8 @@ const Index = () => {
         </div>
       </section>
 
-      {/* CV Download Section */}
-      <CVDownload />
-
-      <section id="contact" className="py-20 bg-slate-50 dark:bg-slate-900 px-4">
+      {/* Combined CV Download and Contact Section */}
+      <section id="connect-cv" className="py-20 bg-slate-50 dark:bg-slate-900 px-4">
         <div className="max-w-4xl mx-auto">
           <motion.h2
             initial={{ opacity: 0 }}
@@ -731,7 +772,7 @@ const Index = () => {
             viewport={{ once: true }}
             className="text-3xl font-bold text-center gradient-text mb-12"
           >
-            Get in Touch
+            Connect & CV
           </motion.h2>
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -742,7 +783,9 @@ const Index = () => {
             <p className="text-lg text-slate-600 dark:text-slate-300 mb-8 text-center">
               Ready to collaborate on innovative projects? Let's connect!
             </p>
-            <div className="grid md:grid-cols-2 gap-6">
+            
+            {/* Contact Grid - 2x2 */}
+            <div className="grid grid-cols-2 gap-6 mb-8">
               {[
                 {
                   href: "mailto:ikishankulkarni16@gmail.com",
@@ -791,9 +834,21 @@ const Index = () => {
                 </motion.a>
               ))}
             </div>
+
+            {/* CV Download Button - Centered */}
+            <div className="flex justify-center">
+              <CVDownload />
+            </div>
           </motion.div>
         </div>
       </section>
+
+      <CodeModal
+        isOpen={selectedCode !== null}
+        onClose={() => setSelectedCode(null)}
+        code={selectedCode?.code || ''}
+        title={selectedCode?.title || ''}
+      />
     </div>
   );
 };

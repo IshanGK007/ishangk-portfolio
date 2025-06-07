@@ -11,6 +11,7 @@ export interface Complexity {
 export interface Enhancement {
   name: string; // Name of the enhancement, e.g., "Directed Acyclic Graphs (DAGs) for Task Coordination"
   image?: string; // Optional visual aid (e.g., diagram URL)
+  code?: string; // Optional code file path
   details: {
     definition_core_idea: string; // Short explanation of what the enhancement is
     how_it_helps: string; // Describes how it solves a specific challenge in context
@@ -74,6 +75,7 @@ export const businessCases: BusinessCase[] = [
         {
           "name": "Directed Acyclic Graphs",
           "image": "dag_img.png",
+          "code": "all_codes/1/dag.cpp",
           "details": {
             "definition_core_idea": "Organizes task dependencies to ensure logical execution order.",
             "how_it_helps": "Ensures tasks like flight and hotel suggestions occur in the correct sequence, preventing overlap and ensuring a coherent booking flow.",
@@ -92,6 +94,7 @@ export const businessCases: BusinessCase[] = [
         {
           "name": "Priority Queues",
           "image": "priority_queue.png",
+          "code": "all_codes/1/priority_queue.cpp",
           "details": {
             "definition_core_idea": "Schedules tasks based on urgency using a priority-based queue.",
             "how_it_helps": "Prioritizes critical tasks like urgent flight changes over routine tasks, ensuring timely responses.",
@@ -110,6 +113,7 @@ export const businessCases: BusinessCase[] = [
         {
           "name": "Hash Tables",
           "image": "hash_table.png",
+          "code": "all_codes/1/hash_table.cpp",
           "details": {
             "definition_core_idea": "Provides fast key-value storage for customer data retrieval.",
             "how_it_helps": "Enables instant access to customer preferences and history for real-time personalization.",
@@ -128,6 +132,7 @@ export const businessCases: BusinessCase[] = [
         {
           "name": "Dynamic Programming",
           "image": "dp.png",
+          "code": "all_codes/1/dynamic_programming.cpp",
           "details": {
             "definition_core_idea": "Optimizes multi-step decisions for offer sequencing.",
             "how_it_helps": "Calculates the optimal order of add-on offers (e.g., car rentals, insurance) to maximize engagement.",
@@ -146,6 +151,7 @@ export const businessCases: BusinessCase[] = [
         {
           "name": "Johnson-Trotter Algorithm",
           "image": "jhonson_trotter.png",
+          "code": "all_codes/1/johnson_trotter.cpp",
           "details": {
             "definition_core_idea": "Generates all permutations of tasks or offers for exhaustive testing.",
             "how_it_helps": "Tests all possible sequences offline to identify optimal orderings and validate decision models.",
@@ -239,6 +245,7 @@ export const businessCases: BusinessCase[] = [
         {
           "name": "Sliding Window",
           "image": "sliding_wnd.png",
+          "code": "all_codes/2/sliding_window.cpp",
           "details": {
             "definition_core_idea": "Summarizes recent events for real-time analytics by focusing on the most current data.",
             "how_it_helps": "Continuously tracks a specific time frame of events (e.g., recent product views), enabling immediate detection of product interest bursts.",
@@ -257,6 +264,7 @@ export const businessCases: BusinessCase[] = [
         {
           "name": "Bloom Filter",
           "image": "bloom_filter.png",
+          "code": "all_codes/2/bloom_filter.cpp",
           "details": {
             "definition_core_idea": "A probabilistic data structure that efficiently tests whether an element is in a set.",
             "how_it_helps": "Quickly determines if an event (e.g., click) has already occurred across sessions or devices, deduplicating user actions.",
@@ -275,18 +283,19 @@ export const businessCases: BusinessCase[] = [
         {
           "name": "Trie",
           "image": "trie.png",
+          "code": "all_codes/2/trie.cpp",
           "details": {
             "definition_core_idea": "A prefix tree used for storing and searching sequences like user behavior paths.",
-            "how_it_helps": "Efficiently stores and detects sequences like 'search → view → add to cart → abandon,' enabling behavior-driven interventions.",
+            "how_it_helps": "Enables fast, complex metadata queries for regional tags or content patterns, streamlining content filtering.",
             "advantages_impact": [
-              "Identifies high-value behavior paths.",
-              "Supports predictive personalization.",
-              "Accelerates action-trigger pipelines."
+              "Accelerates metadata-based content retrieval.",
+              "Supports complex pattern matching.",
+              "Improves regional content management."
             ],
-            "outcome": "Recognizes key interaction patterns to enable next-best actions.",
+            "outcome": "Efficient searching and filtering of localized content.",
             "complexity": {
-              "time_complexity": "O(L)",
-              "space_complexity": "O(N⋅L)"
+              "time_complexity": "O(L) search, O(N) or O(NlogN) preprocessing",
+              "space_complexity": "O(N) or O(N⋅Σ)"
             }
           }
         }
@@ -358,6 +367,7 @@ export const businessCases: BusinessCase[] = [
         {
           "name": "Min-Cut Max-Flow",
           "image": "min_cut_max_flow.png",
+          "code": "all_codes/3/min_cut_max_flow.cpp",
           "details": {
             "definition_core_idea": "Optimizes resource distribution across agents by modeling them as a flow network.",
             "how_it_helps": "Strategically allocates server resources to critical agents (e.g., inventory checks) during high demand, preventing delays.",
@@ -376,6 +386,7 @@ export const businessCases: BusinessCase[] = [
         {
           "name": "PageRank",
           "image": "pagerank.png",
+          "code": "all_codes/3/pagerank.cpp",
           "details": {
             "definition_core_idea": "Assigns importance scores to agent actions based on their impact.",
             "how_it_helps": "Prioritizes high-value tasks (e.g., personalized offers) over routine updates to drive engagement.",
@@ -394,6 +405,7 @@ export const businessCases: BusinessCase[] = [
         {
           "name": "Catalan Numbers",
           "image": "catlan_number.png",
+          "code": "all_codes/3/catalan_numbers.cpp",
           "details": {
             "definition_core_idea": "Counts valid sequences of customer-agent interactions for modeling personalization paths.",
             "how_it_helps": "Models and optimizes interaction sequences (e.g., email → click → notification) for effective touchpoint delivery.",
@@ -412,6 +424,7 @@ export const businessCases: BusinessCase[] = [
         {
           "name": "Boruvka's Algorithm",
           "image": "boruvka.png",
+          "code": "all_codes/3/boruvka.cpp",
           "details": {
             "definition_core_idea": "Builds a minimum cost communication network for inter-agent connectivity.",
             "how_it_helps": "Optimizes the communication backbone to minimize data transfer costs and latency between agents.",
@@ -468,13 +481,13 @@ export const businessCases: BusinessCase[] = [
 },
 {
   "id": 4,
-  "title": "Accelerating Visual Creativity: Adobe Firefly’s Algorithmic Enhancements for Moodboarding",
-  "concepts": ["2D Kadane’s Algorithm", "Sparse Tables", "A* Algorithm", "Longest Common Subsequence"],
+  "title": "Accelerating Visual Creativity: Adobe Firefly's Algorithmic Enhancements for Moodboarding",
+  "concepts": ["2D Kadane's Algorithm", "Sparse Tables", "A* Algorithm", "Longest Common Subsequence"],
   "sections": [
     {
       "heading": "Introduction",
       "content": [
-        "Adobe Firefly’s Generative Match technology uses neural networks to extract and apply style features like brush strokes and color gradients, streamlining moodboard creation for designers. Traditional manual moodboarding is slow and error-prone. This data card proposes integrating 2D Kadane’s Algorithm, Sparse Tables, A* Algorithm, and Longest Common Subsequence (LCS) to automate key steps, enhancing speed and precision."
+        "Adobe Firefly's Generative Match technology uses neural networks to extract and apply style features like brush strokes and color gradients, streamlining moodboard creation for designers. Traditional manual moodboarding is slow and error-prone. This data card proposes integrating 2D Kadane's Algorithm, Sparse Tables, A* Algorithm, and Longest Common Subsequence (LCS) to automate key steps, enhancing speed and precision."
       ]
     },
     {
@@ -484,7 +497,7 @@ export const businessCases: BusinessCase[] = [
         "• Identification of key visual zones in reference images.",
         "• Seamless blending of multiple artistic styles.",
         "• Consistent aesthetic across moodboard elements.",
-        "Manual processes risk delays and errors, necessitating Firefly’s algorithmic enhancements."
+        "Manual processes risk delays and errors, necessitating Firefly's algorithmic enhancements."
       ]
     },
     {
@@ -502,8 +515,9 @@ export const businessCases: BusinessCase[] = [
       "heading": "Enhancements & Their Role in the Pipeline",
       "sub_sections": [
         {
-          "name": "2D Kadane’s Algorithm",
+          "name": "2D Kadane's Algorithm",
           "image": "kadane.png",
+          "code": "all_codes/4/kadane.cpp",
           "details": {
             "definition_core_idea": "Scans images to identify regions with maximum visual intensity.",
             "how_it_helps": "Automatically detects high-impact areas (e.g., textured patterns) in reference images, eliminating manual selection.",
@@ -522,6 +536,7 @@ export const businessCases: BusinessCase[] = [
         {
           "name": "Sparse Tables",
           "image": "sparse_table.png",
+          "code": "all_codes/4/sparse_table.cpp",
           "details": {
             "definition_core_idea": "Precomputes answers for range queries on feature arrays for fast extraction.",
             "how_it_helps": "Quickly identifies dominant style features (e.g., color histograms, textures) from detected regions.",
@@ -540,6 +555,7 @@ export const businessCases: BusinessCase[] = [
         {
           "name": "A* Algorithm",
           "image": "a_star.png",
+          "code": "all_codes/4/a_star.cpp",
           "details": {
             "definition_core_idea": "Uses heuristics to find the optimal sequence of style transformations.",
             "how_it_helps": "Efficiently applies styles (e.g., color adjustments, texture overlays) to target elements, balancing quality and cost.",
@@ -558,6 +574,7 @@ export const businessCases: BusinessCase[] = [
         {
           "name": "Longest Common Subsequence",
           "image": "lcs.png",
+          "code": "all_codes/4/lcs.cpp",
           "details": {
             "definition_core_idea": "Aligns style sequences across assets to maintain uniformity.",
             "how_it_helps": "Ensures consistent gradients or patterns across moodboard elements for a unified aesthetic.",
@@ -576,13 +593,13 @@ export const businessCases: BusinessCase[] = [
       ],
       "details": {
         "impact": [
-          "2D Kadane’s Algorithm automates region detection.",
+          "2D Kadane's Algorithm automates region detection.",
           "Sparse Tables enable fast feature extraction.",
           "A* Algorithm optimizes style application.",
           "LCS ensures consistent style blending."
         ],
         "trade_offs": [
-          "High computational costs for 2D Kadane’s and A* with large images.",
+          "High computational costs for 2D Kadane's and A* with large images.",
           "Development effort for algorithm implementation.",
           "Potential resource demands for complex search spaces."
         ]
@@ -592,7 +609,7 @@ export const businessCases: BusinessCase[] = [
       "heading": "Integrated Workflow",
       "content": [
         "These algorithms create a seamless moodboarding pipeline:",
-        "• Region Detection: 2D Kadane’s Algorithm identifies key visual zones.",
+        "• Region Detection: 2D Kadane's Algorithm identifies key visual zones.",
         "• Feature Extraction: Sparse Tables provide instant style attributes.",
         "• Style Application: A* Algorithm ensures high-quality transformations.",
         "• Style Alignment: LCS maintains aesthetic uniformity."
@@ -603,7 +620,7 @@ export const businessCases: BusinessCase[] = [
       "content": [
         "Before: Manual region selection, inconsistent blending, and slow processing delayed moodboard creation.",
         "After: Enhanced Firefly delivers:",
-        "• Rapid Detection: 2D Kadane’s Algorithm automates region identification.",
+        "• Rapid Detection: 2D Kadane's Algorithm automates region identification.",
         "• Fast Analysis: Sparse Tables extract style features instantly.",
         "• Quality Application: A* Algorithm applies styles efficiently.",
         "• Cohesive Aesthetic: LCS ensures visual uniformity.",
@@ -615,12 +632,12 @@ export const businessCases: BusinessCase[] = [
 {
   "id": 5,
   "title": "Enhancing Adobe GenStudio Foundation with Algorithmic Improvements for Content Workflows",
-  "concepts": ["Dijkstra’s Algorithm", "Square-Root Decomposition", "Uniform Cost Search", "Greedy Algorithm"],
+  "concepts": ["Dijkstra's Algorithm", "Square-Root Decomposition", "Uniform Cost Search", "Greedy Algorithm"],
   "sections": [
     {
       "heading": "Introduction",
       "content": [
-        "Adobe GenStudio Foundation automates enterprise content workflows, integrating planning, creation, approval, and performance tracking across Adobe’s Creative Cloud and Experience Cloud. While static scheduling templates and heuristic-based resource planning excel in predictable scenarios, they face limitations in dynamic, high-volume environments. This data card proposes advanced algorithms—Dijkstra’s Algorithm, Square-Root Decomposition, Uniform Cost Search, and a Greedy Algorithm for Resource Assignment—to transform GenStudio into an intelligent, real-time content orchestrator, addressing task congestion, inefficient resource allocation, and inflexible scheduling."
+        "Adobe GenStudio Foundation automates enterprise content workflows, integrating planning, creation, approval, and performance tracking across Adobe's Creative Cloud and Experience Cloud. While static scheduling templates and heuristic-based resource planning excel in predictable scenarios, they face limitations in dynamic, high-volume environments. This data card proposes advanced algorithms—Dijkstra's Algorithm, Square-Root Decomposition, Uniform Cost Search, and a Greedy Algorithm for Resource Assignment—to transform GenStudio into an intelligent, real-time content orchestrator, addressing task congestion, inefficient resource allocation, and inflexible scheduling."
       ]
     },
     {
@@ -646,8 +663,9 @@ export const businessCases: BusinessCase[] = [
       "heading": "Enhancements & Their Role in the Pipeline",
       "sub_sections": [
         {
-          "name": "Dijkstra’s Algorithm",
+          "name": "Dijkstra's Algorithm",
           "image": "dijkstra.png",
+          "code": "all_codes/5/dijkstra.cpp",
           "details": {
             "definition_core_idea": "Finds the most efficient path through a workflow by modeling tasks as nodes and dependencies as weighted edges (weights reflect time or resource costs).",
             "how_it_helps": "Identifies critical paths and potential bottlenecks, such as legal reviews, allowing dynamic reprioritization to mitigate delays.",
@@ -666,6 +684,7 @@ export const businessCases: BusinessCase[] = [
         {
           "name": "Greedy Algorithm",
           "image": "greedy.png",
+          "code": "all_codes/5/greedy.cpp",
           "details": {
             "definition_core_idea": "Makes locally optimal choices at each step for task-to-resource assignments.",
             "how_it_helps": "Assigns tasks to the least busy or most skilled team member, improving responsiveness to new demands.",
@@ -684,6 +703,7 @@ export const businessCases: BusinessCase[] = [
         {
           "name": "Square-Root Decomposition",
           "image": "sqrt_decompose.png",
+          "code": "all_codes/5/sqrt_decomposition.cpp",
           "details": {
             "definition_core_idea": "Groups large task sets into manageable blocks for efficient processing and updates.",
             "how_it_helps": "Manages high-volume tasks, like social media posts, by dividing them into chunks for faster queries and updates.",
@@ -702,6 +722,7 @@ export const businessCases: BusinessCase[] = [
         {
           "name": "Uniform Cost Search",
           "image": "ucs.png",
+          "code": "all_codes/5/ucs.cpp",
           "details": {
             "definition_core_idea": "Finds the lowest-cost execution path through a workflow graph, accounting for dynamic task costs.",
             "how_it_helps": "Adapts to changing conditions like urgent tasks or resource availability, ensuring cost-optimal task progression.",
@@ -720,13 +741,13 @@ export const businessCases: BusinessCase[] = [
       ],
       "details": {
         "impact": [
-          "Dijkstra’s Algorithm streamlines task sequencing and reduces bottlenecks.",
+          "Dijkstra's Algorithm streamlines task sequencing and reduces bottlenecks.",
           "Greedy Algorithm improves initial resource allocation responsiveness.",
           "Square-Root Decomposition enhances scalability for high-volume tasks.",
           "Uniform Cost Search ensures cost-optimal task routing under dynamic conditions."
         ],
         "trade_offs": [
-          "Computational overhead for Dijkstra’s and Uniform Cost Search in large workflows.",
+          "Computational overhead for Dijkstra's and Uniform Cost Search in large workflows.",
           "Increased memory needs for Square-Root Decomposition with high data volumes.",
           "Engineering complexity requires expertise for seamless integration."
         ]
@@ -783,6 +804,7 @@ export const businessCases: BusinessCase[] = [
         {
           "name": "Statistical Sampling",
           "image": "startified_sampling.png",
+          "code": "all_codes/6/statistical_sampling.cpp",
           "details": {
             "definition_core_idea": "Uses representative user subsets to test content variations, enabling quick and reliable insights.",
             "how_it_helps": "Accelerates A/B testing by analyzing statistically significant samples, allowing early termination of underperforming variants.",
@@ -801,6 +823,7 @@ export const businessCases: BusinessCase[] = [
         {
           "name": "Look-up Tables",
           "image": "lookup.png",
+          "code": "all_codes/6/lookup_table.cpp",
           "details": {
             "definition_core_idea": "Stores precomputed mappings (e.g., headline text to click-through rate) for instant performance data retrieval.",
             "how_it_helps": "Indexes content attributes and metrics for immediate access, enabling real-time decisions on elements like image styles.",
@@ -819,6 +842,7 @@ export const businessCases: BusinessCase[] = [
         {
           "name": "Heap Data Structures",
           "image": "heap.png",
+          "code": "all_codes/6/heap.cpp",
           "details": {
             "definition_core_idea": "Maintains a dynamic leaderboard of content based on real-time metrics like click-through rates using max-heaps.",
             "how_it_helps": "Prioritizes and updates high-performing content for immediate promotion on platforms like homepages.",
@@ -837,6 +861,7 @@ export const businessCases: BusinessCase[] = [
         {
           "name": "Longest Common Substring",
           "image": "LCString.png",
+          "code": "all_codes/6/lcstring.cpp",
           "details": {
             "definition_core_idea": "Identifies shared patterns (e.g., text phrases, stylistic elements) across top-performing content.",
             "how_it_helps": "Compares attribute sequences to find common elements, like headline styles, guiding content creation.",
@@ -929,6 +954,7 @@ export const businessCases: BusinessCase[] = [
         {
           "name": "Balanced BST (AVL Tree)",
           "image": "avl.png",
+          "code": "all_codes/7/avl_tree.cpp",
           "details": {
             "definition_core_idea": "A self-balancing binary search tree that maintains a sorted list of tasks based on priority.",
             "how_it_helps": "Dynamically prioritizes and schedules video localization tasks, allowing urgent tasks to be inserted and processed efficiently.",
@@ -945,8 +971,9 @@ export const businessCases: BusinessCase[] = [
           }
         },
         {
-          "name": "Union-Find",
+          "name": "Disjoint-Set",
           "image": "disjoint_set.png",
+          "code": "all_codes/7/disjoint_set.cpp",
           "details": {
             "definition_core_idea": "A data structure that groups subtitle segments with shared timing or logical constraints.",
             "how_it_helps": "Ensures temporal and logical consistency by grouping related subtitle segments across translations.",
@@ -965,6 +992,7 @@ export const businessCases: BusinessCase[] = [
         {
           "name": "Suffix Tree",
           "image": "trie.png",
+          "code": "all_codes/7/suffix_tree.cpp",
           "details": {
             "definition_core_idea": "A tree-based structure for efficient pattern searching in large strings or metadata.",
             "how_it_helps": "Enables fast, complex metadata queries for regional tags or content patterns, streamlining content filtering.",
@@ -983,6 +1011,7 @@ export const businessCases: BusinessCase[] = [
         {
           "name": "Ford-Fulkerson Algorithm",
           "image": "FordFulkerson.png",
+          "code": "all_codes/7/ford_fulkerson.cpp",
           "details": {
             "definition_core_idea": "Maximizes flow through a network modeling the video localization pipeline.",
             "how_it_helps": "Optimizes task routing to processing engines, maximizing throughput and identifying bottlenecks.",
@@ -1070,6 +1099,7 @@ export const businessCases: BusinessCase[] = [
         {
           "name": "Octree",
           "image": "octree.png",
+          "code": "all_codes/9/octree.cpp",
           "details": {
             "definition_core_idea": "A spatial data structure that recursively divides 3D space into octants for efficient mesh and voxel management.",
             "how_it_helps": "Determines visible model parts and their level of detail during user interactions like zooming or rotating, optimizing ray-tracing and LOD management.",
@@ -1088,6 +1118,7 @@ export const businessCases: BusinessCase[] = [
         {
           "name": "KD-Tree",
           "image": "kd_tree.png",
+          "code": "all_codes/9/kd_tree.cpp",
           "details": {
             "definition_core_idea": "A data structure for efficient nearest-neighbor searches in multi-dimensional space, such as color or geometry attributes.",
             "how_it_helps": "Identifies similar asset variants to prevent redundant generation and suggest relevant customization options.",
@@ -1106,6 +1137,7 @@ export const businessCases: BusinessCase[] = [
         {
           "name": "Segment Tree",
           "image": "segment_tree.png",
+          "code": "all_codes/9/segment_tree.cpp",
           "details": {
             "definition_core_idea": "A tree structure for efficient range queries and updates over asset properties.",
             "how_it_helps": "Enables real-time filtering and aggregation of asset properties, such as counting cars with specific finishes, for dynamic UI feedback.",
@@ -1191,6 +1223,7 @@ export const businessCases: BusinessCase[] = [
         {
           "name": "Fenwick Tree",
           "image": "fenwik_tree.png",
+          "code": "all_codes/8/fenwick_tree.cpp",
           "details": {
             "definition_core_idea": "A binary indexed tree that efficiently computes prefix sums for cumulative user interactions.",
             "how_it_helps": "Tracks real-time engagement trends (e.g., clicks, scrolls) with low-latency updates, enabling dynamic content adjustments.",
@@ -1209,6 +1242,7 @@ export const businessCases: BusinessCase[] = [
         {
           "name": "Disjoint Set Union",
           "image": "disjoint_set.png",
+          "code": "all_codes/8/disjoint_set_union.cpp",
           "details": {
             "definition_core_idea": "Groups related performance bottlenecks for modular debugging.",
             "how_it_helps": "Clusters slow-loading components or site parts, simplifying debugging by focusing on logical groups.",
@@ -1227,6 +1261,7 @@ export const businessCases: BusinessCase[] = [
         {
           "name": "Deque-Based Sliding Window",
           "image": "sliding_wnd.png",
+          "code": "all_codes/8/sliding_window.cpp",
           "details": {
             "definition_core_idea": "Processes streaming data to detect short-term fluctuations in engagement or performance.",
             "how_it_helps": "Identifies traffic surges or performance drops within a defined time frame, enabling prompt mitigation.",
@@ -1245,6 +1280,7 @@ export const businessCases: BusinessCase[] = [
         {
           "name": "XOR Anomaly Detection",
           "image": "xor.png",
+          "code": "all_codes/8/xor_anomaly.cpp",
           "details": {
             "definition_core_idea": "Uses XOR as a lightweight fingerprinting mechanism to detect anomalies in log data.",
             "how_it_helps": "Quickly identifies deviations in performance logs, pinpointing misbehaving components for retrospective analysis.",
@@ -1336,6 +1372,7 @@ export const businessCases: BusinessCase[] = [
         {
           "name": "Persistent Segment Trees",
           "image": "persistent_tree.png",
+          "code": "all_codes/10/persistent_tree.cpp",
           "details": {
             "definition_core_idea": "Versioned segment trees that preserve past states for efficient historical data retrieval.",
             "how_it_helps": "Stores and accesses customer interaction histories (e.g., browse patterns, purchases) for instant personalization.",
@@ -1354,6 +1391,7 @@ export const businessCases: BusinessCase[] = [
         {
           "name": "Decision Trees",
           "image": "decision_tree.png",
+          "code": "all_codes/10/decision_tree.cpp",
           "details": {
             "definition_core_idea": "Recursive feature splits to classify customer intents and guide conversation flows.",
             "how_it_helps": "Analyzes keywords and context to accurately identify intents (e.g., size queries, style preferences), directing relevant dialogue paths.",
@@ -1372,6 +1410,7 @@ export const businessCases: BusinessCase[] = [
         {
           "name": "Stable Marriage Problem Algorithm",
           "image": "stable_marraige.png",
+          "code": "all_codes/10/stable_marriage.cpp",
           "details": {
             "definition_core_idea": "Matches customer preferences to inventory for optimal, conflict-free recommendations.",
             "how_it_helps": "Pairs preferences (e.g., color, style) with products, ensuring no better mutual match is missed.",
@@ -1456,6 +1495,7 @@ export const businessCases: BusinessCase[] = [
         {
           "name": "Square-Root Decomposition",
           "image": "sqrt_decompose.png",
+          "code": "all_codes/11/sqrt_decomposition.cpp",
           "details": {
             "definition_core_idea": "Partitions metadata into blocks of size √N to optimize bulk range queries.",
             "how_it_helps": "Accelerates batch processing of metadata filters (e.g., assets by date or campaign) by operating on pre-summarized blocks.",
@@ -1474,6 +1514,7 @@ export const businessCases: BusinessCase[] = [
         {
           "name": "Mo's Algorithm",
           "image": "moo.png",
+          "code": "all_codes/11/mos_algorithm.cpp",
           "details": {
             "definition_core_idea": "Optimizes offline batch range queries by reordering them to minimize redundant computations.",
             "how_it_helps": "Efficiently processes large historical query sets for retrospective analysis, such as monthly performance reports.",
@@ -1492,6 +1533,7 @@ export const businessCases: BusinessCase[] = [
         {
           "name": "Segment Trees with Lazy Propagation",
           "image": "segment_lazy.png",
+          "code": "all_codes/11/segment_tree_lazy.cpp",
           "details": {
             "definition_core_idea": "Efficiently processes bulk updates and range queries over asset metrics with lazy update propagation.",
             "how_it_helps": "Tracks and updates real-time asset metrics (e.g., views, engagement scores) across time intervals or asset groups.",
