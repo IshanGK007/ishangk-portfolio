@@ -43,7 +43,7 @@ export interface BusinessCase {
 }
 
 export const businessCases: BusinessCase[] = [
-  {
+{
   "id": 1,
   "title": "AEP Agent Orchestrator: Smarter Decisions with Data Structures",
   "concepts": ["Directed Acyclic Graphs", "Priority Queues", "Hash Tables", "Dynamic Programming", "Johnson-Trotter Algorithm"],
@@ -208,7 +208,36 @@ export const businessCases: BusinessCase[] = [
         "• Robust Testing: Johnson-Trotter validates decision models.",
         "This results in fast, personalized, and reliable booking experiences, increasing engagement and conversions."
       ]
-    }
+    },
+    { // New Reference Section
+        "heading": "References",
+        "content":[
+            {
+              "text": "Directed Acyclic Graphs (DAGs) are instrumental in task scheduling and concurrency control, ensuring tasks are executed in a logical order without cycles.",
+              "link": "https://ocw.mit.edu/courses/6-042j-mathematics-for-computer-science-spring-2015/mit6_042js15_session17.pdf"
+            },
+            {
+              "text": "Priority Queues are pivotal in AI systems for managing workflows by prioritizing tasks based on urgency, enhancing responsiveness and operational efficiency.",
+              "link": "https://www.alibabacloud.com/tech-news/a/message_queue/gugz0vwdb3-ai-queues-orchestrating-intelligent-workflows"
+            },
+            {
+              "text": "Hash Tables offer constant-time key-value storage, enabling rapid data retrieval essential for real-time personalization in AI applications.",
+              "link": "https://jitesh117.github.io/blog/the-ins-and-outs-of-hash-tables/"
+            },
+            {
+              "text": "Dynamic Programming is an optimization technique that breaks down complex problems into simpler subproblems, facilitating efficient multi-stage decision-making.",
+              "link": "https://web.mit.edu/15.053/www/AMP-Chapter-11.pdf"
+            },
+            {
+              "text": "The Johnson-Trotter Algorithm efficiently generates all permutations of a set, which is valuable for exhaustive testing of task sequences.",
+              "link": "https://www.geeksforgeeks.org/johnson-trotter-algorithm/"
+            },
+            {
+              "text": "AI Agent Orchestration involves coordinating multiple specialized AI agents within a unified system to efficiently achieve shared objectives.",
+              "link": "https://www.ibm.com/think/topics/ai-agent-orchestration"
+            }
+          ]
+      }
   ]
 },
 {
@@ -335,7 +364,32 @@ export const businessCases: BusinessCase[] = [
         "• Predictive Offers: Tries enable behavior-driven interventions.",
         "This enables rapid, contextual offer delivery, maximizing revenue and customer satisfaction."
       ]
-    }
+    },
+        { // New Reference Section
+        "heading": "References",
+        "content":[
+            {
+              "text": "Adobe Experience Platform's Real-Time Customer Data Platform (RTCDP) integrates known and unknown customer data to create trusted profiles, enabling real-time activation across digital journeys.",
+              "link": "https://business.adobe.com/products/real-time-customer-data-platform/rtcdp.html"
+            },
+            {
+              "text": "Sliding window algorithms offer a scalable and efficient approach to processing streaming data in real-time across various domains.",
+              "link": "https://medium.com/@machinelearningclub/sliding-window-algorithms-for-real-time-data-processing-2012f00d07d7"
+            },
+            {
+              "text": "A Bloom filter is a space-efficient probabilistic data structure that is used to test whether an item is a member of a set.",
+              "link": "https://systemdesign.one/bloom-filters-explained/"
+            },
+            {
+              "text": "In computer science, a trie, also known as a digital tree or prefix tree, is a specialized search tree data structure used to store and retrieve strings from a dictionary or set.",
+              "link": "https://en.wikipedia.org/wiki/Trie"
+            },
+            {
+              "text": "Adobe has unveiled new AI agents called Agent Orchestrator and Brand Concierge at its Adobe Summit conference, enhancing customer engagement and daily marketing functions via autonomous and collaborative AI agents.",
+              "link": "https://www.investors.com/news/technology/adbe-stock-adobe-launches-ai-agents-marketing/"
+            }
+          ]
+      }
   ]
 },
 {
@@ -480,7 +534,33 @@ export const businessCases: BusinessCase[] = [
         "• Cost-Effective Network: Boruvka's Algorithm minimizes communication costs.",
         "This results in seamless workflows, higher engagement, and improved sales."
       ]
+    },
+    {
+  "heading": "References",
+  "content": [
+    {
+      "text": "Adobe Experience Platform Agent Orchestrator enables businesses to build, manage, and orchestrate AI agents from Adobe and third-party ecosystems, enhancing decision-making and multi-agent collaboration.",
+      "link": "https://business.adobe.com/products/experience-platform/agent-orchestrator.html"
+    },
+    {
+      "text": "The Max-Flow Min-Cut Theorem is applied in resource allocation problems, such as assigning tasks to machines or allocating bandwidth in communication networks.",
+      "link": "https://www.numberanalytics.com/blog/max-flow-min-cut-theorem-ultimate-guide"
+    },
+    {
+      "text": "PageRank is an algorithm used by Google Search to rank web pages in their search engine results, measuring the importance of website pages.",
+      "link": "https://en.wikipedia.org/wiki/PageRank"
+    },
+    {
+      "text": "Catalan numbers are a sequence of natural numbers that occur in various counting problems, often involving recursively defined objects.",
+      "link": "https://en.wikipedia.org/wiki/Catalan_number"
+    },
+    {
+      "text": "Borůvka's algorithm is a greedy algorithm for finding a minimum spanning tree in a graph, or a minimum spanning forest in the case of a graph that is not connected.",
+      "link": "https://en.wikipedia.org/wiki/Bor%C5%AFvka%27s_algorithm"
     }
+  ]
+}
+
   ]
 },
 {
@@ -631,7 +711,33 @@ export const businessCases: BusinessCase[] = [
         "• Cohesive Aesthetic: LCS ensures visual uniformity.",
         "This results in faster, high-quality moodboards, meeting tight deadlines and impressing clients."
       ]
+    },
+    {
+  "heading": "References",
+  "content": [
+    {
+      "text": "Adobe Firefly's Generative Match uses neural networks for style feature extraction and application, transforming creative workflows.",
+      "link": "https://blog.adobe.com/en/publish/2023/03/21/introducing-adobe-firefly-generative-ai-for-creative-workflows"
+    },
+    {
+      "text": "2D Kadane's Algorithm efficiently finds the maximum sum submatrix in a 2D array, useful for identifying regions with maximum intensity in images.",
+      "link": "https://www.geeksforgeeks.org/maximum-sum-rectangle-in-a-2d-matrix-dp-27/"
+    },
+    {
+      "text": "Sparse Tables enable fast range minimum/maximum queries after preprocessing, widely used in feature extraction and retrieval systems.",
+      "link": "https://cp-algorithms.com/data_structures/sparse-table.html"
+    },
+    {
+      "text": "A* Algorithm is a heuristic-based pathfinding algorithm used to find optimal routes in weighted graphs, applicable in style transformation sequencing.",
+      "link": "https://en.wikipedia.org/wiki/A*_search_algorithm"
+    },
+    {
+      "text": "Longest Common Subsequence (LCS) finds the longest subsequence common to two sequences, ensuring consistency in sequence alignment problems.",
+      "link": "https://en.wikipedia.org/wiki/Longest_common_subsequence_problem"
     }
+  ]
+}
+
   ]
 },
 {
@@ -780,7 +886,33 @@ export const businessCases: BusinessCase[] = [
         "• Flexibility: Dynamic path recalculation adapts to changing priorities.",
         "This enables reliable, high-quality content delivery for global campaigns under tight deadlines."
       ]
+    },
+    {
+  "heading": "References",
+  "content": [
+    {
+      "text": "Adobe GenStudio Foundation integrates automated content workflow orchestration for enterprise-scale creative operations.",
+      "link": "https://helpx.adobe.com/experience-platform/genstudio.html"
+    },
+    {
+      "text": "Dijkstra's Algorithm efficiently finds shortest paths in weighted graphs and is useful for dynamic workflow optimization.",
+      "link": "https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm"
+    },
+    {
+      "text": "Square-Root Decomposition is a technique to optimize query and update operations by dividing data into blocks for faster processing.",
+      "link": "https://cp-algorithms.com/data_structures/sqrt_decomposition.html"
+    },
+    {
+      "text": "Uniform Cost Search is a graph traversal algorithm for finding the lowest cost path, adapting well to dynamic task costs in workflows.",
+      "link": "https://en.wikipedia.org/wiki/Uniform-cost_search"
+    },
+    {
+      "text": "Greedy Algorithms make locally optimal choices to efficiently allocate resources and balance workloads in task scheduling.",
+      "link": "https://www.geeksforgeeks.org/greedy-algorithm/"
     }
+  ]
+}
+
   ]
 },
 {
@@ -931,7 +1063,29 @@ export const businessCases: BusinessCase[] = [
         "• Consistent Success: Pattern analysis ensures reusable high-performing attributes.",
         "This results in increased reader engagement and retention for the media company."
       ]
+    },
+    { // New Reference Section
+  "heading": "References",
+  "content": [
+    {
+      "text": "Understanding Statistical Power in A/B Testing",
+      "link": "https://www.statsig.com/perspectives/understanding-statistical-power-ab-testing"
+    },
+    {
+      "text": "Lookup Tables and Log Analysis: Extracting Insight from Logs",
+      "link": "https://coralogix.com/blog/lookup-tables/"
+    },
+    {
+      "text": "Heap Data Structure - GeeksforGeeks",
+      "link": "https://www.geeksforgeeks.org/heap-data-structure/"
+    },
+    {
+      "text": "Longest Common Substring - GeeksforGeeks",
+      "link": "https://www.geeksforgeeks.org/longest-common-substring-dp-29/"
     }
+  ]
+}
+
   ]
 },
 {
@@ -1082,7 +1236,29 @@ export const businessCases: BusinessCase[] = [
         "• Scalable Throughput: Ford-Fulkerson optimizes task routing for high-volume processing.",
         "This enables the studio to meet tight global release schedules with precision and adaptability."
       ]
+    },
+    { // New Reference Section
+  "heading": "References",
+  "content": [
+    {
+      "text": "AVL Trees & Rotations (Self-Balancing Binary Search Trees) - MIT OpenCourseWare",
+      "link": "https://www.youtube.com/watch?v=vRwi_UcZGjU"
+    },
+    {
+      "text": "Introduction to Disjoint Set (Union-Find Algorithm) - GeeksforGeeks",
+      "link": "https://www.geeksforgeeks.org/introduction-to-disjoint-set-data-structure-or-union-find-algorithm/"
+    },
+    {
+      "text": "Suffix Tree - Wikipedia",
+      "link": "https://en.wikipedia.org/wiki/Suffix_tree"
+    },
+    {
+      "text": "Ford–Fulkerson Algorithm - Wikipedia",
+      "link": "https://en.wikipedia.org/wiki/Ford%E2%80%93Fulkerson_algorithm"
     }
+  ]
+}
+
   ]
 },
 {
@@ -1206,7 +1382,41 @@ export const businessCases: BusinessCase[] = [
         "• Dynamic Filters: Segment Trees support instant UI feedback for user queries.",
         "This results in faster variant generation, increased configuration options, reduced latency, and enhanced customer satisfaction."
       ]
+    },
+    { // New Reference Section
+  "heading": "References",
+  "content": [
+    {
+      "text": "Octree Partitioning Techniques",
+      "link": "https://www.gamedeveloper.com/programming/octree-partitioning-techniques"
+    },
+    {
+      "text": "Using K-D Trees to Calculate Nearest Neighbors in 3D Vector Space",
+      "link": "https://blog.krum.io/k-d-trees/"
+    },
+    {
+      "text": "Segment Tree - Algorithms for Competitive Programming",
+      "link": "https://cp-algorithms.com/data_structures/segment_tree.html"
+    },
+    {
+      "text": "Octree",
+      "link": "https://en.wikipedia.org/wiki/Octree"
+    },
+    {
+      "text": "K-d tree",
+      "link": "https://en.wikipedia.org/wiki/K-d_tree"
+    },
+    {
+      "text": "Segment Tree - VisuAlgo",
+      "link": "https://visualgo.net/en/segmenttree"
+    },
+    {
+      "text": "Implementing Approximate Nearest Neighbor Search with KD-Trees",
+      "link": "https://pyimagesearch.com/2024/12/23/implementing-approximate-nearest-neighbor-search-with-kd-trees/"
     }
+  ]
+}
+
   ]
 },
 {
@@ -1353,7 +1563,33 @@ export const businessCases: BusinessCase[] = [
         "• Anomaly Detection: XOR speeds up log forensics.",
         "This ensures consistent high-performance content delivery, improved UX, and proactive bottleneck resolution."
       ]
+    },
+    {
+  "heading": "References",
+  "content": [
+    {
+      "text": "Fenwick Tree: Algorithms for Competitive Programming",
+      "link": "https://cp-algorithms.com/data_structures/fenwick.html"
+    },
+    {
+      "text": "Fenwick Tree - Wikipedia",
+      "link": "https://en.wikipedia.org/wiki/Fenwick_tree"
+    },
+    {
+      "text": "Compact Fenwick Trees for Dynamic Ranking and Selection",
+      "link": "https://arxiv.org/abs/1904.12370"
+    },
+    {
+      "text": "Anomaly Detection in Road Networks Using Sliding-Window Tensor Factorization",
+      "link": "https://arxiv.org/abs/1803.04534"
+    },
+    {
+      "text": "In Search of the Fastest Concurrent Union-Find Algorithm",
+      "link": "https://arxiv.org/abs/1911.06347"
     }
+  ]
+}
+
   ]
 },
 {
@@ -1481,7 +1717,33 @@ export const businessCases: BusinessCase[] = [
         "• Optimal Recommendations: Stable Marriage Algorithm maximizes recommendation relevance.",
         "This results in enhanced customer satisfaction, higher conversion rates, and improved engagement."
       ]
+    },
+    { // New Reference Section
+  "heading": "References",
+  "content": [
+    {
+      "text": "Persistent Segment Tree – GeeksforGeeks",
+      "link": "https://www.geeksforgeeks.org/persistent-segment-tree-set-1-introduction/"
+    },
+    {
+      "text": "Decision Tree – GeeksforGeeks",
+      "link": "https://www.geeksforgeeks.org/decision-tree/"
+    },
+    {
+      "text": "Stable Marriage Problem – GeeksforGeeks",
+      "link": "https://www.geeksforgeeks.org/stable-marriage-problem/"
+    },
+    {
+      "text": "Decision Tree – Wikipedia",
+      "link": "https://en.wikipedia.org/wiki/Decision_tree"
+    },
+    {
+      "text": "Stable Marriage Problem – Wikipedia",
+      "link": "https://en.wikipedia.org/wiki/Stable_marriage_problem"
     }
+  ]
+}
+
   ]
 },
 {
@@ -1605,7 +1867,25 @@ export const businessCases: BusinessCase[] = [
         "• Dynamic Metrics: Segment Trees enable real-time performance tracking.",
         "This results in accelerated asset synchronization, efficient campaign deployment, and enhanced decision-making."
       ]
+    },
+    { // New Reference Section
+  "heading": "References",
+  "content": [
+    {
+      "text": "Square Root Decomposition Algorithm – GeeksforGeeks",
+      "link": "https://www.geeksforgeeks.org/square-root-sqrt-decomposition-algorithm/"
+    },
+    {
+      "text": "Mo's Algorithm – GeeksforGeeks",
+      "link": "https://www.geeksforgeeks.org/mos-algorithm-query-square-root-decomposition-set-1-introduction/"
+    },
+    {
+      "text": "Segment Tree with Lazy Propagation – GeeksforGeeks",
+      "link": "https://www.geeksforgeeks.org/lazy-propagation-in-segment-tree/"
     }
+  ]
+}
+
   ]
 }
 ];

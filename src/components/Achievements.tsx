@@ -5,7 +5,7 @@ import { Card } from "./ui/card";
 const Achievements = () => {
   return (
     <section id="achievements" className="py-16 bg-slate-50 dark:bg-slate-900 px-4">
-      <div className="max-w-4xl mx-auto">
+      <div className="max-w-7xl mx-auto">
         <motion.h2
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
@@ -14,7 +14,7 @@ const Achievements = () => {
         >
           Achievements
         </motion.h2>
-        <div className="grid gap-6">
+        <div className="grid md:grid-cols-2 gap-6">
           {[
             {
               title: "Vision-Based Automated Billing Systems Using YOLO",
@@ -33,8 +33,9 @@ const Achievements = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.2 }}
+              className="h-full"
             >
-              <Card className="p-6 card-hover bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700">
+              <Card className="p-6 h-full card-hover bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700">
                 <div className="flex items-start space-x-4">
                   <div className="p-3 bg-indigo-100 dark:bg-indigo-900 rounded-lg">
                     <AwardIcon className="w-6 h-6 text-indigo-600" />
