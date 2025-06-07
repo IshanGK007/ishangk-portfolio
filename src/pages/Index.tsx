@@ -564,6 +564,18 @@ const Index = () => {
                         <section key={sectionIndex} className="mb-8">
                           <h2 className="text-2xl font-semibold text-slate-700 dark:text-white mb-4">{section.heading}</h2>
 
+                          {/* Render workflow image if available - moved before content */}
+                          {section.heading === "Integrated Workflow" && section.image && (
+                            <div className="mb-6">
+                              <img 
+                                src={section.image} 
+                                alt={`${businessCases.find(bc => bc.id === expandedBusinessCaseId)?.title} Workflow`}
+                                className="w-full h-auto rounded-lg shadow-lg"
+                                style={{ maxHeight: '800px', objectFit: 'contain' }}
+                              />
+                            </div>
+                          )}
+
                           {/* Render content array if available */}
                           {section.content && section.content.length > 0 && (
                             <div className="space-y-4">

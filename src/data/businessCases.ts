@@ -32,6 +32,7 @@ export interface Section {
   content?: (string | Reference)[]; // Paragraphs and inline citations
   sub_sections?: Enhancement[]; // Nested enhancements (algorithms, structures, etc.)
   details?: SectionDetails; // Optional summary of pros/cons
+  image?: string; // Optional image path for sections like Integrated Workflow
 }
 
 export interface BusinessCase {
@@ -185,6 +186,7 @@ export const businessCases: BusinessCase[] = [
     },
     {
       "heading": "Integrated Workflow",
+      "image": "flowchart/image_1.png",
       "content": [
         "These algorithms create a cohesive orchestration pipeline:",
         "• Task Coordination: DAGs ensure logical task sequencing.",
@@ -315,6 +317,7 @@ export const businessCases: BusinessCase[] = [
     },
     {
       "heading": "Integrated Workflow",
+      "image": "flowchart/image_2.png",
       "content": [
         "These data structures create an optimized real-time pipeline:",
         "• Real-Time Analytics: Sliding Window tracks activity spikes.",
@@ -457,6 +460,7 @@ export const businessCases: BusinessCase[] = [
     },
     {
       "heading": "Integrated Workflow",
+      "image": "flowchart/image_3.png",
       "content": [
         "These algorithms create a cohesive orchestration pipeline:",
         "• Resource Allocation: Min-Cut Max-Flow balances computational resources.",
@@ -607,6 +611,7 @@ export const businessCases: BusinessCase[] = [
     },
     {
       "heading": "Integrated Workflow",
+      "image": "flowchart/image_4.png",
       "content": [
         "These algorithms create a seamless moodboarding pipeline:",
         "• Region Detection: 2D Kadane's Algorithm identifies key visual zones.",
@@ -754,6 +759,17 @@ export const businessCases: BusinessCase[] = [
       }
     },
     {
+      "heading": "Integrated Workflow",
+      "image": "flowchart/image_5.png",
+      "content": [
+        "These algorithms create a cohesive orchestration pipeline:",
+        "• Resource Allocation: Min-Cut Max-Flow balances computational resources.",
+        "• Action Prioritization: PageRank focuses on high-impact tasks.",
+        "• Interaction Modeling: Catalan Numbers optimize touchpoint sequences.",
+        "• Communication Optimization: Boruvka's Algorithm minimizes network costs."
+      ]
+    },
+    {
       "heading": "Business Use Case Summary",
       "content": [
         "Before: Static scheduling caused delays, uneven workloads, and inflexibility, leading to missed deadlines and suboptimal content delivery.",
@@ -894,6 +910,7 @@ export const businessCases: BusinessCase[] = [
     },
     {
       "heading": "Integrated Workflow",
+      "image": "flowchart/image_6.png",
       "content": [
         "These algorithms create a seamless optimization pipeline:",
         "• Experimentation: Statistical Sampling delivers rapid A/B test insights.",
@@ -1044,6 +1061,7 @@ export const businessCases: BusinessCase[] = [
     },
     {
       "heading": "Integrated Workflow",
+      "image": "flowchart/image_7.png",
       "content": [
         "These algorithms create a cohesive localization pipeline:",
         "• Task Scheduling: Balanced BST prioritizes urgent tasks dynamically.",
@@ -1169,6 +1187,7 @@ export const businessCases: BusinessCase[] = [
     },
     {
       "heading": "Integrated Workflow",
+      "image": "flowchart/image_9.png",
       "content": [
         "These algorithms create an efficient 3D asset generation pipeline:",
         "• Rendering: Octrees optimize mesh and LOD management for smooth previews.",
@@ -1313,6 +1332,7 @@ export const businessCases: BusinessCase[] = [
     },
     {
       "heading": "Integrated Workflow",
+      "image": "flowchart/image_8.png",
       "content": [
         "These algorithms create a cohesive optimization pipeline:",
         "• Real-Time Monitoring: Fenwick Trees track live engagement metrics.",
@@ -1442,6 +1462,7 @@ export const businessCases: BusinessCase[] = [
     },
     {
       "heading": "Integrated Workflow",
+      "image": "flowchart/image_10.png",
       "content": [
         "These algorithms create a seamless conversational commerce pipeline:",
         "• Historical Management: Persistent Segment Trees recall past interactions for personalization.",
@@ -1565,6 +1586,7 @@ export const businessCases: BusinessCase[] = [
     },
     {
       "heading": "Integrated Workflow",
+      "image": "flowchart/image_11.png",
       "content": [
         "These algorithms create a cohesive asset management pipeline:",
         "• Metadata Queries: Square-Root Decomposition accelerates bulk filtering.",
